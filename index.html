@@ -32,18 +32,30 @@
                         <i class="ph ph-link input-icon"></i>
                         <input type="url" id="tiktokUrl" placeholder="Cole o link do vídeo do TikTok..." required
                             autocomplete="off">
+
+                        <!-- Botão de Limpar (X) -->
+                        <button type="button" id="clearBtn" class="btn-clear hidden" title="Limpar campo">
+                            <i class="ph ph-x-circle"></i>
+                        </button>
+
+                        <!-- Botão Colar -->
                         <button type="button" id="pasteBtn" class="btn-paste" title="Colar link">
                             <i class="ph ph-clipboard-text"></i>
                             <span>Colar</span>
                         </button>
                     </div>
                     <button type="submit" id="submitBtn" class="btn-primary">
-                        <span>Baixar</span>
+                        <span>Extrair</span>
                         <i class="ph ph-arrow-right"></i>
                     </button>
                 </div>
             </form>
         </section>
+
+        <div id="toastNotification" class="toast-notification hidden">
+            <i class="ph ph-check-circle"></i>
+            <span>Download iniciado com sucesso!</span>
+        </div>
 
         <div id="loading" class="state-container hidden">
             <div class="loader-ring"></div>
@@ -119,19 +131,9 @@
             </div>
         </footer>
 
-        <script src="script.js"></script>
-</body>
+    </main>
 
-</html>
-
-</main>
-
-<script src="script.js"></script>
-</body>
-
-</html>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
