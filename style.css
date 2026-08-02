@@ -89,14 +89,16 @@ body {
 }
 
 .input-wrapper:focus-within {
-    border-color: #3b82f6;
+    border-color: #3b83f652;
 }
 
 .input-group {
     flex: 1;
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
 }
 
 .input-icon {
@@ -344,11 +346,14 @@ body {
 
 @media (max-width: 600px) {
     .input-wrapper {
+        display: flex;
         flex-direction: column;
+        padding: 10px;
+        gap: 1rem;
     }
 
     .btn-primary {
-        padding: 10px;
+        padding: 12px;
         justify-content: center;
     }
 
