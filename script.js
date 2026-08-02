@@ -73,7 +73,7 @@ form.addEventListener('submit', async (e) => {
     loadingState.classList.remove('hidden');
 
     try {
-        const response = await fetch('http://localhost:3000/api/download', {
+        const response = await fetch('/api/download', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url })
@@ -89,8 +89,8 @@ form.addEventListener('submit', async (e) => {
         authorName.textContent = `@${data.author}`;
         videoTitle.textContent = data.title;
 
-        const downloadMp4Url = `http://localhost:3000/api/file-download?mediaUrl=${encodeURIComponent(data.videoNoWatermark)}&type=mp4`;
-        const downloadMp3Url = `http://localhost:3000/api/file-download?mediaUrl=${encodeURIComponent(data.audio)}&type=mp3`;
+        const downloadMp4Url = `/api/file-download?mediaUrl=${encodeURIComponent(data.videoNoWatermark)}&type=mp4`;
+        const downloadMp3Url = `/api/file-download?mediaUrl=${encodeURIComponent(data.audio)}&type=mp3`;
 
         btnMp4.href = downloadMp4Url;
         btnMp3.href = downloadMp3Url;
