@@ -1,5 +1,8 @@
+const isLiveServer = window.location.port === '5500' || window.location.port === '5501';
+const API_BASE_URL = isLiveServer ? 'http://localhost:3000' : '';
+
 const form = document.getElementById('downloadForm');
-const tiktokUrlInput = document.getElementById('tiktokUrl');
+const mediaUrlInput = document.getElementById('tiktokUrl');
 const pasteBtn = document.getElementById('pasteBtn');
 const clearBtn = document.getElementById('clearBtn');
 const toastNotification = document.getElementById('toastNotification');
@@ -15,9 +18,16 @@ const btnMp4 = document.getElementById('btnMp4');
 const btnMp3 = document.getElementById('btnMp3');
 const errorText = document.getElementById('errorText');
 
-function checkInputState() {
-    const hasValue = tiktokUrlInput.value.trim() !== '';
+let carouselContainer = document.getElementById('carouselItems');
+if (!carouselContainer) {
+    carouselContainer = document.createElement('div');
+    carouselContainer.id = 'carouselItems';
+    carouselContainer.className = 'carousel-grid';
+    resultSection.querySelector('.result-details')?.appendChild(carouselContainer);
+}
 
+function checkInputState() {
+    const hasValue = mediaUrlInput.value.trim() !== '';
     if (hasValue) {
         pasteBtn.classList.add('hidden');
         clearBtn.classList.remove('hidden');
@@ -27,25 +37,24 @@ function checkInputState() {
     }
 }
 
-tiktokUrlInput.addEventListener('input', checkInputState);
+mediaUrlInput.addEventListener('input', checkInputState);
 
 clearBtn.addEventListener('click', () => {
-    tiktokUrlInput.value = '';
+    mediaUrlInput.value = '';
     checkInputState();
-    tiktokUrlInput.focus();
+    mediaUrlInput.focus();
 });
 
 pasteBtn.addEventListener('click', async () => {
     try {
         const text = await navigator.clipboard.readText();
-        tiktokUrlInput.value = text;
+        mediaUrlInput.value = text.trim();
         checkInputState();
     } catch (err) {
-        alert('Permissão para acessar a área de transferência negada.');
+        showToast('Permissão de colar negada.');
     }
 });
 
-// Exibe mesg toast
 function showToast(message = 'Download iniciado com sucesso!') {
     const toastText = toastNotification.querySelector('span');
     if (toastText) toastText.textContent = message;
@@ -56,52 +65,99 @@ function showToast(message = 'Download iniciado com sucesso!') {
 
     setTimeout(() => {
         toastNotification.classList.remove('show');
-        setTimeout(() => toastNotification.classList.add('hidden'), 300);
+        setTimeout(() => toastNotification.classList.add('hidden'), 200);
     }, 3000);
 }
 
-btnMp4.addEventListener('click', () => showToast('Download do MP4 iniciado!'));
-btnMp3.addEventListener('click', () => showToast('Download do MP3 iniciado!'));
+if (btnMp4) btnMp4.addEventListener('click', () => showToast('Download do vídeo iniciado!'));
+if (btnMp3) btnMp3.addEventListener('click', () => showToast('Download do áudio iniciado!'));
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const url = tiktokUrlInput.value.trim();
+    const url = mediaUrlInput.value.trim();
     if (!url) return;
 
     hideAllStates();
+    carouselContainer.innerHTML = '';
     loadingState.classList.remove('hidden');
 
     try {
-        const response = await fetch('/api/download', {
+        const response = await fetch(`${API_BASE_URL}/api/download`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url })
         });
 
-        const data = await response.json();
+        const responseText = await response.text();
+        let data;
 
-        if (!response.ok) {
-            throw new Error(data.error || 'Falha ao processar o vídeo.');
+        try {
+            data = JSON.parse(responseText);
+        } catch (jsonErr) {
+            throw new Error('Servidor retornou uma resposta inesperada.');
         }
 
-        videoCover.src = data.cover;
-        authorName.textContent = `@${data.author}`;
-        videoTitle.textContent = data.title;
+        if (!response.ok) {
+            throw new Error(data.error || 'Falha ao processar o link.');
+        }
 
-        const downloadMp4Url = `/api/file-download?mediaUrl=${encodeURIComponent(data.videoNoWatermark)}&type=mp4`;
-        const downloadMp3Url = `/api/file-download?mediaUrl=${encodeURIComponent(data.audio)}&type=mp3`;
+        const previewBox = videoCover.closest('.preview-container');
+        if (data.cover) {
+            videoCover.src = data.cover;
+            if (previewBox) previewBox.classList.remove('hidden');
+        } else if (previewBox) {
+            previewBox.classList.add('hidden');
+        }
 
-        btnMp4.href = downloadMp4Url;
-        btnMp3.href = downloadMp3Url;
+        authorName.textContent = data.author ? `@${data.author}` : '@usuario';
+        videoTitle.textContent = data.title || 'Publicação extraída';
 
-        btnMp4.setAttribute('download', '');
-        btnMp3.setAttribute('download', '');
+        // Post simples
+        if (!data.isCarousel && data.medias && data.medias.length === 1) {
+            const singleMedia = data.medias[0];
+            const fileType = singleMedia.type === 'image' ? 'image' : 'mp4';
+
+            const labelElem = btnMp4.querySelector('strong');
+            if (labelElem) {
+                labelElem.textContent = singleMedia.type === 'image' ? 'Baixar Foto' : 'Vídeo MP4';
+            }
+
+            btnMp4.href = `${API_BASE_URL}/api/file-download?mediaUrl=${encodeURIComponent(singleMedia.url)}&type=${fileType}`;
+            btnMp4.setAttribute('download', '');
+            btnMp4.classList.remove('hidden');
+        } else if (data.medias && data.medias.length > 1) {
+            // Post carrossel
+            btnMp4.classList.add('hidden');
+
+            data.medias.forEach((item) => {
+                const btn = document.createElement('a');
+                const fileType = item.type === 'image' ? 'image' : 'mp4';
+
+                btn.href = `${API_BASE_URL}/api/file-download?mediaUrl=${encodeURIComponent(item.url)}&type=${fileType}`;
+                btn.setAttribute('download', '');
+                btn.className = 'carousel-btn';
+                btn.innerHTML = `<i class="ph ph-download-simple"></i> <span>Baixar ${item.label}</span>`;
+
+                btn.addEventListener('click', () => showToast(`Baixando ${item.label}...`));
+                carouselContainer.appendChild(btn);
+            });
+        }
+
+        // Áudio MP3
+        if (data.audio) {
+            btnMp3.href = `${API_BASE_URL}/api/file-download?mediaUrl=${encodeURIComponent(data.audio)}&type=mp3`;
+            btnMp3.setAttribute('download', '');
+            btnMp3.classList.remove('hidden');
+        } else {
+            btnMp3.classList.add('hidden');
+        }
 
         loadingState.classList.add('hidden');
         resultSection.classList.remove('hidden');
 
     } catch (err) {
+        console.error('Erro na requisição:', err);
         loadingState.classList.add('hidden');
         errorText.textContent = err.message;
         errorBox.classList.remove('hidden');

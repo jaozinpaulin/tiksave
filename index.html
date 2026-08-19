@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikSave - Baixar Vídeos do TikTok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TikSave — Download de TikTok & Instagram</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,122 +14,163 @@
 
 <body>
 
-    <main class="container">
+    <div class="app-layout">
 
-        <header class="header">
-            <div class="logo">
-                <i class="ph ph-tiktok-logo"></i>
-                <span>TikSave</span>
+        <!-- Top Navigation Bar -->
+        <header class="navbar">
+            <div class="brand">
+                <div class="brand-badge">
+                    <i class="ph-bold ph-sparkle"></i>
+                </div>
+                <span class="brand-name">TikSave</span>
             </div>
-            <h1>Baixar vídeo do TikTok</h1>
-            <p>Remova a marca d'água e salve em MP4 ou converta em áudio MP3.</p>
+
+            <div class="platform-tags">
+                <span class="tag"><i class="ph-bold ph-tiktok-logo"></i> TikTok</span>
+                <span class="tag"><i class="ph-bold ph-instagram-logo"></i> Instagram</span>
+            </div>
         </header>
 
-        <section class="input-section">
-            <form id="downloadForm">
-                <div class="input-wrapper">
-                    <div class="input-group">
-                        <i class="ph ph-link input-icon"></i>
-                        <input type="url" id="tiktokUrl" placeholder="Cole o link do vídeo do TikTok..." required
-                            autocomplete="off">
+        <!-- Main Content Area -->
+        <main class="content">
 
-                        <button type="button" id="clearBtn" class="btn-clear hidden" title="Limpar campo">
-                            <i class="ph ph-x-circle"></i>
-                        </button>
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Baixar vídeos e fotos</h1>
+                <p>Cole o link de qualquer Reel, TikTok, Carrossel ou Áudio para salvar em alta definição.</p>
+            </section>
 
-                        <button type="button" id="pasteBtn" class="btn-paste" title="Colar link">
-                            <i class="ph ph-clipboard-text"></i>
-                            <span>Colar</span>
-                        </button>
+            <!-- Input / Search Area -->
+            <section class="input-card">
+                <form id="downloadForm">
+                    <div class="field-wrapper">
+                        <i class="ph ph-link field-icon"></i>
+                        <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok ou Instagram..." required
+                            autocomplete="off" spellcheck="false">
+
+                        <div class="input-actions">
+                            <button type="button" id="clearBtn" class="action-btn hidden" title="Limpar">
+                                <i class="ph ph-x"></i>
+                            </button>
+                            <button type="button" id="pasteBtn" class="action-btn paste" title="Colar">
+                                <i class="ph ph-clipboard-text"></i>
+                                <span>Colar</span>
+                            </button>
+                        </div>
                     </div>
-                    <button type="submit" id="submitBtn" class="btn-primary">
-                        <span>Extrair</span>
-                        <i class="ph ph-arrow-right"></i>
-                    </button>
-                </div>
-            </form>
-        </section>
 
-        <div id="toastNotification" class="toast-notification hidden">
-            <i class="ph ph-check-circle"></i>
+                    <button type="submit" id="submitBtn" class="btn-submit">
+                        <span>Extrair Mídia</span>
+                        <i class="ph-bold ph-arrow-right"></i>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div id="loading" class="state-card loading-card hidden">
+                <div class="spinner"></div>
+                <div class="state-text">
+                    <strong>Processando publicação</strong>
+                    <span>Buscando os melhores formatos disponíveis...</span>
+                </div>
+            </div>
+
+            <!-- Error Notification -->
+            <div id="errorMessage" class="state-card error-card hidden">
+                <i class="ph-fill ph-warning-circle"></i>
+                <div class="state-text">
+                    <strong>Falha ao extrair</strong>
+                    <span id="errorText">Não foi possível processar este link.</span>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <section id="result" class="result-card hidden">
+                <div class="preview-container">
+                    <img id="videoCover" src="" alt="Capa da mídia" loading="lazy">
+                </div>
+
+                <div class="result-details">
+                    <div class="meta-header">
+                        <div class="author-chip">
+                            <i class="ph ph-user"></i>
+                            <span id="authorName">@usuario</span>
+                        </div>
+                    </div>
+
+                    <p id="videoTitle" class="media-title">Descrição da publicação...</p>
+
+                    <!-- Single Media Actions -->
+                    <div class="action-buttons">
+                        <a id="btnMp4" href="#" class="btn-action primary">
+                            <i class="ph ph-download-simple"></i>
+                            <div class="btn-label">
+                                <strong>Vídeo MP4</strong>
+                                <small>Alta qualidade com som</small>
+                            </div>
+                        </a>
+
+                        <a id="btnMp3" href="#" class="btn-action secondary">
+                            <i class="ph ph-music-notes"></i>
+                            <div class="btn-label">
+                                <strong>Áudio MP3</strong>
+                                <small>Faixa de música</small>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Dynamic Carousel Container -->
+                    <div id="carouselItems" class="carousel-grid"></div>
+                </div>
+            </section>
+
+            <!-- Features Grid (Dashboard Style) -->
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <i class="ph ph-lightning"></i>
+                        <span>Performance</span>
+                    </div>
+                    <strong>Extração Rápida</strong>
+                    <p>Processamento direto via streaming, sem redirecionamentos.</p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <i class="ph ph-images"></i>
+                        <span>Múltiplos</span>
+                    </div>
+                    <strong>Suporte a Slides</strong>
+                    <p>Baixe todas as fotos e vídeos de publicações em carrossel.</p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <i class="ph ph-shield-check"></i>
+                        <span>Privacidade</span>
+                    </div>
+                    <strong>100% Seguro</strong>
+                    <p>Sem armazenamento de dados ou histórico de pesquisas.</p>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Toast Feedback -->
+        <div id="toastNotification" class="toast hidden">
+            <i class="ph-fill ph-check-circle"></i>
             <span>Download iniciado com sucesso!</span>
         </div>
 
-        <div id="loading" class="state-container hidden">
-            <div class="loader-ring"></div>
-            <p>Buscando mídias...</p>
-        </div>
-
-        <section id="result" class="result-card hidden">
-            <div class="media-preview">
-                <img id="videoCover" src="" alt="Capa do vídeo">
-            </div>
-
-            <div class="media-details">
-                <div>
-                    <div class="author-badge">
-                        <i class="ph ph-user"></i>
-                        <span id="authorName">@usuario</span>
-                    </div>
-                    <p id="videoTitle" class="video-description">Descrição do vídeo...</p>
-                </div>
-
-                <div class="download-actions">
-                    <a id="btnMp4" href="#" class="btn-download primary">
-                        <i class="ph ph-download-simple"></i>
-                        <div class="btn-text">
-                            <strong>Vídeo MP4</strong>
-                            <small>Sem marca d'água</small>
-                        </div>
-                    </a>
-                    <a id="btnMp3" href="#" class="btn-download secondary">
-                        <i class="ph ph-music-notes"></i>
-                        <div class="btn-text">
-                            <strong>Áudio MP3</strong>
-                            <small>Apenas música</small>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <div id="errorMessage" class="error-box hidden">
-            <i class="ph ph-warning-circle"></i>
-            <span id="errorText">Não foi possível processar o link. Tente novamente.</span>
-        </div>
-
-        <section class="features-grid">
-            <div class="feature-card">
-                <i class="ph ph-lightning"></i>
-                <h3>Rápido</h3>
-                <p>Processamento direto via API sem redirecionamentos.</p>
-            </div>
-            <div class="feature-card">
-                <i class="ph ph-shield-check"></i>
-                <h3>Seguro</h3>
-                <p>Não armazena nenhum dado ou histórico.</p>
-            </div>
-            <div class="feature-card">
-                <i class="ph ph-devices"></i>
-                <h3>Universal</h3>
-                <p>Compatível com navegadores desktop e mobile.</p>
-            </div>
-        </section>
-
+        <!-- Footer -->
         <footer class="footer">
-            <div class="footer-brand">
-                <p>© 2026 <strong>TikSave</strong>. Desenvolvido por João Paulo.</p>
-            </div>
-
-            <div class="footer-links">
-                <a href="https://github.com/jaozinpaulin" target="_blank" class="github-link" title="Ver no GitHub">
-                    <i class="ph ph-github-logo"></i>
-                    <span>GitHub</span>
-                </a>
-            </div>
+            <p>© 2026 <strong>TikSave</strong> · Desenvolvido por João Paulo</p>
+            <a href="https://github.com/jaozinpaulin" target="_blank" class="footer-link">
+                <i class="ph ph-github-logo"></i> GitHub
+            </a>
         </footer>
 
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
