@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // ============================================================
-// EXTRATOR NATIVO COM YT-DLP
+// EXTRATOR NATIVO COM YT-DLP (INSTAGRAM & TIKTOK FALLBACK)
 // ============================================================
 async function extractWithYtDlp(url) {
     try {
@@ -22,12 +22,12 @@ async function extractWithYtDlp(url) {
             // Força a seleção de formatos com áudio e vídeo combinados
             format: 'best[vcodec!=none][acodec!=none]/b',
             addHeader: [
-                'referer:https://www.instagram.com/',
+                'referer:https://www.google.com/',
                 'user-agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
             ]
         });
 
-        // Identifica e extrai a melhor URL garantindo som
+        // Identifica e extrai a melhor URL garantindo áudio
         function getBestMediaUrl(item) {
             if (item.formats && Array.isArray(item.formats) && item.formats.length > 0) {
                 // 1. Filtra formatos com VÍDEO e ÁUDIO (descarta DASH mudo)
@@ -87,18 +87,20 @@ async function extractWithYtDlp(url) {
             throw new Error('Nenhuma mídia encontrada na URL fornecida.');
         }
 
+        const isTikTokUrl = url.includes('tiktok.com');
+
         return {
-            platform: 'instagram',
+            platform: isTikTokUrl ? 'tiktok' : 'instagram',
             isCarousel: medias.length > 1,
-            title: output.title || output.description || 'Publicação do Instagram',
+            title: output.title || output.description || 'Publicação',
             cover: output.thumbnail || medias[0].url,
-            author: output.uploader || output.channel || 'Instagram User',
+            author: output.uploader || output.channel || (isTikTokUrl ? 'TikTok User' : 'Instagram User'),
             medias: medias,
             audio: null
         };
     } catch (err) {
         console.error('Erro yt-dlp:', err.message || err);
-        throw new Error('Não foi possível extrair a mídia do Instagram. Verifique se o perfil é público.');
+        throw new Error('Não foi possível extrair a mídia. Verifique se o perfil é público.');
     }
 }
 
@@ -123,44 +125,70 @@ app.post('/api/download', async (req, res) => {
         return res.status(400).json({ error: 'Insira um link válido do TikTok ou do Instagram.' });
     }
 
-    // EXTRAÇÃO: TIKTOK
+    // EXTRAÇÃO: TIKTOK (Híbrido: TikWM + Fallback yt-dlp)
     if (isTikTok) {
+        let extracted = false;
+
+        // 1ª Tentativa: TikWM API (Sem marca d'água)
         try {
-            const response = await axios.post('https://www.tikwm.com/api/', { url, hd: 1 });
-            const data = response.data.data;
+            const response = await axios.post(
+                'https://www.tikwm.com/api/',
+                { url, hd: 1 },
+                {
+                    timeout: 8000,
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                        'Accept': 'application/json',
+                        'Referer': 'https://www.tikwm.com/'
+                    }
+                }
+            );
 
-            if (!data) {
-                return res.status(400).json({ error: 'Não foi possível obter a mídia do TikTok. Verifique se o perfil é público.' });
+            const data = response.data?.data;
+
+            if (data) {
+                let medias = [];
+
+                if (data.images && Array.isArray(data.images) && data.images.length > 0) {
+                    medias = data.images.map((imgUrl, index) => ({
+                        type: 'image',
+                        url: imgUrl,
+                        label: `Foto ${index + 1}`
+                    }));
+                } else if (data.play || data.hdplay || data.wmplay) {
+                    medias.push({
+                        type: 'video',
+                        url: data.hdplay || data.play || data.wmplay,
+                        label: 'Vídeo Sem Marca d’Água'
+                    });
+                }
+
+                if (medias.length > 0) {
+                    extracted = true;
+                    return res.json({
+                        platform: 'tiktok',
+                        isCarousel: medias.length > 1,
+                        title: data.title || 'TikTok Post',
+                        cover: data.cover || medias[0].url,
+                        author: data.author?.nickname || data.author?.unique_id || 'TikTok User',
+                        medias: medias,
+                        audio: data.music || null
+                    });
+                }
             }
+        } catch (tikwmErr) {
+            console.warn('TikWM indisponível ou bloqueado. Acionando fallback nativo yt-dlp...');
+        }
 
-            let medias = [];
-
-            if (data.images && Array.isArray(data.images) && data.images.length > 0) {
-                medias = data.images.map((imgUrl, index) => ({
-                    type: 'image',
-                    url: imgUrl,
-                    label: `Foto ${index + 1}`
-                }));
-            } else if (data.play) {
-                medias.push({
-                    type: 'video',
-                    url: data.play,
-                    label: 'Vídeo Sem Marca d’Água'
-                });
+        // 2ª Tentativa (Fallback): yt-dlp direto no servidor
+        if (!extracted) {
+            try {
+                const result = await extractWithYtDlp(url);
+                return res.json(result);
+            } catch (err) {
+                console.error('Falha no extrator do TikTok:', err.message);
+                return res.status(400).json({ error: 'Não foi possível extrair a mídia do TikTok. Verifique se o perfil é público.' });
             }
-
-            return res.json({
-                platform: 'tiktok',
-                isCarousel: medias.length > 1,
-                title: data.title || 'TikTok Post',
-                cover: data.cover || (medias[0] ? medias[0].url : ''),
-                author: data.author?.nickname || 'TikTok User',
-                medias: medias,
-                audio: data.music || null
-            });
-        } catch (err) {
-            console.error('Erro TikTok:', err.message);
-            return res.status(500).json({ error: 'Falha ao processar link do TikTok.' });
         }
     }
 
