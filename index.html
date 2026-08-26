@@ -5,18 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- Favicon Minimalista: Rosa em Linhas -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7.5a3.5 3.5 0 1 0-3.5-3.5c0 2.5 3.5 4.5 3.5 4.5s3.5-2 3.5-4.5A3.5 3.5 0 1 0 12 7.5'/%3E%3Cpath d='M8.5 7.5c-2.5 1-4.5 3.5-3.5 6.5 1.5 4.5 7 7 7 7s5.5-2.5 7-7c1-3-1-5.5-3.5-6.5'/%3E%3Cpath d='M12 12c-1.5 1.5-1 3.5 0 4.5' />
-    </svg>">
+    <!-- PWA & Favicon -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7.5a3.5 3.5 0 1 0-3.5-3.5c0 2.5 3.5 4.5 3.5 4.5s3.5-2 3.5-4.5A3.5 3.5 0 1 0 12 7.5'/%3E%3Cpath d='M8.5 7.5c-2.5 1-4.5 3.5-3.5 6.5 1.5 4.5 7 7 7 7s5.5-2.5 7-7c1-3-1-5.5-3.5-6.5'/%3E%3Cpath d='M12 12c-1.5 1.5-1 3.5 0 4.5'/%3E%3C/svg%3E">
 
-    <!-- SEO Primário -->
+    <!-- SEO Primário & Multi-idioma -->
     <title>TikDownload — Baixar Vídeos do TikTok Sem Marca d'Água (HD)</title>
     <meta name="description"
         content="Baixe vídeos, fotos em carrossel e músicas MP3 do TikTok em alta definição e sem marca d'água gratuitamente. Rápido e sem instalação.">
     <meta name="keywords"
-        content="baixar video tiktok, tiktok sem marca d'agua, download tiktok mp4, tiktok downloader, salvar tiktok, tikdownload">
+        content="baixar video tiktok, tiktok sem marca d'agua, download tiktok mp4, tiktok downloader, salvar tiktok, tikdownload, tiktok video download hd">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#111112">
+
+    <!-- Alternativas de Idioma para o Google -->
+    <link rel="alternate" hreflang="x-default" href="https://tikdownload.online/" />
+    <link rel="alternate" hreflang="pt" href="https://tikdownload.online/?lang=pt" />
+    <link rel="alternate" hreflang="en" href="https://tikdownload.online/?lang=en" />
+    <link rel="alternate" hreflang="es" href="https://tikdownload.online/?lang=es" />
+    <link rel="alternate" hreflang="fr" href="https://tikdownload.online/?lang=fr" />
+    <link rel="alternate" hreflang="de" href="https://tikdownload.online/?lang=de" />
+    <link rel="alternate" hreflang="it" href="https://tikdownload.online/?lang=it" />
+    <link rel="alternate" hreflang="id" href="https://tikdownload.online/?lang=id" />
+    <link rel="alternate" hreflang="tr" href="https://tikdownload.online/?lang=tr" />
+    <link rel="alternate" hreflang="ru" href="https://tikdownload.online/?lang=ru" />
+    <link rel="alternate" hreflang="ar" href="https://tikdownload.online/?lang=ar" />
+    <link rel="alternate" hreflang="hi" href="https://tikdownload.online/?lang=hi" />
+    <link rel="alternate" hreflang="ja" href="https://tikdownload.online/?lang=ja" />
 
     <!-- Open Graph / Redes Sociais -->
     <meta property="og:type" content="website">
@@ -63,10 +79,27 @@
             </a>
 
             <div class="nav-actions">
-                <div class="lang-selector">
-                    <button class="lang-btn" data-lang="pt">PT</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="es">ES</button>
+                <!-- Seletor de Idiomas Global (12 Idiomas) -->
+                <div class="lang-selector-dropdown">
+                    <button class="lang-dropdown-btn" id="langDropdownBtn">
+                        <i class="ph ph-globe"></i>
+                        <span id="currentLangLabel">Português</span>
+                        <i class="ph-bold ph-caret-down"></i>
+                    </button>
+                    <div class="lang-dropdown-menu hidden" id="langDropdownMenu">
+                        <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+                        <button class="lang-option" data-lang="en">🇺🇸 English</button>
+                        <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+                        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+                        <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+                        <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
+                        <button class="lang-option" data-lang="id">🇮🇩 Bahasa Indonesia</button>
+                        <button class="lang-option" data-lang="tr">🇹🇷 Türkçe</button>
+                        <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+                        <button class="lang-option" data-lang="ar">🇸🇦 العربية</button>
+                        <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
+                        <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+                    </div>
                 </div>
             </div>
         </header>
@@ -281,7 +314,6 @@
 
     <!-- Controle do Drawer Inferior e Modal Central -->
     <script>
-        // Drawer Inferior
         const drawer = document.getElementById('bottomAdDrawer');
         const header = document.getElementById('bottomAdHeader');
         if (drawer && header) {
@@ -290,7 +322,6 @@
             });
         }
 
-        // Modal Central
         const modalOverlay = document.getElementById('adModalOverlay');
         const closeBtn = document.getElementById('closeAdModal');
         if (modalOverlay && closeBtn) {

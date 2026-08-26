@@ -106,30 +106,78 @@ body {
     letter-spacing: -0.02em;
 }
 
-.lang-selector {
-    display: flex;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-full);
-    padding: 2px;
+/* Dropdown de Idiomas (12 Idiomas) */
+.lang-selector-dropdown {
+    position: relative;
 }
 
-.lang-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
+.lang-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 12px;
     border-radius: var(--radius-full);
     cursor: pointer;
     transition: var(--transition);
 }
 
-.lang-btn.active,
-.lang-btn:hover {
-    background: var(--bg-surface-elevated);
+.lang-dropdown-btn:hover {
+    border-color: var(--border-strong);
+    background: var(--bg-surface-hover);
+}
+
+.lang-dropdown-btn i {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.lang-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 170px;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #18181b;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    z-index: 1000;
+    scrollbar-width: thin;
+}
+
+.lang-option {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.lang-option:hover {
+    background: var(--bg-surface-hover);
     color: var(--text-primary);
+}
+
+.lang-option.active {
+    background: var(--bg-surface-elevated);
+    color: #fff;
+    font-weight: 600;
 }
 
 /* Hero Section */
@@ -570,7 +618,7 @@ body {
 }
 
 /* ==========================================================
-   1. Floating Bottom Ad Drawer (Aumentado e Mais Legível)
+   1. Floating Bottom Ad Drawer (Barra Inferior Retrátil)
    ========================================================== */
 .bottom-ad-drawer {
     position: fixed;
@@ -617,7 +665,6 @@ body {
     gap: 5px;
 }
 
-/* Botão da Seta Maior e com Destaque */
 .bottom-ad-toggle {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -648,7 +695,6 @@ body {
     overflow: hidden;
 }
 
-/* Itens Internos da Barra Inferior (Cards e Imagens Maiores) */
 #container-4f3da8b19f62d02730e1d759fd148d83 {
     margin: 0 !important;
     padding: 0 !important;
@@ -713,35 +759,8 @@ body {
     color: #f4f4f5 !important;
 }
 
-/* Mobile: Ajuste Proporcional */
-@media (max-width: 600px) {
-    .bottom-ad-drawer {
-        max-width: 100%;
-        padding: 5px 8px 7px;
-    }
-
-    #container-4f3da8b19f62d02730e1d759fd148d83 a {
-        height: 34px !important;
-        max-height: 34px !important;
-        gap: 5px !important;
-        padding: 2px 4px !important;
-    }
-
-    #container-4f3da8b19f62d02730e1d759fd148d83 img {
-        width: 26px !important;
-        height: 26px !important;
-        min-width: 26px !important;
-        max-width: 26px !important;
-    }
-
-    #container-4f3da8b19f62d02730e1d759fd148d83 *,
-    #container-4f3da8b19f62d02730e1d759fd148d83 span,
-    #container-4f3da8b19f62d02730e1d759fd148d83 p {
-        font-size: 8.5px !important;
-    }
-}
 /* ==========================================================
-   2. Ad Modal Overlay (Banner 300x250 Absoluto no Centro)
+   2. Ad Modal Overlay (Banner 300x250 Central Translúcido)
    ========================================================== */
 .ad-modal-overlay {
     position: fixed;
@@ -848,7 +867,36 @@ body {
     overflow: hidden;
 }
 
-/* Responsividade Desktop */
+/* ==========================================================
+   Responsividade Mobile & Desktop
+   ========================================================== */
+@media (max-width: 600px) {
+    .bottom-ad-drawer {
+        max-width: 100%;
+        padding: 5px 8px 7px;
+    }
+
+    #container-4f3da8b19f62d02730e1d759fd148d83 a {
+        height: 34px !important;
+        max-height: 34px !important;
+        gap: 5px !important;
+        padding: 2px 4px !important;
+    }
+
+    #container-4f3da8b19f62d02730e1d759fd148d83 img {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        max-width: 26px !important;
+    }
+
+    #container-4f3da8b19f62d02730e1d759fd148d83 *,
+    #container-4f3da8b19f62d02730e1d759fd148d83 span,
+    #container-4f3da8b19f62d02730e1d759fd148d83 p {
+        font-size: 8.5px !important;
+    }
+}
+
 @media (min-width: 640px) {
     body {
         padding: 40px 24px 80px;
