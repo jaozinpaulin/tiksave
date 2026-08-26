@@ -1,300 +1,279 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikDownload · Baixar Vídeos do TikTok Sem Marca d'Água, Fotos e MP3</title>
 
-    <!-- PWA & Favicon -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7.5a3.5 3.5 0 1 0-3.5-3.5c0 2.5 3.5 4.5 3.5 4.5s3.5-2 3.5-4.5A3.5 3.5 0 1 0 12 7.5'/%3E%3Cpath d='M8.5 7.5c-2.5 1-4.5 3.5-3.5 6.5 1.5 4.5 7 7 7 7s5.5-2.5 7-7c1-3-1-5.5-3.5-6.5'/%3E%3Cpath d='M12 12c-1.5 1.5-1 3.5 0 4.5'/%3E%3C/svg%3E">
-
-    <!-- SEO Primário & Multi-idioma -->
-    <title>TikDownload — Baixar Vídeos do TikTok Sem Marca d'Água (HD)</title>
+    <!-- Meta SEO -->
+    <meta name="title" content="TikDownload · Baixar Vídeos do TikTok Sem Marca d'Água, Fotos e MP3">
     <meta name="description"
-        content="Baixe vídeos, fotos em carrossel e músicas MP3 do TikTok em alta definição e sem marca d'água gratuitamente. Rápido e sem instalação.">
+        content="Baixe vídeos do TikTok sem marca d'água em alta qualidade (MP4), salve carrosséis de fotos e extraia áudios em MP3 gratuitamente direto pelo navegador.">
     <meta name="keywords"
-        content="baixar video tiktok, tiktok sem marca d'agua, download tiktok mp4, tiktok downloader, salvar tiktok, tikdownload, tiktok video download hd">
+        content="baixar video tiktok, baixar video tiktok sem marca d'agua, download tiktok mp4 hd, salvar fotos tiktok carrossel, converter tiktok para mp3">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#111112">
+    <meta name="theme-color" content="#131315">
 
-    <!-- Alternativas de Idioma para o Google -->
-    <link rel="alternate" hreflang="x-default" href="https://tikdownload.online/" />
-    <link rel="alternate" hreflang="pt" href="https://tikdownload.online/?lang=pt" />
-    <link rel="alternate" hreflang="en" href="https://tikdownload.online/?lang=en" />
-    <link rel="alternate" hreflang="es" href="https://tikdownload.online/?lang=es" />
-    <link rel="alternate" hreflang="fr" href="https://tikdownload.online/?lang=fr" />
-    <link rel="alternate" hreflang="de" href="https://tikdownload.online/?lang=de" />
-    <link rel="alternate" hreflang="it" href="https://tikdownload.online/?lang=it" />
-    <link rel="alternate" hreflang="id" href="https://tikdownload.online/?lang=id" />
-    <link rel="alternate" hreflang="tr" href="https://tikdownload.online/?lang=tr" />
-    <link rel="alternate" hreflang="ru" href="https://tikdownload.online/?lang=ru" />
-    <link rel="alternate" hreflang="ar" href="https://tikdownload.online/?lang=ar" />
-    <link rel="alternate" hreflang="hi" href="https://tikdownload.online/?lang=hi" />
-    <link rel="alternate" hreflang="ja" href="https://tikdownload.online/?lang=ja" />
-
-    <!-- Open Graph / Redes Sociais -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TikDownload — Download de TikTok Sem Marca d'Água">
+    <meta property="og:url" content="https://tikdownload.online/">
+    <meta property="og:title" content="TikDownload · Baixar Vídeos do TikTok Sem Marca d'Água">
     <meta property="og:description"
-        content="Baixe vídeos, carrosséis e áudios do TikTok em alta resolução sem marcas d'água.">
-    <meta property="og:site_name" content="TikDownload">
+        content="Ferramenta online para baixar vídeos, carrosséis de fotos e áudios em MP3 do TikTok.">
+    <meta property="og:image" content="https://tikdownload.online/icon-512.png">
+
+    <!-- Canonical & PWA -->
+    <link rel="canonical" href="https://tikdownload.online/">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/icon-192.png">
 
     <!-- Fontes & Ícones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8B1FNEXV7"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <link rel="stylesheet" href="style.css">
 
-        gtag('config', 'G-X8B1FNEXV7');
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TikDownload",
+      "url": "https://tikdownload.online/",
+      "description": "Baixe vídeos sem marca d'água, carrosséis de fotos e áudios MP3 do TikTok de graça.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
     </script>
 </head>
 
 <body>
-
-    <div class="app-layout">
-
-        <!-- Top Navigation Bar -->
+    <div class="app-container">
+        <!-- Barra de Navegação Superior -->
         <header class="navbar">
-            <a href="#" class="brand">
-                <div class="brand-logo-box">
-                    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M12 7.5a3.5 3.5 0 1 0-3.5-3.5c0 2.5 3.5 4.5 3.5 4.5s3.5-2 3.5-4.5A3.5 3.5 0 1 0 12 7.5" />
-                        <path d="M8.5 7.5c-2.5 1-4.5 3.5-3.5 6.5 1.5 4.5 7 7 7 7s5.5-2.5 7-7c1-3-1-5.5-3.5-6.5" />
-                        <path d="M12 12c-1.5 1.5-1 3.5 0 4.5" />
-                    </svg>
+            <a href="/" class="brand">
+                <div class="brand-icon">
+                    <i class="ph ph-video-camera"></i>
                 </div>
-                <span class="brand-name">TikDownload</span>
+                <span class="brand-title">TikDownload</span>
             </a>
 
-            <div class="nav-actions">
-                <!-- Seletor de Idiomas Global (12 Idiomas) -->
-                <div class="lang-selector-dropdown">
-                    <button class="lang-dropdown-btn" id="langDropdownBtn">
-                        <i class="ph ph-globe"></i>
-                        <span id="currentLangLabel">Português</span>
-                        <i class="ph-bold ph-caret-down"></i>
-                    </button>
-                    <div class="lang-dropdown-menu hidden" id="langDropdownMenu">
-                        <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
-                        <button class="lang-option" data-lang="en">🇺🇸 English</button>
-                        <button class="lang-option" data-lang="es">🇪🇸 Español</button>
-                        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
-                        <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
-                        <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
-                        <button class="lang-option" data-lang="id">🇮🇩 Bahasa Indonesia</button>
-                        <button class="lang-option" data-lang="tr">🇹🇷 Türkçe</button>
-                        <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
-                        <button class="lang-option" data-lang="ar">🇸🇦 العربية</button>
-                        <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
-                        <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
-                    </div>
+            <div class="lang-wrapper">
+                <button class="lang-button" id="langDropdownBtn" aria-label="Mudar idioma">
+                    <i class="ph ph-globe"></i>
+                    <span id="currentLangLabel">Português</span>
+                    <i class="ph ph-caret-down"></i>
+                </button>
+                <div class="lang-menu hidden" id="langDropdownMenu">
+                    <button class="lang-item" data-lang="pt">🇧🇷 Português</button>
+                    <button class="lang-item" data-lang="en">🇺🇸 English</button>
+                    <button class="lang-item" data-lang="es">🇪🇸 Español</button>
+                    <button class="lang-item" data-lang="fr">🇫🇷 Français</button>
+                    <button class="lang-item" data-lang="de">🇩🇪 Deutsch</button>
+                    <button class="lang-item" data-lang="it">🇮🇹 Italiano</button>
+                    <button class="lang-item" data-lang="id">🇮🇩 Bahasa Indonesia</button>
+                    <button class="lang-item" data-lang="tr">🇹🇷 Türkçe</button>
+                    <button class="lang-item" data-lang="ru">🇷🇺 Русский</button>
+                    <button class="lang-item" data-lang="ar">🇸🇦 العربية</button>
+                    <button class="lang-item" data-lang="hi">🇮🇳 हिन्दी</button>
+                    <button class="lang-item" data-lang="ja">🇯🇵 日本語</button>
                 </div>
             </div>
         </header>
 
-        <!-- Main Content Area -->
-        <main class="content">
-
-            <!-- Hero Section -->
-            <section class="hero">
+        <main class="content-flow">
+            <!-- Hero Text -->
+            <section class="hero-block">
                 <h1 data-i18n="hero_title">Baixar vídeos do TikTok</h1>
-                <p data-i18n="hero_subtitle">Sem marca d'água, em alta qualidade (HD) e direto no seu dispositivo.</p>
+                <p data-i18n="hero_subtitle">Sem marca d'água, em alta qualidade e direto no seu aparelho.</p>
             </section>
 
-            <!-- Input / Search Area -->
+            <!-- Card de Input -->
             <section class="input-card">
-                <form id="downloadForm">
-                    <div class="field-wrapper">
+                <form id="downloadForm" class="input-form" autocomplete="off">
+                    <div class="field-box">
                         <i class="ph ph-link field-icon"></i>
-                        <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok aqui..." required
-                            autocomplete="off" spellcheck="false" data-i18n-placeholder="input_placeholder">
-
-                        <div class="input-actions">
-                            <button type="button" id="clearBtn" class="action-btn hidden" title="Limpar">
-                                <i class="ph ph-x"></i>
-                            </button>
-                            <button type="button" id="pasteBtn" class="action-btn paste" title="Colar">
-                                <i class="ph ph-clipboard-text"></i>
-                                <span data-i18n="btn_paste">Colar</span>
-                            </button>
-                        </div>
+                        <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok aqui..."
+                            data-i18n-placeholder="input_placeholder" required spellcheck="false" autofocus>
+                        <button type="button" class="btn-clear hidden" id="clearBtn" title="Limpar">
+                            <i class="ph ph-x"></i>
+                        </button>
+                        <button type="button" class="btn-paste" id="pasteBtn">
+                            <i class="ph ph-clipboard-text"></i>
+                            <span data-i18n="btn_paste">Colar</span>
+                        </button>
                     </div>
-
-                    <button type="submit" id="submitBtn" class="btn-submit">
+                    <button type="submit" class="btn-primary-action" id="submitBtn">
                         <span data-i18n="btn_download">Baixar</span>
-                        <i class="ph-bold ph-arrow-right"></i>
+                        <i class="ph ph-arrow-right"></i>
                     </button>
                 </form>
             </section>
 
-            <!-- Loading Indicator -->
-            <div id="loading" class="state-card loading-card hidden">
+            <!-- Anúncio 728x90 Topo -->
+            <div class="ad-slot">
+                <div class="ad-label" data-i18n="ad_badge">Publicidade</div>
+                <div class="ad-content">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'd2a138bb3c80ff5f58c7e6c4e09f7a70',
+                            'format': 'iframe',
+                            'height': 90,
+                            'width': 728,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="https://www.highrevenueformat.com/d2a138bb3c80ff5f58c7e6c4e09f7a70/invoke.js"></script>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="status-box hidden">
                 <div class="spinner"></div>
-                <div class="state-text">
+                <div class="status-text">
                     <strong data-i18n="loading_title">Processando publicação</strong>
                     <span data-i18n="loading_desc">Buscando link direto sem marca d'água...</span>
                 </div>
             </div>
 
-            <!-- Error Notification -->
-            <div id="errorMessage" class="state-card error-card hidden">
-                <i class="ph-fill ph-warning-circle"></i>
-                <div class="state-text">
+            <!-- Error State -->
+            <div id="errorMessage" class="status-box error hidden">
+                <i class="ph ph-warning-circle error-icon"></i>
+                <div class="status-text">
                     <strong data-i18n="error_title">Falha ao extrair</strong>
-                    <span id="errorText" data-i18n="error_desc">Não foi possível processar este link. Verifique se o
-                        vídeo é público.</span>
+                    <span data-i18n="error_desc">Não foi possível processar este link. Verifique se o vídeo é
+                        público.</span>
                 </div>
             </div>
 
-            <!-- Result Section -->
-            <section id="result" class="result-card hidden">
-                <div class="preview-container">
-                    <img id="videoCover" src="" alt="Capa da mídia" loading="lazy">
+            <!-- Resultado -->
+            <section id="result" class="result-box hidden">
+                <div class="result-cover-box">
+                    <img id="videoCover" src="" alt="Capa da publicação" loading="lazy">
                 </div>
-
-                <div class="result-details">
-                    <div class="meta-header">
-                        <div class="author-chip">
-                            <i class="ph ph-user"></i>
-                            <span id="authorName">@usuario</span>
-                        </div>
+                <div class="result-info">
+                    <div class="author-tag">
+                        <i class="ph ph-user"></i>
+                        <span id="authorName">@tiktok</span>
                     </div>
+                    <h2 id="videoTitle" class="video-desc">Título do Vídeo</h2>
 
-                    <p id="videoTitle" class="media-title">Descrição da publicação...</p>
-
-                    <!-- Single Media Actions -->
-                    <div class="action-buttons">
-                        <a id="btnMp4" href="#" class="btn-action primary">
+                    <div class="download-actions">
+                        <button id="btnMp4" class="dl-button primary">
                             <i class="ph ph-download-simple"></i>
-                            <div class="btn-label">
+                            <div class="dl-button-text">
                                 <strong data-i18n="btn_mp4_title">Vídeo Sem Marca d'Água</strong>
                                 <small data-i18n="btn_mp4_desc">Formato MP4 em Alta Resolução</small>
                             </div>
-                        </a>
+                        </button>
 
-                        <a id="btnMp3" href="#" class="btn-action secondary">
-                            <i class="ph ph-music-notes"></i>
-                            <div class="btn-label">
+                        <button id="btnMp3" class="dl-button secondary">
+                            <i class="ph ph-music-note"></i>
+                            <div class="dl-button-text">
                                 <strong data-i18n="btn_mp3_title">Áudio MP3</strong>
                                 <small data-i18n="btn_mp3_desc">Faixa de áudio original</small>
                             </div>
-                        </a>
+                        </button>
                     </div>
 
-                    <!-- Dynamic Carousel Container -->
-                    <div id="carouselItems" class="carousel-grid"></div>
+                    <!-- Lista de Fotos se for Carrossel -->
+                    <div id="carouselItems" class="carousel-list"></div>
                 </div>
             </section>
 
-            <!-- Features Grid -->
-            <section class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-header">
-                        <i class="ph ph-lightning"></i>
-                        <span data-i18n="card1_badge">Velocidade</span>
-                    </div>
-                    <strong data-i18n="card1_title">Download Imediato</strong>
-                    <p data-i18n="card1_desc">Conexão direta aos servidores para entrega ultrarrápida do arquivo.</p>
+            <!-- Cards Informativos / SEO -->
+            <section class="info-grid">
+                <div class="info-card">
+                    <div class="info-tag" data-i18n="card1_badge">Vídeos HD</div>
+                    <strong data-i18n="card1_title">Qualidade Original</strong>
+                    <p data-i18n="card1_desc">Baixe vídeos sem marca d'água no formato MP4 original sem nenhuma
+                        compressão adicional.</p>
                 </div>
-
-                <div class="metric-card">
-                    <div class="metric-header">
-                        <i class="ph ph-images"></i>
-                        <span data-i18n="card2_badge">Fotos e Slides</span>
-                    </div>
-                    <strong data-i18n="card2_title">Suporte a Carrossel</strong>
-                    <p data-i18n="card2_desc">Baixe todas as imagens de publicações com múltiplos slides em HD.</p>
+                <div class="info-card">
+                    <div class="info-tag" data-i18n="card2_badge">Fotos</div>
+                    <strong data-i18n="card2_title">Carrossel Completo</strong>
+                    <p data-i18n="card2_desc">Extraia e salve todas as imagens de posts com múltiplos slides em alta
+                        resolução.</p>
                 </div>
-
-                <div class="metric-card">
-                    <div class="metric-header">
-                        <i class="ph ph-shield-check"></i>
-                        <span data-i18n="card3_badge">Privacidade</span>
-                    </div>
-                    <strong data-i18n="card3_title">Sem Rastreamento</strong>
-                    <p data-i18n="card3_desc">Nenhum dado pessoal ou histórico de downloads é gravado.</p>
+                <div class="info-card">
+                    <div class="info-tag" data-i18n="card3_badge">Áudio</div>
+                    <strong data-i18n="card3_title">Conversor MP3</strong>
+                    <p data-i18n="card3_desc">Extraia e guarde a música ou áudio viral de qualquer vídeo de forma
+                        imediata.</p>
                 </div>
             </section>
+
+            <!-- Anúncio 300x250 Banner Meio -->
+            <div class="ad-slot">
+                <div class="ad-label" data-i18n="ad_badge">Publicidade</div>
+                <div class="ad-content">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': '84cf842677793ecee872ffd6989b0d7b',
+                            'format': 'iframe',
+                            'height': 250,
+                            'width': 300,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="https://www.highrevenueformat.com/84cf842677793ecee872ffd6989b0d7b/invoke.js"></script>
+                </div>
+            </div>
 
             <!-- FAQ Section -->
-            <section class="faq-section">
+            <section class="faq-container">
                 <h2 data-i18n="faq_heading">Perguntas Frequentes</h2>
-                <div class="faq-item">
+
+                <div class="faq-row">
                     <strong data-i18n="faq_q1">Como baixar vídeos do TikTok sem marca d'água?</strong>
-                    <p data-i18n="faq_a1">Copie o link do vídeo no aplicativo do TikTok, cole na caixa de busca acima e
-                        clique em "Baixar".</p>
+                    <p data-i18n="faq_a1">Abra o TikTok, clique em 'Compartilhar' no vídeo, selecione 'Copiar link',
+                        cole no campo de pesquisa acima e clique em 'Baixar'.</p>
                 </div>
-                <div class="faq-item">
-                    <strong data-i18n="faq_q2">Preciso pagar ou instalar algum aplicativo?</strong>
-                    <p data-i18n="faq_a2">Não. O TikDownload funciona de forma totalmente online no navegador de
-                        qualquer celular ou PC.</p>
+
+                <div class="faq-row">
+                    <strong data-i18n="faq_q2">É possível baixar fotos de carrossel em HD?</strong>
+                    <p data-i18n="faq_a2">Sim! O TikDownload reconhece posts com slides de fotos e disponibiliza os
+                        botões para download de cada imagem em qualidade original.</p>
+                </div>
+
+                <div class="faq-row">
+                    <strong data-i18n="faq_q3">Preciso pagar ou instalar algum app?</strong>
+                    <p data-i18n="faq_a3">Não. O TikDownload funciona de forma 100% gratuita diretamente no navegador do
+                        celular ou PC.</p>
                 </div>
             </section>
-
         </main>
 
-        <!-- Toast Feedback -->
-        <div id="toastNotification" class="toast hidden">
-            <i class="ph-fill ph-check-circle"></i>
-            <span data-i18n="toast_started">Download iniciado com sucesso!</span>
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer">
+        <!-- Rodapé -->
+        <footer class="footer-bar">
             <p data-i18n="footer_rights">© 2026 <strong>TikDownload</strong> · Ferramenta Gratuita</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link" data-i18n="footer_home">Início</a>
-                <a href="https://github.com/jaozinpaulin" target="_blank" class="footer-link">
-                    <i class="ph ph-github-logo"></i> GitHub
-                </a>
-            </div>
         </footer>
-
     </div>
 
-    <!-- 1. Floating Bottom Drawer (Barra Inferior Retrátil com Grid de Imagens) -->
-    <div id="bottomAdDrawer" class="bottom-ad-drawer">
-        <div class="bottom-ad-header" id="bottomAdHeader" title="Clique para minimizar ou expandir">
-            <div class="bottom-ad-title">
-                <i class="ph-bold ph-sparkle"></i>
-                <span data-i18n="ad_badge">Patrocinado & Recomendações</span>
-            </div>
-            <button class="bottom-ad-toggle" id="bottomAdToggle" aria-label="Minimizar">
-                <i class="ph-bold ph-caret-down"></i>
-            </button>
-        </div>
-        <div class="bottom-ad-body">
-            <script async="async" data-cfasync="false"
-                src="https://pl31044195.profitableratecpmnetwork.com/4f3da8b19f62d02730e1d759fd148d83/invoke.js"></script>
-            <div id="container-4f3da8b19f62d02730e1d759fd148d83"></div>
-        </div>
-    </div>
-
-    <!-- 2. Smart Ad Modal Overlay (Disparado no Clique de Download) -->
-    <div id="adModalOverlay" class="ad-modal-overlay hidden-modal">
-        <div class="ad-modal-card">
-            <div class="ad-modal-header">
-                <div class="ad-modal-title">
-                    <i class="ph-bold ph-download-simple"></i>
-                    <span id="adCountdownText">Preparando seu download em <b id="countdownNumber">2</b>s...</span>
+    <!-- Modal Intersticial de Download -->
+    <div id="adModalOverlay" class="ad-modal-backdrop hidden-modal">
+        <div class="ad-modal-dialog">
+            <div class="ad-modal-top">
+                <div class="ad-modal-status">
+                    <i class="ph ph-download-simple"></i>
+                    <span id="adCountdownText">Iniciando download em <b id="countdownNumber">2</b>s...</span>
                 </div>
-                <button class="ad-modal-close" id="closeAdModal" title="Fechar" aria-label="Fechar">
-                    <i class="ph-bold ph-x"></i>
+                <button class="ad-modal-x" id="closeAdModal" title="Fechar">
+                    <i class="ph ph-x"></i>
                 </button>
             </div>
-            <div class="ad-modal-body">
+            <div class="ad-modal-frame">
                 <script type="text/javascript">
                     atOptions = {
                         'key': '84cf842677793ecee872ffd6989b0d7b',
@@ -310,32 +289,13 @@
         </div>
     </div>
 
-    <!-- Script da Aplicação -->
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast-box">
+        <i class="ph ph-check-circle"></i>
+        <span data-i18n="toast_started">Download iniciado com sucesso!</span>
+    </div>
+
     <script src="script.js"></script>
-
-    <!-- Controle do Drawer Inferior e Modal Central -->
-    <script>
-        const drawer = document.getElementById('bottomAdDrawer');
-        const header = document.getElementById('bottomAdHeader');
-        if (drawer && header) {
-            header.addEventListener('click', () => {
-                drawer.classList.toggle('minimized');
-            });
-        }
-
-        const modalOverlay = document.getElementById('adModalOverlay');
-        const closeBtn = document.getElementById('closeAdModal');
-        if (modalOverlay && closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                modalOverlay.classList.add('hidden-modal');
-            });
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) {
-                    modalOverlay.classList.add('hidden-modal');
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>
