@@ -570,7 +570,7 @@ body {
 }
 
 /* ==========================================================
-   1. Floating Bottom Ad Drawer (Barra Inferior Retrátil)
+   1. Floating Bottom Ad Drawer (Aumentado e Mais Legível)
    ========================================================== */
 .bottom-ad-drawer {
     position: fixed;
@@ -578,56 +578,65 @@ body {
     left: 50%;
     transform: translateX(-50%) translateY(0);
     width: 100%;
-    max-width: 500px;
-    background: rgba(15, 15, 17, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 620px;
+    background: rgba(18, 18, 22, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none;
-    border-radius: 8px 8px 0 0;
-    box-shadow: 0 -2px 14px rgba(0, 0, 0, 0.6);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.65);
     z-index: 999;
-    padding: 2px 5px 3px;
+    padding: 6px 10px 8px;
     box-sizing: border-box;
-    transition: transform 0.25s ease;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bottom-ad-drawer.minimized {
-    transform: translateX(-50%) translateY(calc(100% - 18px));
+    transform: translateX(-50%) translateY(calc(100% - 28px));
 }
 
 .bottom-ad-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 2px;
-    padding: 0 2px;
+    margin-bottom: 5px;
+    padding: 0 4px;
     cursor: pointer;
     user-select: none;
 }
 
 .bottom-ad-title {
-    font-size: 7.5px;
+    font-size: 9.5px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-    color: #71717a;
+    letter-spacing: 0.5px;
+    color: var(--text-muted, #a1a1aa);
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
 }
 
+/* Botão da Seta Maior e com Destaque */
 .bottom-ad-toggle {
-    background: transparent;
-    border: none;
-    color: #a1a1aa;
-    width: 14px;
-    height: 14px;
-    font-size: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f4f4f5;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-size: 13px;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.bottom-ad-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .bottom-ad-drawer.minimized .bottom-ad-toggle i {
@@ -636,17 +645,10 @@ body {
 
 .bottom-ad-body {
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    overflow: hidden;
 }
 
-.bottom-ad-body::-webkit-scrollbar {
-    display: none;
-}
-
-/* Itens Internos da Barra Inferior */
+/* Itens Internos da Barra Inferior (Cards e Imagens Maiores) */
 #container-4f3da8b19f62d02730e1d759fd148d83 {
     margin: 0 !important;
     padding: 0 !important;
@@ -658,7 +660,7 @@ body {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    gap: 3px !important;
+    gap: 6px !important;
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
@@ -667,28 +669,33 @@ body {
 #container-4f3da8b19f62d02730e1d759fd148d83 a {
     flex: 1 1 0 !important;
     min-width: 0 !important;
-    height: 28px !important;
-    max-height: 28px !important;
-    padding: 1px 3px !important;
+    height: 38px !important;
+    max-height: 38px !important;
+    padding: 2px 6px !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 3px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 4px !important;
+    gap: 6px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 6px !important;
     text-decoration: none !important;
     box-sizing: border-box !important;
+    transition: background 0.2s ease;
+}
+
+#container-4f3da8b19f62d02730e1d759fd148d83 a:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 #container-4f3da8b19f62d02730e1d759fd148d83 img {
-    width: 20px !important;
-    height: 20px !important;
-    min-width: 20px !important;
-    max-width: 20px !important;
-    max-height: 20px !important;
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    max-height: 30px !important;
     object-fit: cover !important;
-    border-radius: 2px !important;
+    border-radius: 4px !important;
     margin: 0 !important;
 }
 
@@ -696,16 +703,43 @@ body {
 #container-4f3da8b19f62d02730e1d759fd148d83 span,
 #container-4f3da8b19f62d02730e1d759fd148d83 p,
 #container-4f3da8b19f62d02730e1d759fd148d83 div {
-    font-size: 7.5px !important;
-    line-height: 1 !important;
+    font-size: 9px !important;
+    line-height: 1.15 !important;
     margin: 0 !important;
     text-align: left !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    color: #e4e4e7 !important;
+    color: #f4f4f5 !important;
 }
 
+/* Mobile: Ajuste Proporcional */
+@media (max-width: 600px) {
+    .bottom-ad-drawer {
+        max-width: 100%;
+        padding: 5px 8px 7px;
+    }
+
+    #container-4f3da8b19f62d02730e1d759fd148d83 a {
+        height: 34px !important;
+        max-height: 34px !important;
+        gap: 5px !important;
+        padding: 2px 4px !important;
+    }
+
+    #container-4f3da8b19f62d02730e1d759fd148d83 img {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        max-width: 26px !important;
+    }
+
+    #container-4f3da8b19f62d02730e1d759fd148d83 *,
+    #container-4f3da8b19f62d02730e1d759fd148d83 span,
+    #container-4f3da8b19f62d02730e1d759fd148d83 p {
+        font-size: 8.5px !important;
+    }
+}
 /* ==========================================================
    2. Ad Modal Overlay (Banner 300x250 Absoluto no Centro)
    ========================================================== */
@@ -714,9 +748,9 @@ body {
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.78);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: center;
