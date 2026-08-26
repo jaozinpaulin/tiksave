@@ -39,21 +39,54 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org JSON-LD (WebApplication + FAQPage para Rich Snippets no Google) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "TikDownload",
-      "url": "https://tikdownload.online/",
-      "description": "Baixe vídeos sem marca d'água, carrosséis de fotos e áudios MP3 do TikTok de graça.",
-      "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "TikDownload",
+          "url": "https://tikdownload.online/",
+          "description": "Baixe vídeos sem marca d'água, carrosséis de fotos e áudios MP3 do TikTok de graça.",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Como baixar vídeos do TikTok sem marca d'água?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Abra o TikTok, clique em 'Compartilhar' no vídeo, selecione 'Copiar link', cole no campo de pesquisa do TikDownload e clique em 'Baixar'."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "É possível baixar fotos de carrossel em HD?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim! O TikDownload reconhece posts com slides de fotos e disponibiliza botões individuais para o download de cada imagem em qualidade original."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Preciso pagar ou instalar algum aplicativo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Não. O TikDownload funciona de forma 100% gratuita diretamente no navegador do seu celular ou computador, sem necessidade de instalações."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
 </head>
