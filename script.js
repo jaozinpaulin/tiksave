@@ -226,10 +226,20 @@ function showToast(message) {
     }, 3000);
 }
 
-// Download Direto com prefixo TikDownload_
+// Download Direto com Rastreamento no GA4
 async function downloadFileDirectly(fileUrl, defaultExt = 'mp4', customPrefix = 'TikDownload') {
     showToast(translations[currentLang].toast_started);
     const filename = `${customPrefix}_${Date.now()}.${defaultExt}`;
+
+    // 📊 Disparo de Evento para o Google Analytics
+    if (typeof gtag === 'function') {
+        gtag('event', 'download_media', {
+            event_category: 'Downloads',
+            event_label: customPrefix,
+            file_extension: defaultExt,
+            user_language: currentLang
+        });
+    }
 
     try {
         const response = await fetch(fileUrl);
@@ -282,6 +292,15 @@ form.addEventListener('submit', async (e) => {
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || translations[currentLang].error_desc);
 
+        // 📊 Evento GA4 de Sucesso na Busca
+        if (typeof gtag === 'function') {
+            gtag('event', 'search_media_success', {
+                is_carousel: !!data.isCarousel,
+                has_audio: !!data.audio,
+                author: data.author || 'unknown'
+            });
+        }
+
         const previewBox = videoCover?.closest('.preview-container');
         if (data.cover) {
             videoCover.src = data.cover;
@@ -331,6 +350,13 @@ form.addEventListener('submit', async (e) => {
         loadingState.classList.add('hidden');
         resultSection.classList.remove('hidden');
     } catch (err) {
+        // 📊 Evento GA4 de Erro
+        if (typeof gtag === 'function') {
+            gtag('event', 'search_media_error', {
+                error_message: err.message
+            });
+        }
+
         loadingState.classList.add('hidden');
         errorText.textContent = err.message;
         errorBox.classList.remove('hidden');
