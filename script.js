@@ -36,7 +36,8 @@ const translations = {
         toast_started: "Download iniciado com sucesso!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Ferramenta Gratuita",
         footer_home: "Início",
-        ad_badge: "Patrocinado & Recomendações"
+        ad_badge: "Patrocinado & Recomendações",
+        modal_countdown: "Preparando download em"
     },
     en: {
         name: "English",
@@ -71,7 +72,8 @@ const translations = {
         toast_started: "Download started successfully!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Free Online Tool",
         footer_home: "Home",
-        ad_badge: "Sponsored & Recommendations"
+        ad_badge: "Sponsored & Recommendations",
+        modal_countdown: "Preparing download in"
     },
     es: {
         name: "Español",
@@ -106,7 +108,8 @@ const translations = {
         toast_started: "¡Descarga iniciada con éxito!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Herramienta Gratuita",
         footer_home: "Inicio",
-        ad_badge: "Patrocinado y Recomendaciones"
+        ad_badge: "Patrocinado y Recomendaciones",
+        modal_countdown: "Preparando descarga en"
     },
     fr: {
         name: "Français",
@@ -141,7 +144,8 @@ const translations = {
         toast_started: "Téléchargement lancé !",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Outil Gratuit",
         footer_home: "Accueil",
-        ad_badge: "Sponsorisé & Recommandations"
+        ad_badge: "Sponsorisé & Recommandations",
+        modal_countdown: "Préparation du téléchargement dans"
     },
     de: {
         name: "Deutsch",
@@ -176,7 +180,8 @@ const translations = {
         toast_started: "Download erfolgreich gestartet!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Kostenloses Tool",
         footer_home: "Startseite",
-        ad_badge: "Gesponsert & Empfehlungen"
+        ad_badge: "Gesponsert & Empfehlungen",
+        modal_countdown: "Download wird vorbereitet in"
     },
     it: {
         name: "Italiano",
@@ -211,7 +216,8 @@ const translations = {
         toast_started: "Download avviato con successo!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Strumento Gratuito",
         footer_home: "Home",
-        ad_badge: "Sponsorizzato & Consigliati"
+        ad_badge: "Sponsorizzato & Consigliati",
+        modal_countdown: "Preparazione download in"
     },
     id: {
         name: "Bahasa Indonesia",
@@ -246,7 +252,8 @@ const translations = {
         toast_started: "Download berhasil dimulai!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Alat Gratis",
         footer_home: "Beranda",
-        ad_badge: "Disponsori & Rekomendasi"
+        ad_badge: "Disponsori & Rekomendasi",
+        modal_countdown: "Menyiapkan download dalam"
     },
     tr: {
         name: "Türkçe",
@@ -281,7 +288,8 @@ const translations = {
         toast_started: "İndirme başarıyla başlatıldı!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Ücretsiz Araç",
         footer_home: "Ana Sayfa",
-        ad_badge: "Sponsorlu ve Öneriler"
+        ad_badge: "Sponsorlu ve Öneriler",
+        modal_countdown: "İndirme hazırlanıyor"
     },
     ru: {
         name: "Русский",
@@ -316,7 +324,8 @@ const translations = {
         toast_started: "Загрузка началась!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Бесплатный сервис",
         footer_home: "Главная",
-        ad_badge: "Реклама и Рекомендации"
+        ad_badge: "Реклама и Рекомендации",
+        modal_countdown: "Подготовка к загрузке через"
     },
     ar: {
         name: "العربية",
@@ -351,7 +360,8 @@ const translations = {
         toast_started: "بدأ التحميل بنجاح!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · أداة مجانية",
         footer_home: "الرئيسية",
-        ad_badge: "إعلانات ومقترحات"
+        ad_badge: "إعلانات ومقترحات",
+        modal_countdown: "جارٍ تجهيز التحميل خلال"
     },
     hi: {
         name: "हिन्दी",
@@ -386,7 +396,8 @@ const translations = {
         toast_started: "डाउनलोड सफलतापूर्वक शुरू हुआ!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · मुफ़्त टूल",
         footer_home: "होम",
-        ad_badge: "प्रायोजित और सुझाव"
+        ad_badge: "प्रायोजित और सुझाव",
+        modal_countdown: "डाउनलोड तैयार हो रहा है"
     },
     ja: {
         name: "日本語",
@@ -421,11 +432,11 @@ const translations = {
         toast_started: "ダウンロードを開始しました！",
         footer_rights: "© 2026 <strong>TikDownload</strong> · 無料ツール",
         footer_home: "ホーム",
-        ad_badge: "おすすめ・広告"
+        ad_badge: "おすすめ・広告",
+        modal_countdown: "ダウンロードを準備中"
     }
 };
 
-// Detecção de Idioma (URL -> LocalStorage -> Navegador -> Fallback PT)
 function detectLanguage() {
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = urlParams.get('lang');
@@ -450,37 +461,28 @@ function applyLanguage(lang) {
 
     const data = translations[lang];
 
-    // Atualiza o Label do Dropdown
     const currentLabel = document.getElementById('currentLangLabel');
     if (currentLabel) currentLabel.textContent = data.name;
 
-    // Atualiza todos os elementos com data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (data[key]) {
-            el.innerHTML = data[key];
-        }
+        if (data[key]) el.innerHTML = data[key];
     });
 
-    // Atualiza placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
-        if (data[key]) {
-            el.setAttribute('placeholder', data[key]);
-        }
+        if (data[key]) el.setAttribute('placeholder', data[key]);
     });
 
-    // Marca o ativo no menu dropdown
     document.querySelectorAll('.lang-option').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 }
 
-// Inicialização do DOM
 document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(currentLanguage);
 
-    // Controle do Dropdown de Idiomas
+    // Dropdown de Idiomas
     const langBtn = document.getElementById('langDropdownBtn');
     const langMenu = document.getElementById('langDropdownMenu');
 
@@ -492,8 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.lang-option').forEach(btn => {
             btn.addEventListener('click', () => {
-                const lang = btn.getAttribute('data-lang');
-                applyLanguage(lang);
+                applyLanguage(btn.getAttribute('data-lang'));
                 langMenu.classList.add('hidden');
             });
         });
@@ -503,7 +504,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Elementos da Interface de Download
+    // Modal de Anúncio e Contador
+    const modalOverlay = document.getElementById('adModalOverlay');
+    const closeBtn = document.getElementById('closeAdModal');
+    const countdownNumber = document.getElementById('countdownNumber');
+    const adCountdownText = document.getElementById('adCountdownText');
+
+    if (modalOverlay && closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modalOverlay.classList.add('hidden-modal');
+        });
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.add('hidden-modal');
+            }
+        });
+    }
+
+    // Elementos do Formulário
     const downloadForm = document.getElementById('downloadForm');
     const tiktokUrlInput = document.getElementById('tiktokUrl');
     const clearBtn = document.getElementById('clearBtn');
@@ -511,7 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submitBtn');
     const loadingState = document.getElementById('loading');
     const errorState = document.getElementById('errorMessage');
-    const errorText = document.getElementById('errorText');
     const resultSection = document.getElementById('result');
 
     const videoCover = document.getElementById('videoCover');
@@ -522,7 +539,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselItems = document.getElementById('carouselItems');
     const toast = document.getElementById('toastNotification');
 
-    // Input Actions (Limpar / Colar)
     tiktokUrlInput.addEventListener('input', () => {
         clearBtn.classList.toggle('hidden', !tiktokUrlInput.value);
     });
@@ -549,8 +565,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => toast.classList.remove('show'), 3500);
     }
 
-    // Helper para forçar download direto sem abrir em aba
-    async function triggerDirectDownload(url, filename) {
+    // Executa o download real do Blob
+    async function executeDownload(url, filename) {
         showToast();
         try {
             const response = await fetch(url);
@@ -569,13 +585,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Processamento do Formulário (Chamada TikWM)
+    // Gatilho Inteligente com Intersticial de 2 Segundos
+    function triggerSmartDownload(url, filename) {
+        if (modalOverlay) {
+            modalOverlay.classList.remove('hidden-modal');
+            let timeLeft = 2;
+            if (countdownNumber) countdownNumber.textContent = timeLeft;
+
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+                if (countdownNumber) countdownNumber.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    executeDownload(url, filename);
+                }
+            }, 1000);
+        } else {
+            executeDownload(url, filename);
+        }
+    }
+
+    // Processamento da API TikWM
     downloadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const url = tiktokUrlInput.value.trim();
         if (!url) return;
 
-        // Reset UI
         errorState.classList.add('hidden');
         resultSection.classList.add('hidden');
         loadingState.classList.remove('hidden');
@@ -588,12 +623,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.code === 0 && data.data) {
                 const item = data.data;
 
-                // Preenchimento dos Metadados
                 videoCover.src = item.cover || item.origin_cover || '';
                 authorName.textContent = item.author ? `@${item.author.unique_id || item.author.nickname}` : '@tiktok';
                 videoTitle.textContent = item.title || 'TikTok Video';
 
-                // Verificação: Carrossel (Imagens) ou Vídeo Único
+                // Carrossel de Fotos
                 if (item.images && item.images.length > 0) {
                     btnMp4.parentElement.classList.add('hidden');
                     carouselItems.innerHTML = '';
@@ -604,7 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const btn = document.createElement('button');
                         btn.className = 'carousel-btn';
                         btn.innerHTML = `<i class="ph ph-image"></i> ${slideText} ${index + 1}`;
-                        btn.onclick = () => triggerDirectDownload(imgUrl, `tikdownload_photo_${index + 1}.jpg`);
+                        btn.onclick = () => triggerSmartDownload(imgUrl, `tikdownload_photo_${index + 1}.jpg`);
                         carouselItems.appendChild(btn);
                     });
                 } else {
@@ -616,14 +650,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     btnMp4.onclick = (ev) => {
                         ev.preventDefault();
-                        triggerDirectDownload(videoUrl, `tikdownload_${item.id || 'video'}.mp4`);
+                        triggerSmartDownload(videoUrl, `tikdownload_${item.id || 'video'}.mp4`);
                     };
 
                     if (musicUrl) {
                         btnMp3.classList.remove('hidden');
                         btnMp3.onclick = (ev) => {
                             ev.preventDefault();
-                            triggerDirectDownload(musicUrl, `tikdownload_audio_${item.id || 'audio'}.mp3`);
+                            triggerSmartDownload(musicUrl, `tikdownload_audio_${item.id || 'audio'}.mp3`);
                         };
                     } else {
                         btnMp3.classList.add('hidden');

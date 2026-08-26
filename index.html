@@ -282,13 +282,14 @@
         </div>
     </div>
 
-    <!-- 2. Ad Modal Overlay (Banner 300x250 Absoluto Central com Fundo Translúcido) -->
-    <div id="adModalOverlay" class="ad-modal-overlay">
+    <!-- 2. Smart Ad Modal Overlay (Disparado no Clique de Download) -->
+    <div id="adModalOverlay" class="ad-modal-overlay hidden-modal">
         <div class="ad-modal-card">
             <div class="ad-modal-header">
-                <span class="ad-modal-title">
-                    <i class="ph-bold ph-sparkle"></i> Patrocinado
-                </span>
+                <div class="ad-modal-title">
+                    <i class="ph-bold ph-download-simple"></i>
+                    <span id="adCountdownText">Preparando seu download em <b id="countdownNumber">2</b>s...</span>
+                </div>
                 <button class="ad-modal-close" id="closeAdModal" title="Fechar" aria-label="Fechar">
                     <i class="ph-bold ph-x"></i>
                 </button>
