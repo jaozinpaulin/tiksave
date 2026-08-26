@@ -23,8 +23,9 @@
         content="Ferramenta online para baixar vídeos, carrosséis de fotos e áudios em MP3 do TikTok.">
     <meta property="og:image" content="https://tikdownload.online/logoTD.webp">
 
-    <!-- Favicon & App Icons com logoTD.webp -->
+    <!-- Favicon & App Icons -->
     <link rel="icon" type="image/webp" href="logoTD.webp">
+    <link rel="shortcut icon" type="image/webp" href="logoTD.webp">
     <link rel="apple-touch-icon" href="logoTD.webp">
     <link rel="manifest" href="manifest.json">
     <link rel="canonical" href="https://tikdownload.online/">
@@ -214,24 +215,6 @@
                 </div>
             </section>
 
-            <!-- Anúncio 300x250 Banner Meio -->
-            <div class="ad-slot">
-                <div class="ad-label" data-i18n="ad_badge">Publicidade</div>
-                <div class="ad-content">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key': '84cf842677793ecee872ffd6989b0d7b',
-                            'format': 'iframe',
-                            'height': 250,
-                            'width': 300,
-                            'params': {}
-                        };
-                    </script>
-                    <script type="text/javascript"
-                        src="https://www.highrevenueformat.com/84cf842677793ecee872ffd6989b0d7b/invoke.js"></script>
-                </div>
-            </div>
-
             <!-- FAQ Section -->
             <section class="faq-container">
                 <h2 data-i18n="faq_heading">Perguntas Frequentes</h2>
@@ -262,7 +245,26 @@
         </footer>
     </div>
 
-    <!-- Modal Intersticial de Download -->
+    <!-- Card Fixo Retrátil no Rodapé (4 Anúncios Nativos) -->
+    <div id="stickyAdBar" class="sticky-ad-bar">
+        <button type="button" class="sticky-ad-toggle" id="toggleStickyAd" aria-label="Expandir ou recolher anúncios">
+            <div class="sticky-ad-pill"></div>
+            <div class="sticky-ad-header-content">
+                <span class="sticky-ad-title" data-i18n="ad_grid_title">Recomendações em Destaque</span>
+                <i class="ph ph-caret-down" id="toggleCaretIcon"></i>
+            </div>
+        </button>
+
+        <div class="sticky-ad-content" id="stickyAdContent">
+            <div class="ad-native-wrapper">
+                <script async="async" data-cfasync="false"
+                    src="https://pl31044195.profitableratecpmnetwork.com/4f3da8b19f62d02730e1d759fd148d83/invoke.js"></script>
+                <div id="container-4f3da8b19f62d02730e1d759fd148d83"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Intersticial de Download (1 Anúncio) -->
     <div id="adModalOverlay" class="ad-modal-backdrop hidden-modal">
         <div class="ad-modal-dialog">
             <div class="ad-modal-top">

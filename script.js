@@ -37,7 +37,8 @@ const translations = {
         faq_a3: "Não. O TikDownload funciona de forma 100% gratuita diretamente no navegador do celular ou PC.",
         toast_started: "Download iniciado com sucesso!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Ferramenta Gratuita",
-        ad_badge: "Publicidade"
+        ad_badge: "Publicidade",
+        ad_grid_title: "Recomendações em Destaque"
     },
     en: {
         name: "English",
@@ -73,7 +74,8 @@ const translations = {
         faq_a3: "No. TikDownload works 100% free directly in your browser on mobile and desktop.",
         toast_started: "Download started successfully!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Free Online Tool",
-        ad_badge: "Advertisement"
+        ad_badge: "Advertisement",
+        ad_grid_title: "Featured Recommendations"
     },
     es: {
         name: "Español",
@@ -109,7 +111,8 @@ const translations = {
         faq_a3: "No. TikDownload funciona 100% gratis en cualquier navegador móvil o PC.",
         toast_started: "¡Descarga iniciada con éxito!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Herramienta Gratuita",
-        ad_badge: "Publicidad"
+        ad_badge: "Publicidad",
+        ad_grid_title: "Recomendaciones Destacadas"
     },
     fr: {
         name: "Français",
@@ -145,7 +148,8 @@ const translations = {
         faq_a3: "Non. TikDownload est 100% gratuit et s'utilise directement dans le navigateur.",
         toast_started: "Téléchargement lancé !",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Outil Gratuit",
-        ad_badge: "Publicité"
+        ad_badge: "Publicité",
+        ad_grid_title: "Recommandations"
     },
     de: {
         name: "Deutsch",
@@ -181,7 +185,8 @@ const translations = {
         faq_a3: "Nein. TikDownload ist 100% kostenlos und läuft direkt im Browser.",
         toast_started: "Download erfolgreich gestartet!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Kostenloses Tool",
-        ad_badge: "Werbung"
+        ad_badge: "Werbung",
+        ad_grid_title: "Empfehlungen"
     },
     it: {
         name: "Italiano",
@@ -217,7 +222,8 @@ const translations = {
         faq_a3: "No. TikDownload funziona al 100% online gratis nel browser.",
         toast_started: "Download avviato con successo!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Strumento Gratuito",
-        ad_badge: "Pubblicità"
+        ad_badge: "Pubblicità",
+        ad_grid_title: "In Evidenza"
     },
     id: {
         name: "Bahasa Indonesia",
@@ -253,7 +259,8 @@ const translations = {
         faq_a3: "Tidak. TikDownload 100% gratis dan berjalan langsung di browser.",
         toast_started: "Download berhasil dimulai!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Alat Gratis",
-        ad_badge: "Iklan"
+        ad_badge: "Iklan",
+        ad_grid_title: "Rekomendasi Pilihan"
     },
     tr: {
         name: "Türkçe",
@@ -289,7 +296,8 @@ const translations = {
         faq_a3: "Hayır. TikDownload tarayıcınızda %100 ücretsiz çalışır.",
         toast_started: "İndirme başarıyla başlatıldı!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Ücretsiz Araç",
-        ad_badge: "Reklam"
+        ad_badge: "Reklam",
+        ad_grid_title: "Öne Çıkanlar"
     },
     ru: {
         name: "Русский",
@@ -325,7 +333,8 @@ const translations = {
         faq_a3: "Нет. Сервис работает бесплатно прямо в браузере.",
         toast_started: "Загрузка началась!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Бесплатный сервис",
-        ad_badge: "Реклама"
+        ad_badge: "Реклама",
+        ad_grid_title: "Рекомендации"
     },
     ar: {
         name: "العربية",
@@ -361,7 +370,8 @@ const translations = {
         faq_a3: "لا. الموقع مجاني تماماً ويعمل مباشرة عبر المتصفح.",
         toast_started: "بدأ التحميل بنجاح!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · أداة مجانية",
-        ad_badge: "إعلان"
+        ad_badge: "إعلان",
+        ad_grid_title: "إعلانات مميزة"
     },
     hi: {
         name: "हिन्दी",
@@ -397,7 +407,8 @@ const translations = {
         faq_a3: "नहीं। यह पूरी तरह से मुफ्त है और ब्राउज़र में काम करता है।",
         toast_started: "डाउनलोड सफलतापूर्वक शुरू हुआ!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · मुफ़्त टूल",
-        ad_badge: "विज्ञापन"
+        ad_badge: "विज्ञापन",
+        ad_grid_title: "खास सुझाव"
     },
     ja: {
         name: "日本語",
@@ -433,7 +444,8 @@ const translations = {
         faq_a3: "いいえ。ブラウザ上ですべて完全無料で動作します。",
         toast_started: "ダウンロードを開始しました！",
         footer_rights: "© 2026 <strong>TikDownload</strong> · 無料ツール",
-        ad_badge: "広告"
+        ad_badge: "広告",
+        ad_grid_title: "おすすめ広告"
     }
 };
 
@@ -504,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Modal de Anúncio e Contador
+    // Modal Intersticial (1 Anúncio)
     const modalOverlay = document.getElementById('adModalOverlay');
     const closeBtn = document.getElementById('closeAdModal');
     const countdownNumber = document.getElementById('countdownNumber');
@@ -517,6 +529,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === modalOverlay) {
                 modalOverlay.classList.add('hidden-modal');
             }
+        });
+    }
+
+    // Card Fixo Retrátil no Rodapé (4 Anúncios)
+    const stickyAdBar = document.getElementById('stickyAdBar');
+    const toggleStickyAd = document.getElementById('toggleStickyAd');
+
+    if (toggleStickyAd && stickyAdBar) {
+        toggleStickyAd.addEventListener('click', () => {
+            stickyAdBar.classList.toggle('collapsed');
         });
     }
 
@@ -564,7 +586,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => toast.classList.remove('show'), 3500);
     }
 
-    // Download direto via Blob
     async function executeDownload(url, filename) {
         showToast();
         try {
@@ -584,7 +605,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Gatilho do Modal Intersticial com Contador de 2s
     function triggerSmartDownload(url, filename) {
         if (modalOverlay) {
             modalOverlay.classList.remove('hidden-modal');
@@ -596,6 +616,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (countdownNumber) countdownNumber.textContent = timeLeft;
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
+                    modalOverlay.classList.add('hidden-modal');
                     executeDownload(url, filename);
                 }
             }, 1000);

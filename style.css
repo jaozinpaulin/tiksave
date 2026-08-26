@@ -52,7 +52,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 24px 16px 60px;
+    padding: 24px 16px 120px;
     line-height: 1.5;
     overflow-x: hidden;
 }
@@ -100,7 +100,7 @@ body {
     height: 100%;
     object-fit: contain;
     display: block;
-    filter: none;
+    filter: brightness(0) invert(1);
 }
 
 .brand-title {
@@ -589,7 +589,119 @@ body {
 }
 
 /* ==========================================================
-   Modal Intersticial & Toast
+   Sticky Bottom Bar Retrátil (Grid 2x2 Compacto e Visível)
+   ========================================================== */
+.sticky-ad-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 780px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-bottom: none;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sticky-ad-bar.collapsed .sticky-ad-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.sticky-ad-bar.collapsed #toggleCaretIcon {
+    transform: rotate(180deg);
+}
+
+.sticky-ad-toggle {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.sticky-ad-pill {
+    width: 30px;
+    height: 3px;
+    background: var(--border-light);
+    border-radius: var(--radius-full);
+}
+
+.sticky-ad-header-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sticky-ad-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent-beige);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+#toggleCaretIcon {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: transform var(--transition);
+}
+
+.sticky-ad-content {
+    max-height: 280px;
+    opacity: 1;
+    overflow-y: auto;
+    padding: 4px 8px 10px;
+    transition:
+        max-height 0.25s ease,
+        opacity 0.2s ease,
+        padding 0.25s ease;
+}
+
+.ad-native-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Organiza o script nativo em grid 2x2 visível e espaçado */
+#container-4f3da8b19f62d02730e1d759fd148d83 {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+/* Mantém os anúncios legíveis e organizados em 2 colunas sem sumir */
+#container-4f3da8b19f62d02730e1d759fd148d83 iframe,
+#container-4f3da8b19f62d02730e1d759fd148d83 ins,
+#container-4f3da8b19f62d02730e1d759fd148d83 a {
+    max-width: 48% !important;
+    height: auto !important;
+    transform: scale(0.85);
+    transform-origin: center top;
+}
+
+/* ==========================================================
+   Modal Intersticial (1 Anúncio) & Toast
    ========================================================== */
 .ad-modal-backdrop {
     position: fixed;
@@ -716,7 +828,7 @@ body {
    ========================================================== */
 @media (min-width: 640px) {
     body {
-        padding: 36px 20px 60px;
+        padding: 36px 20px 85px;
     }
 
     .hero-block h1 {
