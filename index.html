@@ -165,17 +165,6 @@
                 </div>
             </section>
 
-            <!-- Ad Slot: Native Banner (Recomendações / Grid de Produtos) -->
-            <div class="ad-container mid-banner"
-                style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 24px 0; width: 100%;">
-                <span class="ad-badge" data-i18n="ad_badge" style="margin-bottom: 8px;">Recomendações</span>
-                <div style="width: 100%; min-height: 120px; display: flex; justify-content: center;">
-                    <script async="async" data-cfasync="false"
-                        src="https://pl31044195.profitableratecpmnetwork.com/4f3da8b19f62d02730e1d759fd148d83/invoke.js"></script>
-                    <div id="container-4f3da8b19f62d02730e1d759fd148d83"></div>
-                </div>
-            </div>
-
             <!-- Features Grid -->
             <section class="metrics-grid">
                 <div class="metric-card">
@@ -242,10 +231,81 @@
 
     </div>
 
+    <!-- 1. Floating Bottom Drawer (Barra Inferior Retrátil com 4 Itens) -->
+    <div id="bottomAdDrawer" class="bottom-ad-drawer">
+        <div class="bottom-ad-header" id="bottomAdHeader" title="Clique para minimizar ou expandir">
+            <div class="bottom-ad-title">
+                <i class="ph-bold ph-sparkle"></i>
+                <span data-i18n="ad_badge">Patrocinado & Recomendações</span>
+            </div>
+            <button class="bottom-ad-toggle" id="bottomAdToggle" aria-label="Minimizar">
+                <i class="ph-bold ph-caret-down"></i>
+            </button>
+        </div>
+        <div class="bottom-ad-body">
+            <script async="async" data-cfasync="false"
+                src="https://pl31044195.profitableratecpmnetwork.com/4f3da8b19f62d02730e1d759fd148d83/invoke.js"></script>
+            <div id="container-4f3da8b19f62d02730e1d759fd148d83"></div>
+        </div>
+    </div>
+
+    <!-- 2. Ad Modal Overlay (Banner 300x250 Absoluto no Centro com Fundo Escuro) -->
+    <div id="adModalOverlay" class="ad-modal-overlay">
+        <div class="ad-modal-card">
+            <div class="ad-modal-header">
+                <span class="ad-modal-title">
+                    <i class="ph-bold ph-sparkle"></i> Patrocinado
+                </span>
+                <button class="ad-modal-close" id="closeAdModal" title="Fechar" aria-label="Fechar">
+                    <i class="ph-bold ph-x"></i>
+                </button>
+            </div>
+            <div class="ad-modal-body">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': '84cf842677793ecee872ffd6989b0d7b',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
+                    };
+                </script>
+                <script type="text/javascript"
+                    src="https://www.highrevenueformat.com/84cf842677793ecee872ffd6989b0d7b/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
     <!-- Script da Aplicação -->
     <script src="script.js"></script>
 
-    <!-- Adsterra Social Bar (Notificação/slide flutuante) -->
+    <!-- Controle do Drawer Inferior e Modal Central -->
+    <script>
+        // Drawer Inferior Retrátil
+        const drawer = document.getElementById('bottomAdDrawer');
+        const header = document.getElementById('bottomAdHeader');
+        if (drawer && header) {
+            header.addEventListener('click', () => {
+                drawer.classList.toggle('minimized');
+            });
+        }
+
+        // Modal Central
+        const modalOverlay = document.getElementById('adModalOverlay');
+        const closeBtn = document.getElementById('closeAdModal');
+        if (modalOverlay && closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modalOverlay.classList.add('hidden-modal');
+            });
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.add('hidden-modal');
+                }
+            });
+        }
+    </script>
+
+    <!-- Adsterra Social Bar -->
     <script src="https://pl31043805.profitableratecpmnetwork.com/d1/eb/50/d1eb50a3230989ed61eb7c3bf603efbf.js"></script>
 </body>
 
