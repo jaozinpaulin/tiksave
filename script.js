@@ -6,7 +6,7 @@ const API_BASE_URL = isLiveServer ? 'http://localhost:3000' : '';
 // ============================================================
 const translations = {
     pt: {
-        title: "TikSave — Baixar Vídeos do TikTok Sem Marca d'Água (HD)",
+        title: "TikDownload — Baixar Vídeos do TikTok Sem Marca d'Água (HD)",
         ad_badge: "Anúncio",
         hero_title: "Baixar vídeos do TikTok",
         hero_subtitle: "Sem marca d'água, em alta qualidade (HD) e direto no seu dispositivo.",
@@ -35,15 +35,15 @@ const translations = {
         faq_q1: "Como baixar vídeos do TikTok sem marca d'água?",
         faq_a1: "Copie o link do vídeo no aplicativo do TikTok, cole na caixa de busca acima e clique em \"Baixar\".",
         faq_q2: "Preciso pagar ou instalar algum aplicativo?",
-        faq_a2: "Não. O TikSave funciona de forma totalmente online no navegador de qualquer celular ou PC.",
+        faq_a2: "Não. O TikDownload funciona de forma totalmente online no navegador de qualquer celular ou PC.",
         toast_started: "Transferindo arquivo...",
         toast_completed: "Download concluído!",
         toast_paste_error: "Permissão de colar negada.",
-        footer_rights: "© 2026 <strong>TikSave</strong> · Ferramenta Gratuita",
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Ferramenta Gratuita",
         footer_home: "Início"
     },
     en: {
-        title: "TikSave — TikTok Video Downloader Without Watermark (HD)",
+        title: "TikDownload — TikTok Video Downloader Without Watermark (HD)",
         ad_badge: "Advertisement",
         hero_title: "Download TikTok Videos",
         hero_subtitle: "No watermark, high quality (HD) and straight to your device.",
@@ -72,15 +72,15 @@ const translations = {
         faq_q1: "How to download TikTok videos without watermark?",
         faq_a1: "Copy the video link inside TikTok app, paste it into the search box above and click \"Download\".",
         faq_q2: "Do I need to pay or install any software?",
-        faq_a2: "No. TikSave works 100% online directly in your browser on mobile and desktop.",
+        faq_a2: "No. TikDownload works 100% online directly in your browser on mobile and desktop.",
         toast_started: "Downloading file...",
         toast_completed: "Download finished!",
         toast_paste_error: "Clipboard permission denied.",
-        footer_rights: "© 2026 <strong>TikSave</strong> · Free Online Tool",
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Free Online Tool",
         footer_home: "Home"
     },
     es: {
-        title: "TikSave — Descargar Videos de TikTok Sin Marca de Agua (HD)",
+        title: "TikDownload — Descargar Videos de TikTok Sin Marca de Agua (HD)",
         ad_badge: "Anuncio",
         hero_title: "Descargar videos de TikTok",
         hero_subtitle: "Sin marca de agua, en alta calidad (HD) y directo a tu dispositivo.",
@@ -109,24 +109,23 @@ const translations = {
         faq_q1: "¿Cómo descargar videos de TikTok sin marca de agua?",
         faq_a1: "Copia el enlace del video en TikTok, pégalo en el cuadro de búsqueda y haz clic en \"Descargar\".",
         faq_q2: "¿Necesito pagar o instalar alguna app?",
-        faq_a2: "No. TikSave funciona completamente en línea desde cualquier navegador.",
+        faq_a2: "No. TikDownload funciona completamente en línea desde cualquier navegador.",
         toast_started: "Descargando archivo...",
         toast_completed: "¡Descarga finalizada!",
         toast_paste_error: "Permiso para pegar denegado.",
-        footer_rights: "© 2026 <strong>TikSave</strong> · Herramienta Gratuita",
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Herramienta Gratuita",
         footer_home: "Inicio"
     }
 };
 
-let currentLang = localStorage.getItem('tiksave_lang') || (navigator.language.startsWith('es') ? 'es' : navigator.language.startsWith('en') ? 'en' : 'pt');
+let currentLang = localStorage.getItem('tikdownload_lang') || (navigator.language.startsWith('es') ? 'es' : navigator.language.startsWith('en') ? 'en' : 'pt');
 
 function setLanguage(lang) {
     if (!translations[lang]) return;
     currentLang = lang;
-    localStorage.setItem('tiksave_lang', lang);
+    localStorage.setItem('tikdownload_lang', lang);
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
 
-    // Atualiza elementos de texto
     document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang][key]) {
@@ -134,7 +133,6 @@ function setLanguage(lang) {
         }
     });
 
-    // Atualiza placeholders de input
     document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (translations[lang][key]) {
@@ -142,23 +140,19 @@ function setLanguage(lang) {
         }
     });
 
-    // Atualiza título da aba
     document.title = translations[lang].title;
 
-    // Atualiza botões ativos
     document.querySelectorAll('.lang-btn').forEach((btn) => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 }
 
-// Event Listeners dos botões de idioma
 document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
         setLanguage(btn.getAttribute('data-lang'));
     });
 });
 
-// Inicializa idioma no carregamento
 setLanguage(currentLang);
 
 // ============================================================
@@ -232,8 +226,8 @@ function showToast(message) {
     }, 3000);
 }
 
-// Download Direto via Blob
-async function downloadFileDirectly(fileUrl, defaultExt = 'mp4', customPrefix = 'TikSave') {
+// Download Direto com prefixo TikDownload_
+async function downloadFileDirectly(fileUrl, defaultExt = 'mp4', customPrefix = 'TikDownload') {
     showToast(translations[currentLang].toast_started);
     const filename = `${customPrefix}_${Date.now()}.${defaultExt}`;
 
@@ -303,7 +297,7 @@ form.addEventListener('submit', async (e) => {
             btnMp4.classList.remove('hidden');
             btnMp4.onclick = (evt) => {
                 evt.preventDefault();
-                downloadFileDirectly(single.url, 'mp4', 'TikSave_Video');
+                downloadFileDirectly(single.url, 'mp4', 'TikDownload_Video');
             };
         } else if (data.medias && data.medias.length > 1) {
             // Carrossel
@@ -316,7 +310,7 @@ form.addEventListener('submit', async (e) => {
                 btn.innerHTML = `<i class="ph ph-download-simple"></i> <span>${labelText}</span>`;
 
                 const ext = item.type === 'image' ? 'jpg' : 'mp4';
-                const prefix = item.type === 'image' ? `TikSave_Foto_${index + 1}` : `TikSave_Video_${index + 1}`;
+                const prefix = item.type === 'image' ? `TikDownload_Foto_${index + 1}` : `TikDownload_Video_${index + 1}`;
 
                 btn.onclick = () => downloadFileDirectly(item.url, ext, prefix);
                 carouselContainer.appendChild(btn);
@@ -328,7 +322,7 @@ form.addEventListener('submit', async (e) => {
             btnMp3.classList.remove('hidden');
             btnMp3.onclick = (evt) => {
                 evt.preventDefault();
-                downloadFileDirectly(data.audio, 'mp3', 'TikSave_Audio');
+                downloadFileDirectly(data.audio, 'mp3', 'TikDownload_Audio');
             };
         } else {
             btnMp3.classList.add('hidden');

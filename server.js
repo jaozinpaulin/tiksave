@@ -12,5 +12,5 @@ app.use(express.static(__dirname));
 app.post('/api/download', downloadHandler);
 
 app.listen(PORT, () => {
-    console.log(`TikSave rodando em: http://localhost:${PORT}`);
+    console.log(`TikDownload rodando em: http://localhost:${PORT}`);
 });
