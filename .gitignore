@@ -1,7 +1,26 @@
+# Dependências locais (a Vercel instala sozinha no deploy)
 node_modules/
+.pnp
+.pnp.js
 
-*.log
+# Variáveis de ambiente e segredos locais
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos de build e cache da Vercel
+.vercel
+
+# Arquivos de sistema operacional e editores
 .DS_Store
 Thumbs.db
-
-.env
+.vscode/
+.idea/
