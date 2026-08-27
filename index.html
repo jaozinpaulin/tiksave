@@ -30,12 +30,16 @@
     <link rel="manifest" href="manifest.json">
     <link rel="canonical" href="https://tikdownload.online/">
 
-    <!-- Fontes & Ícones -->
+    <!-- Fontes & Ícones Otimizados (Performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet">
+    </noscript>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 
     <link rel="stylesheet" href="style.css">
 
@@ -97,7 +101,7 @@
         <header class="navbar">
             <a href="/" class="brand">
                 <div class="brand-icon">
-                    <img src="logoTD.webp" alt="TikDownload" class="brand-img">
+                    <img src="logoTD.webp" alt="TikDownload" class="brand-img" width="38" height="38" loading="eager">
                 </div>
                 <span class="brand-title">TikDownload</span>
             </a>
