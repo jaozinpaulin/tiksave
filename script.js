@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function triggerSmartDownload(url, filename) {
         if (modalOverlay) {
             modalOverlay.classList.remove('hidden-modal');
-            let timeLeft = 2;
+            let timeLeft = 3;
             if (countdownNumber) countdownNumber.textContent = timeLeft;
 
             const countdownInterval = setInterval(() => {
