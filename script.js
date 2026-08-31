@@ -1,7 +1,4 @@
-/**
- * TikDownload - Frontend Controller & Multi-Language Engine (12 Languages)
- */
-
+// Dicionário de traduções
 const translations = {
     pt: {
         name: "Português",
@@ -19,6 +16,7 @@ const translations = {
         btn_mp3_title: "Áudio MP3",
         btn_mp3_desc: "Faixa de áudio original",
         btn_slide: "Baixar Foto",
+        btn_download_all: "Baixar Todas as Fotos",
         card1_badge: "Vídeos HD",
         card1_title: "Qualidade Original",
         card1_desc: "Baixe vídeos sem marca d'água no formato MP4 original sem nenhuma compressão adicional.",
@@ -36,9 +34,7 @@ const translations = {
         faq_q3: "Preciso pagar ou instalar algum app?",
         faq_a3: "Não. O TikDownload funciona de forma 100% gratuita diretamente no navegador do celular ou PC.",
         toast_started: "Download iniciado com sucesso!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Ferramenta Gratuita",
-        ad_badge: "Publicidade",
-        ad_grid_title: "Recomendações em Destaque"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Ferramenta Gratuita"
     },
     en: {
         name: "English",
@@ -56,6 +52,7 @@ const translations = {
         btn_mp3_title: "MP3 Audio",
         btn_mp3_desc: "Original audio track",
         btn_slide: "Download Photo",
+        btn_download_all: "Download All Photos",
         card1_badge: "HD Videos",
         card1_title: "Original Quality",
         card1_desc: "Download TikTok videos without watermark in original MP4 format without compression.",
@@ -73,9 +70,7 @@ const translations = {
         faq_q3: "Do I need to pay or install an app?",
         faq_a3: "No. TikDownload works 100% free directly in your browser on mobile and desktop.",
         toast_started: "Download started successfully!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Free Online Tool",
-        ad_badge: "Advertisement",
-        ad_grid_title: "Featured Recommendations"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Free Online Tool"
     },
     es: {
         name: "Español",
@@ -84,7 +79,7 @@ const translations = {
         input_placeholder: "Pega el enlace de TikTok aquí...",
         btn_paste: "Pegar",
         btn_download: "Descargar",
-        loading_title: "Procesando publicación",
+        loading_title: "Procesando publicação",
         loading_desc: "Obteniendo enlace directo sin marca de agua...",
         error_title: "Error al extraer",
         error_desc: "No se pudo procesar este enlace. Verifica que el video sea público.",
@@ -93,6 +88,7 @@ const translations = {
         btn_mp3_title: "Audio MP3",
         btn_mp3_desc: "Pista de audio original",
         btn_slide: "Descargar Foto",
+        btn_download_all: "Descargar Todas las Fotos",
         card1_badge: "Videos HD",
         card1_title: "Calidad Original",
         card1_desc: "Descarga videos sin marca de agua en formato MP4 original sin compresión adicional.",
@@ -110,9 +106,7 @@ const translations = {
         faq_q3: "¿Necesito pagar o instalar alguna app?",
         faq_a3: "No. TikDownload funciona 100% gratis en cualquier navegador móvil o PC.",
         toast_started: "¡Descarga iniciada con éxito!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Herramienta Gratuita",
-        ad_badge: "Publicidad",
-        ad_grid_title: "Recomendaciones Destacadas"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Herramienta Gratuita"
     },
     fr: {
         name: "Français",
@@ -130,6 +124,7 @@ const translations = {
         btn_mp3_title: "Audio MP3",
         btn_mp3_desc: "Piste audio originale",
         btn_slide: "Télécharger Photo",
+        btn_download_all: "Télécharger Toutes les Photos",
         card1_badge: "Vidéos HD",
         card1_title: "Qualité Originale",
         card1_desc: "Téléchargez des vidéos sans filigrane au format MP4 sans compression.",
@@ -147,9 +142,7 @@ const translations = {
         faq_q3: "Dois-je payer ou installer une application ?",
         faq_a3: "Non. TikDownload est 100% gratuit et s'utilise directement dans le navigateur.",
         toast_started: "Téléchargement lancé !",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Outil Gratuit",
-        ad_badge: "Publicité",
-        ad_grid_title: "Recommandations"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Outil Gratuit"
     },
     de: {
         name: "Deutsch",
@@ -167,6 +160,7 @@ const translations = {
         btn_mp3_title: "MP3 Audio",
         btn_mp3_desc: "Originalton herunterladen",
         btn_slide: "Foto Speichern",
+        btn_download_all: "Alle Fotos Herunterladen",
         card1_badge: "HD-Videos",
         card1_title: "Originalqualität",
         card1_desc: "Laden Sie Videos ohne Wasserzeichen im originalen MP4-Format herunter.",
@@ -184,14 +178,12 @@ const translations = {
         faq_q3: "Muss ich etwas bezahlen oder installieren?",
         faq_a3: "Nein. TikDownload ist 100% kostenlos und läuft direkt im Browser.",
         toast_started: "Download erfolgreich gestartet!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Kostenloses Tool",
-        ad_badge: "Werbung",
-        ad_grid_title: "Empfehlungen"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Kostenloses Tool"
     },
     it: {
         name: "Italiano",
         hero_title: "Scarica Video da TikTok",
-        hero_subtitle: "Senza filigrana, in alta qualità e direttamente sul tuo dispositivo.",
+        hero_subtitle: "Senza filigrana, in alta qualidade e direttamente sul tuo dispositivo.",
         input_placeholder: "Incolla qui il link di TikTok...",
         btn_paste: "Incolla",
         btn_download: "Scarica",
@@ -204,6 +196,7 @@ const translations = {
         btn_mp3_title: "Audio MP3",
         btn_mp3_desc: "Traccia audio originale",
         btn_slide: "Scarica Foto",
+        btn_download_all: "Scarica Tutte le Foto",
         card1_badge: "Video HD",
         card1_title: "Qualità Originale",
         card1_desc: "Scarica video senza watermark in formato MP4 originale senza perdita di qualità.",
@@ -221,9 +214,7 @@ const translations = {
         faq_q3: "Devo pagare o installare un'app?",
         faq_a3: "No. TikDownload funziona al 100% online gratis nel browser.",
         toast_started: "Download avviato con successo!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Strumento Gratuito",
-        ad_badge: "Pubblicità",
-        ad_grid_title: "In Evidenza"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Strumento Gratuito"
     },
     id: {
         name: "Bahasa Indonesia",
@@ -241,6 +232,7 @@ const translations = {
         btn_mp3_title: "Audio MP3",
         btn_mp3_desc: "Musik audio asli",
         btn_slide: "Download Foto",
+        btn_download_all: "Download Semua Foto",
         card1_badge: "Video HD",
         card1_title: "Kualitas Asli",
         card1_desc: "Download video tanpa watermark dalam format MP4 asli tanpa kompresi.",
@@ -258,9 +250,7 @@ const translations = {
         faq_q3: "Apakah perlu membayar atau instal aplikasi?",
         faq_a3: "Tidak. TikDownload 100% gratis dan berjalan langsung di browser.",
         toast_started: "Download berhasil dimulai!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Alat Gratis",
-        ad_badge: "Iklan",
-        ad_grid_title: "Rekomendasi Pilihan"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Alat Gratis"
     },
     tr: {
         name: "Türkçe",
@@ -278,6 +268,7 @@ const translations = {
         btn_mp3_title: "MP3 Ses",
         btn_mp3_desc: "Orijinal ses parçası",
         btn_slide: "Fotoğraf İndir",
+        btn_download_all: "Tüm Fotoğrafları İndir",
         card1_badge: "HD Videolar",
         card1_title: "Orijinal Kalite",
         card1_desc: "Videoları filigransız orijinal MP4 formatında kayıpsız indirin.",
@@ -295,9 +286,7 @@ const translations = {
         faq_q3: "Ücret ödemem veya uygulama yüklemem gerekir mi?",
         faq_a3: "Hayır. TikDownload tarayıcınızda %100 ücretsiz çalışır.",
         toast_started: "İndirme başarıyla başlatıldı!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Ücretsiz Araç",
-        ad_badge: "Reklam",
-        ad_grid_title: "Öne Çıkanlar"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Ücretsiz Araç"
     },
     ru: {
         name: "Русский",
@@ -315,6 +304,7 @@ const translations = {
         btn_mp3_title: "Аудио MP3",
         btn_mp3_desc: "Оригинальная звуковая дорожка",
         btn_slide: "Скачать фото",
+        btn_download_all: "Скачать все фото",
         card1_badge: "HD Видео",
         card1_title: "Оригинальное качество",
         card1_desc: "Скачивайте видео без логотипа в оригинальном формате MP4.",
@@ -332,9 +322,7 @@ const translations = {
         faq_q3: "Нужно ли платить или устанавливать программы?",
         faq_a3: "Нет. Сервис работает бесплатно прямо в браузере.",
         toast_started: "Загрузка началась!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Бесплатный сервис",
-        ad_badge: "Реклама",
-        ad_grid_title: "Рекомендации"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · Бесплатный сервис"
     },
     ar: {
         name: "العربية",
@@ -352,6 +340,7 @@ const translations = {
         btn_mp3_title: "صوت MP3",
         btn_mp3_desc: "المقطع الصوتي الأصلي",
         btn_slide: "تحميل الصورة",
+        btn_download_all: "تحميل جميع الصور",
         card1_badge: "فيديو HD",
         card1_title: "جودة أصلية",
         card1_desc: "قم بتنزيل مقاطع الفيديو بدون علامة مائية وبدون ضغط.",
@@ -369,9 +358,7 @@ const translations = {
         faq_q3: "هل يجب علي دفع رسوم أو تثبيت تطبيق؟",
         faq_a3: "لا. الموقع مجاني تماماً ويعمل مباشرة عبر المتصفح.",
         toast_started: "بدأ التحميل بنجاح!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · أداة مجانية",
-        ad_badge: "إعلان",
-        ad_grid_title: "إعلانات مميزة"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · أداة مجانية"
     },
     hi: {
         name: "हिन्दी",
@@ -389,6 +376,7 @@ const translations = {
         btn_mp3_title: "MP3 ऑडियो",
         btn_mp3_desc: "ओरिजिनल ऑडियो ट्रैक",
         btn_slide: "फोटो डाउनलोड करें",
+        btn_download_all: "सभी तस्वीरें डाउनलोड करें",
         card1_badge: "HD वीडियो",
         card1_title: "मूल गुणवत्ता",
         card1_desc: "बिना किसी कम्प्रेशन के ओरिजिनल MP4 फॉर्मेट में वीडियो डाउनलोड करें।",
@@ -406,9 +394,7 @@ const translations = {
         faq_q3: "क्या मुझे भुगतान या ऐप इंस्टॉल करने की आवश्यकता है?",
         faq_a3: "नहीं। यह पूरी तरह से मुफ्त है और ब्राउज़र में काम करता है।",
         toast_started: "डाउनलोड सफलतापूर्वक शुरू हुआ!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · मुफ़्त टूल",
-        ad_badge: "विज्ञापन",
-        ad_grid_title: "खास सुझाव"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · मुफ़्त टूल"
     },
     ja: {
         name: "日本語",
@@ -426,6 +412,7 @@ const translations = {
         btn_mp3_title: "MP3 音声のみ",
         btn_mp3_desc: "オリジナル音源",
         btn_slide: "写真を保存",
+        btn_download_all: "すべての写真を保存",
         card1_badge: "HD動画",
         card1_title: "オリジナル画質",
         card1_desc: "劣化なしのオリジナルMP4フォーマットで動画を保存できます。",
@@ -443,12 +430,11 @@ const translations = {
         faq_q3: "料金やアプリのインストールは必要ですか？",
         faq_a3: "いいえ。ブラウザ上ですべて完全無料で動作します。",
         toast_started: "ダウンロードを開始しました！",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · 無料ツール",
-        ad_badge: "広告",
-        ad_grid_title: "おすすめ広告"
+        footer_rights: "© 2026 <strong>TikDownload</strong> · 無料ツール"
     }
 };
 
+// Detecção e troca de idioma
 function detectLanguage() {
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = urlParams.get('lang');
@@ -494,7 +480,7 @@ function applyLanguage(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(currentLanguage);
 
-    // Dropdown de Idiomas
+    // Menu seletor de idiomas
     const langBtn = document.getElementById('langDropdownBtn');
     const langMenu = document.getElementById('langDropdownMenu');
 
@@ -516,33 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Modal Intersticial (1 Anúncio)
-    const modalOverlay = document.getElementById('adModalOverlay');
-    const closeBtn = document.getElementById('closeAdModal');
-    const countdownNumber = document.getElementById('countdownNumber');
-
-    if (modalOverlay && closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            modalOverlay.classList.add('hidden-modal');
-        });
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.add('hidden-modal');
-            }
-        });
-    }
-
-    // Card Fixo Retrátil no Rodapé (4 Anúncios)
-    const stickyAdBar = document.getElementById('stickyAdBar');
-    const toggleStickyAd = document.getElementById('toggleStickyAd');
-
-    if (toggleStickyAd && stickyAdBar) {
-        toggleStickyAd.addEventListener('click', () => {
-            stickyAdBar.classList.toggle('collapsed');
-        });
-    }
-
-    // Elementos do Formulário
+    // Elementos da interface
     const downloadForm = document.getElementById('downloadForm');
     const tiktokUrlInput = document.getElementById('tiktokUrl');
     const clearBtn = document.getElementById('clearBtn');
@@ -552,6 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorState = document.getElementById('errorMessage');
     const resultSection = document.getElementById('result');
 
+    const videoCoverBox = document.querySelector('.result-cover-box');
     const videoCover = document.getElementById('videoCover');
     const authorName = document.getElementById('authorName');
     const videoTitle = document.getElementById('videoTitle');
@@ -560,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselItems = document.getElementById('carouselItems');
     const toast = document.getElementById('toastNotification');
 
+    // Botão de limpar input
     tiktokUrlInput.addEventListener('input', () => {
         clearBtn.classList.toggle('hidden', !tiktokUrlInput.value);
     });
@@ -570,6 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tiktokUrlInput.focus();
     });
 
+    // Botão de colar área de transferência
     pasteBtn.addEventListener('click', async () => {
         try {
             const text = await navigator.clipboard.readText();
@@ -586,6 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => toast.classList.remove('show'), 3500);
     }
 
+    // Download direto de arquivos
     async function executeDownload(url, filename) {
         showToast();
         try {
@@ -605,27 +569,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function triggerSmartDownload(url, filename) {
-        if (modalOverlay) {
-            modalOverlay.classList.remove('hidden-modal');
-            let timeLeft = 3;
-            if (countdownNumber) countdownNumber.textContent = timeLeft;
-
-            const countdownInterval = setInterval(() => {
-                timeLeft--;
-                if (countdownNumber) countdownNumber.textContent = timeLeft;
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    modalOverlay.classList.add('hidden-modal');
-                    executeDownload(url, filename);
-                }
-            }, 1000);
-        } else {
-            executeDownload(url, filename);
+    // Download de todas as imagens em sequência
+    async function downloadAllImages(images) {
+        showToast();
+        for (let i = 0; i < images.length; i++) {
+            await executeDownload(images[i], `tikdownload_photo_${i + 1}.jpg`);
+            if (i < images.length - 1) {
+                await new Promise(resolve => setTimeout(resolve, 400));
+            }
         }
     }
 
-    // Requisição à API TikWM
+    // Envio do formulário e consulta à API TikWM
     downloadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const url = tiktokUrlInput.value.trim();
@@ -643,25 +598,72 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.code === 0 && data.data) {
                 const item = data.data;
 
-                videoCover.src = item.cover || item.origin_cover || '';
                 authorName.textContent = item.author ? `@${item.author.unique_id || item.author.nickname}` : '@tiktok';
                 videoTitle.textContent = item.title || 'TikTok Video';
 
-                // Post de Fotos / Slides
+                // Renderização de carrossel de fotos (oculta capa lateral redundante)
                 if (item.images && item.images.length > 0) {
+                    resultSection.classList.add('is-carousel');
+                    if (videoCoverBox) videoCoverBox.classList.add('hidden');
+
                     btnMp4.parentElement.classList.add('hidden');
                     carouselItems.innerHTML = '';
 
                     const slideText = translations[currentLanguage].btn_slide || 'Baixar Foto';
+                    const downloadAllText = translations[currentLanguage].btn_download_all || 'Baixar Todas as Fotos';
+
+                    // Barra superior com botão Baixar Todas
+                    const headerBar = document.createElement('div');
+                    headerBar.className = 'carousel-top-bar';
+                    headerBar.innerHTML = `
+                        <button type="button" class="btn-download-all" id="btnDownloadAll">
+                            <i class="ph ph-folder-arrow-down"></i>
+                            <span>${downloadAllText} (${item.images.length})</span>
+                        </button>
+                    `;
+                    carouselItems.appendChild(headerBar);
+
+                    headerBar.querySelector('#btnDownloadAll').onclick = () => {
+                        downloadAllImages(item.images);
+                    };
+
+                    // Grid com miniaturas das fotos
+                    const gridContainer = document.createElement('div');
+                    gridContainer.className = 'carousel-grid';
 
                     item.images.forEach((imgUrl, index) => {
-                        const btn = document.createElement('button');
-                        btn.className = 'carousel-btn';
-                        btn.innerHTML = `<i class="ph ph-image"></i> ${slideText} ${index + 1}`;
-                        btn.onclick = () => triggerSmartDownload(imgUrl, `tikdownload_photo_${index + 1}.jpg`);
-                        carouselItems.appendChild(btn);
+                        const card = document.createElement('div');
+                        card.className = 'carousel-card';
+
+                        card.innerHTML = `
+                            <div class="carousel-preview">
+                                <img src="${imgUrl}" alt="Foto ${index + 1}" loading="lazy">
+                                <span class="carousel-badge">${index + 1}/${item.images.length}</span>
+                            </div>
+                            <button type="button" class="carousel-btn">
+                                <i class="ph ph-download-simple"></i>
+                                <span>${slideText} ${index + 1}</span>
+                            </button>
+                        `;
+
+                        const downloadBtn = card.querySelector('.carousel-btn');
+                        downloadBtn.onclick = (ev) => {
+                            ev.preventDefault();
+                            executeDownload(imgUrl, `tikdownload_photo_${index + 1}.jpg`);
+                        };
+
+                        gridContainer.appendChild(card);
                     });
+
+                    carouselItems.appendChild(gridContainer);
                 } else {
+                    // Renderização de vídeo normal e áudio MP3 (mantém capa visível)
+                    resultSection.classList.remove('is-carousel');
+                    if (videoCoverBox) {
+                        videoCoverBox.classList.remove('hidden');
+                        videoCover.src = item.cover || item.origin_cover || '';
+                    }
+
                     btnMp4.parentElement.classList.remove('hidden');
                     carouselItems.innerHTML = '';
 
@@ -670,14 +672,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     btnMp4.onclick = (ev) => {
                         ev.preventDefault();
-                        triggerSmartDownload(videoUrl, `tikdownload_${item.id || 'video'}.mp4`);
+                        executeDownload(videoUrl, `tikdownload_${item.id || 'video'}.mp4`);
                     };
 
                     if (musicUrl) {
                         btnMp3.classList.remove('hidden');
                         btnMp3.onclick = (ev) => {
                             ev.preventDefault();
-                            triggerSmartDownload(musicUrl, `tikdownload_audio_${item.id || 'audio'}.mp3`);
+                            executeDownload(musicUrl, `tikdownload_audio_${item.id || 'audio'}.mp3`);
                         };
                     } else {
                         btnMp3.classList.add('hidden');

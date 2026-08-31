@@ -1,29 +1,20 @@
-/* ==========================================================
-   TikDownload - Clean Minimalist Beige & Charcoal Theme
-   ========================================================== */
-
 :root {
-    /* Fundo Base Escuro e Superfícies Neutras */
     --bg-base: #0f1012;
     --bg-surface: #16171a;
     --bg-elevated: #1e1f24;
     --bg-hover: #26272e;
 
-    /* Bordas Sutis */
     --border: #292a30;
     --border-light: #383942;
 
-    /* Tipografia (Bege Suave / Off-White) */
     --text-main: #f3f1ec;
     --text-muted: #a3a099;
     --text-dim: #706e68;
 
-    /* Acento Bege / Creme */
     --accent-beige: #e8ded1;
     --accent-beige-hover: #f5eee4;
     --accent-contrast: #121315;
 
-    /* Raio de Curvatura & Transições */
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 14px;
@@ -52,7 +43,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 24px 16px 140px;
+    padding: 24px 16px 40px;
     line-height: 1.5;
     overflow-x: hidden;
 }
@@ -65,9 +56,7 @@ body {
     gap: 22px;
 }
 
-/* ==========================================================
-   Navegação
-   ========================================================== */
+/* Header e navegação */
 .navbar {
     display: flex;
     align-items: center;
@@ -90,16 +79,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: none;
-    padding: 0;
 }
 
 .brand-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    display: block;
     filter: brightness(0) invert(1);
 }
 
@@ -109,6 +94,7 @@ body {
     letter-spacing: -0.02em;
 }
 
+/* Seletor de idiomas */
 .lang-wrapper {
     position: relative;
 }
@@ -175,9 +161,7 @@ body {
     font-weight: 600;
 }
 
-/* ==========================================================
-   Hero & Input
-   ========================================================== */
+/* Seção Hero e Formulário */
 .content-flow {
     display: flex;
     flex-direction: column;
@@ -306,9 +290,7 @@ body {
     transform: translateY(-1px);
 }
 
-/* ==========================================================
-   Status & Loading
-   ========================================================== */
+/* Status e carregamento */
 .status-box {
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -355,9 +337,7 @@ body {
     color: #ef4444;
 }
 
-/* ==========================================================
-   Resultado
-   ========================================================== */
+/* Card de Resultado */
 .result-box {
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -391,6 +371,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
 }
 
 .author-tag {
@@ -404,6 +385,7 @@ body {
     font-size: 0.76rem;
     font-weight: 500;
     color: var(--text-muted);
+    width: fit-content;
 }
 
 .video-desc {
@@ -454,10 +436,100 @@ body {
     border-color: var(--border-light);
 }
 
+/* Estrutura do Carrossel de Fotos */
 .carousel-list {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.carousel-top-bar {
+    width: 100%;
+}
+
+.btn-download-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--accent-beige);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-download-all:hover {
+    background: var(--accent-beige-hover);
+    transform: translateY(-1px);
+}
+
+.btn-download-all i {
+    font-size: 1.15rem;
+}
+
+.carousel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.carousel-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.carousel-card:hover {
+    border-color: var(--border-light);
+    background: var(--bg-hover);
+}
+
+.carousel-preview {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #000;
+}
+
+.carousel-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.carousel-card:hover .carousel-preview img {
+    transform: scale(1.03);
+}
+
+.carousel-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: var(--text-main);
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .carousel-btn {
@@ -465,51 +537,34 @@ body {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    background: var(--bg-elevated);
+    background: var(--bg-surface);
     border: 1px solid var(--border);
     color: var(--text-main);
-    padding: 10px 14px;
-    border-radius: var(--radius-md);
-    font-size: 0.82rem;
-    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    width: 100%;
+}
+
+.carousel-btn i {
+    font-size: 0.95rem;
+    color: var(--accent-beige);
 }
 
 .carousel-btn:hover {
-    background: var(--bg-hover);
-    border-color: var(--border-light);
+    background: var(--accent-beige);
+    color: var(--accent-contrast);
+    border-color: var(--accent-beige);
 }
 
-/* ==========================================================
-   Publicidade Topo
-   ========================================================== */
-.ad-slot {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    margin: 12px 0 4px;
+.carousel-btn:hover i {
+    color: var(--accent-contrast);
 }
 
-.ad-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-dim);
-}
-
-.ad-content {
-    max-width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-/* ==========================================================
-   Cards Informativos & SEO
-   ========================================================== */
+/* Cards informativos de SEO */
 .info-grid {
     display: flex;
     flex-direction: column;
@@ -544,9 +599,7 @@ body {
     color: var(--text-muted);
 }
 
-/* ==========================================================
-   FAQ Section
-   ========================================================== */
+/* Seção de FAQ */
 .faq-container {
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -611,9 +664,7 @@ body {
     line-height: 1.45;
 }
 
-/* ==========================================================
-   Footer
-   ========================================================== */
+/* Rodapé */
 .footer-bar {
     padding-top: 16px;
     border-top: 1px solid var(--border);
@@ -622,283 +673,7 @@ body {
     color: var(--text-dim);
 }
 
-/* ==========================================================
-   Sticky Bottom Bar Retrátil
-   ========================================================== */
-.sticky-ad-bar {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 780px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-bottom: none;
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.75);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.sticky-ad-bar.collapsed .sticky-ad-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding-bottom: 0;
-    padding-top: 0;
-}
-
-.sticky-ad-bar.collapsed #toggleCaretIcon {
-    transform: rotate(180deg);
-}
-
-.sticky-ad-toggle {
-    width: 100%;
-    background: transparent;
-    border: none;
-    padding: 6px 14px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-}
-
-.sticky-ad-pill {
-    width: 32px;
-    height: 3px;
-    background: var(--border-light);
-    border-radius: var(--radius-full);
-}
-
-.sticky-ad-header-content {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.sticky-ad-title {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--accent-beige);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-#toggleCaretIcon {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    transition: transform var(--transition);
-}
-
-.sticky-ad-content {
-    width: 100%;
-    max-height: 340px;
-    opacity: 1;
-    overflow: hidden !important;
-    padding: 6px 10px 14px;
-    transition:
-        max-height 0.25s ease,
-        opacity 0.2s ease,
-        padding 0.25s ease;
-}
-
-.ad-native-wrapper {
-    width: 100%;
-    display: block;
-    overflow: hidden !important;
-}
-
-/* ==========================================================
-   CSS Definitivo 5.0: Grid Inteligente + Resgate de Imagens
-   ========================================================== */
-
-/* 1. Container base limpo */
-#container-4f3da8b19f62d02730e1d759fd148d83 {
-    width: 100% !important;
-    display: block !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
-}
-
-/* Evitar que elementos injetados quebrem larguras */
-#container-4f3da8b19f62d02730e1d759fd148d83 * {
-    box-sizing: border-box !important;
-}
-
-/* 2. Forçar Grid APENAS no primeiro nível de div do script */
-#container-4f3da8b19f62d02730e1d759fd148d83 > div {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px 10px !important;
-    width: 100% !important;
-}
-
-/* Limpar lixo visual do carrossel nativo */
-#container-4f3da8b19f62d02730e1d759fd148d83 [class*='nav'],
-#container-4f3da8b19f62d02730e1d759fd148d83 [class*='arrow'],
-#container-4f3da8b19f62d02730e1d759fd148d83 [class*='dot'],
-#container-4f3da8b19f62d02730e1d759fd148d83 [class*='pagination'] {
-    display: none !important;
-}
-
-/* 3. Ajustar os Links (Containers dos Anúncios) */
-#container-4f3da8b19f62d02730e1d759fd148d83 a {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important; /* CRUCIAL: Impede que o texto expanda o container e quebre o ellipsis */
-    text-decoration: none !important;
-    gap: 8px !important;
-    overflow: hidden !important;
-}
-
-/* 4. RESGATAR A IMAGEM: Proteger o container da capa */
-#container-4f3da8b19f62d02730e1d759fd148d83 a > div:first-child,
-#container-4f3da8b19f62d02730e1d759fd148d83 a picture,
-#container-4f3da8b19f62d02730e1d759fd148d83 a figure {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
-
-#container-4f3da8b19f62d02730e1d759fd148d83 img,
-#container-4f3da8b19f62d02730e1d759fd148d83 a img {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    height: 75px !important;
-    min-height: 75px !important;
-    max-height: 75px !important;
-    object-fit: cover !important;
-    border-radius: var(--radius-md) !important;
-    margin: 0 auto !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* 5. TEXTO COM RETICÊNCIAS (Força Bruta Absoluta e Correção de Flex) */
-/* Agora cobrindo todo o escopo de tags que as redes de anúncios injetam para burlar o CSS */
-#container-4f3da8b19f62d02730e1d759fd148d83 a div:not(:first-child),
-#container-4f3da8b19f62d02730e1d759fd148d83 a div:not(:first-child) *,
-#container-4f3da8b19f62d02730e1d759fd148d83 a span,
-#container-4f3da8b19f62d02730e1d759fd148d83 a p,
-#container-4f3da8b19f62d02730e1d759fd148d83 a b,
-#container-4f3da8b19f62d02730e1d759fd148d83 a strong,
-#container-4f3da8b19f62d02730e1d759fd148d83 a h1,
-#container-4f3da8b19f62d02730e1d759fd148d83 a h2,
-#container-4f3da8b19f62d02730e1d759fd148d83 a h3,
-#container-4f3da8b19f62d02730e1d759fd148d83 a h4 {
-    font-size: 11px !important;
-    line-height: 1.3 !important;
-    font-weight: 500 !important;
-    color: var(--text-main) !important;
-    text-align: center !important;
-    margin: 0 !important;
-    padding: 0 1px !important;
-
-    /* Força bloco, mata quebras injetadas e garante os pontos (...) */
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important; /* Corrige o bug do text-overflow dentro de Flex */
-    white-space: nowrap !important; /* Proíbe o wrap que estava ocorrendo na print */
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-}
-
-/* ==========================================================
-   Modal Intersticial (1 Anúncio) & Toast
-   ========================================================== */
-.ad-modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    padding: 16px;
-    transition: var(--transition);
-}
-
-.ad-modal-backdrop.hidden-modal {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.ad-modal-dialog {
-    width: 320px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-    padding: 10px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
-    animation: modalPop 0.2s ease-out;
-}
-
-.ad-modal-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.ad-modal-status {
-    font-size: 0.74rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.ad-modal-status b {
-    color: var(--accent-beige);
-}
-
-.ad-modal-x {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.ad-modal-x:hover {
-    color: var(--text-main);
-    background: var(--bg-hover);
-}
-
-.ad-modal-frame {
-    width: 300px;
-    height: 250px;
-    margin: 0 auto;
-    background: #000;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Toast de notificação */
 .toast-box {
     position: fixed;
     bottom: 24px;
@@ -938,12 +713,10 @@ body {
     display: none !important;
 }
 
-/* ==========================================================
-   Desktop e Telas Médias / Maiores (min-width: 640px)
-   ========================================================== */
+/* Responsividade Desktop */
 @media (min-width: 640px) {
     body {
-        padding: 36px 20px 110px;
+        padding: 36px 20px 40px;
     }
 
     .hero-block h1 {
@@ -962,55 +735,44 @@ body {
         min-width: 130px;
     }
 
-    .result-box {
+    /* Layout do resultado para vídeos normais */
+    .result-box:not(.is-carousel) {
         flex-direction: row;
         align-items: center;
         padding: 18px;
     }
 
-    .result-cover-box {
+    .result-box:not(.is-carousel) .result-cover-box {
         width: 150px;
         aspect-ratio: 9 / 12;
         max-height: 200px;
         flex-shrink: 0;
     }
 
-    .result-info {
-        flex: 1;
-    }
-
-    .download-actions {
+    .result-box:not(.is-carousel) .download-actions {
         flex-direction: row;
     }
 
-    .dl-button {
+    .result-box:not(.is-carousel) .dl-button {
         flex: 1;
     }
 
-    .carousel-list {
-        grid-template-columns: repeat(2, 1fr);
+    /* Layout do resultado quando for carrossel */
+    .result-box.is-carousel {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+    }
+
+    .carousel-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
     }
 
     .info-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
-    }
-
-    /* Desktop Media Query para o Anúncio: Transforma Grid 2x2 em 4x1 */
-    #container-4f3da8b19f62d02730e1d759fd148d83 > div {
-        grid-template-columns: repeat(4, 1fr) !important;
-    }
-
-    #container-4f3da8b19f62d02730e1d759fd148d83 img,
-    #container-4f3da8b19f62d02730e1d759fd148d83 a img {
-        height: 95px !important;
-        min-height: 95px !important;
-        max-height: 95px !important;
-    }
-
-    .sticky-ad-content {
-        max-height: 190px;
     }
 }
 
@@ -1028,16 +790,5 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes modalPop {
-    from {
-        transform: scale(0.96);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
     }
 }
