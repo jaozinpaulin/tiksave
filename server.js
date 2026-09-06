@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const downloadHandler = require('./api/download');
+const fileDownloadHandler = require('./api/file-download');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 app.post('/api/download', downloadHandler);
+app.get('/api/file-download', fileDownloadHandler);
 
 app.listen(PORT, () => {
     console.log(`TikDownload rodando em: http://localhost:${PORT}`);

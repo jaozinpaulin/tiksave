@@ -30,7 +30,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="canonical" href="https://tikdownload.online/">
 
-    <!-- Fontes & Ícones Otimizados (Performance) -->
+    <!-- Fontes & Ícones Otimizados -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
@@ -187,8 +187,9 @@
                         <i class="ph ph-user"></i>
                         <span id="authorName">@tiktok</span>
                     </div>
-                    <h2 id="videoTitle" class="video-desc">Título do Vídeo</h2>
+                    <h2 id="videoTitle" class="video-desc">Título da Publicação</h2>
 
+                    <!-- Ações para Vídeo Normal ou Foto Única -->
                     <div class="download-actions">
                         <button id="btnMp4" class="dl-button primary">
                             <i class="ph ph-download-simple"></i>
@@ -207,7 +208,7 @@
                         </button>
                     </div>
 
-                    <!-- Lista de Fotos se for Carrossel -->
+                    <!-- Lista Interativa se for Carrossel -->
                     <div id="carouselItems" class="carousel-list"></div>
                 </div>
             </section>
@@ -287,6 +288,9 @@
             </p>
         </footer>
     </div>
+
+    <!-- Canvas Oculto para renderização do vídeo -->
+    <canvas id="renderCanvas" width="540" height="960" style="display:none;"></canvas>
 
     <!-- Toast Notification -->
     <div id="toastNotification" class="toast-box">

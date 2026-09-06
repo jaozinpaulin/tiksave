@@ -14,6 +14,7 @@
     --accent-beige: #e8ded1;
     --accent-beige-hover: #f5eee4;
     --accent-contrast: #121315;
+    --accent-blue: #38bdf8;
 
     --radius-sm: 6px;
     --radius-md: 10px;
@@ -290,7 +291,7 @@ body {
     transform: translateY(-1px);
 }
 
-/* Status e carregamento */
+/* Status e Carregamento */
 .status-box {
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -436,7 +437,9 @@ body {
     border-color: var(--border-light);
 }
 
-/* Estrutura do Carrossel de Fotos */
+/* ====================================================
+   Estrutura do Carrossel com Mesclagem de Áudio
+   ==================================================== */
 .carousel-list {
     display: flex;
     flex-direction: column;
@@ -445,6 +448,16 @@ body {
 }
 
 .carousel-top-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.carousel-actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     width: 100%;
 }
 
@@ -453,7 +466,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    width: 100%;
+    flex: 1;
     padding: 12px 16px;
     background: var(--accent-beige);
     color: var(--accent-contrast);
@@ -474,6 +487,125 @@ body {
     font-size: 1.15rem;
 }
 
+.btn-download-music {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    padding: 12px 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-download-music:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-light);
+    color: var(--accent-beige);
+}
+
+.btn-download-music i {
+    font-size: 1.15rem;
+    color: var(--accent-beige);
+}
+
+/* Botão especial de Gerar Vídeo Mesclado */
+.btn-create-video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1.2;
+    padding: 12px 16px;
+    background: #1f2228;
+    border: 1px solid rgba(232, 222, 209, 0.4);
+    color: var(--accent-beige);
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-create-video:hover {
+    background: #282b34;
+    border-color: var(--accent-beige);
+}
+
+.btn-create-video i {
+    font-size: 1.15rem;
+    color: #ffd166;
+}
+
+.btn-create-video:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Barra de progresso de renderização do vídeo */
+.render-progress-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.render-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.render-progress-track {
+    width: 100%;
+    height: 6px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.render-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #22c55e;
+    transition: width 0.1s linear;
+}
+
+/* Header de seleção rápida no carrossel */
+.carousel-select-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    padding: 2px 2px;
+}
+
+.btn-text-action {
+    background: transparent;
+    border: none;
+    color: var(--accent-blue);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-text-action:hover {
+    text-decoration: underline;
+}
+
+/* Grid com Miniaturas e Checkboxes */
 .carousel-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -492,6 +624,10 @@ body {
     transition: var(--transition);
 }
 
+.carousel-card.is-selected {
+    border-color: var(--accent-beige);
+}
+
 .carousel-card:hover {
     border-color: var(--border-light);
     background: var(--bg-hover);
@@ -504,6 +640,7 @@ body {
     border-radius: var(--radius-sm);
     overflow: hidden;
     background: #000;
+    cursor: pointer;
 }
 
 .carousel-preview img {
@@ -511,11 +648,29 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.2s ease;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.carousel-card:not(.is-selected) .carousel-preview img {
+    opacity: 0.35;
+    filter: grayscale(60%);
 }
 
 .carousel-card:hover .carousel-preview img {
-    transform: scale(1.03);
+    transform: scale(1.02);
+}
+
+.photo-check {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-beige);
+    cursor: pointer;
+    z-index: 2;
 }
 
 .carousel-badge {
@@ -664,13 +819,34 @@ body {
     line-height: 1.45;
 }
 
-/* Rodapé */
+/* Rodapé com Link do GitHub */
 .footer-bar {
     padding-top: 16px;
     border-top: 1px solid var(--border);
     text-align: center;
     font-size: 0.78rem;
     color: var(--text-dim);
+}
+
+.footer-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent-beige);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+    transition: var(--transition);
+    vertical-align: middle;
+}
+
+.footer-github i {
+    font-size: 1.05rem;
+}
+
+.footer-github:hover {
+    color: var(--accent-beige-hover);
+    text-decoration: underline;
 }
 
 /* Toast de notificação */
@@ -735,7 +911,6 @@ body {
         min-width: 130px;
     }
 
-    /* Layout do resultado para vídeos normais */
     .result-box:not(.is-carousel) {
         flex-direction: row;
         align-items: center;
@@ -757,11 +932,14 @@ body {
         flex: 1;
     }
 
-    /* Layout do resultado quando for carrossel */
     .result-box.is-carousel {
         flex-direction: column;
         align-items: stretch;
         padding: 20px;
+    }
+
+    .carousel-actions-row {
+        flex-direction: row;
     }
 
     .carousel-grid {
@@ -791,68 +969,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Linha superior de ações do carrossel (Baixar Todas + Baixar Música) */
-.carousel-actions-row {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-}
-
-@media (min-width: 640px) {
-    .carousel-actions-row {
-        flex-direction: row;
-    }
-}
-
-.btn-download-music {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 12px 16px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-main);
-    border-radius: var(--radius-md);
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-download-music:hover {
-    background: var(--bg-hover);
-    border-color: var(--border-light);
-    color: var(--accent-beige);
-}
-
-.btn-download-music i {
-    font-size: 1.15rem;
-    color: var(--accent-beige);
-}
-
-/* Link estilizado do GitHub no Rodapé */
-.footer-github {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--accent-beige);
-    text-decoration: none;
-    font-weight: 600;
-    margin-left: 4px;
-    transition: var(--transition);
-    vertical-align: middle;
-}
-
-.footer-github i {
-    font-size: 1.05rem;
-}
-
-.footer-github:hover {
-    color: var(--accent-beige-hover);
-    text-decoration: underline;
 }

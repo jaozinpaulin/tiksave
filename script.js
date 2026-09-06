@@ -13,11 +13,16 @@ const translations = {
         error_desc: "Não foi possível processar este link. Verifique se o vídeo é público.",
         btn_mp4_title: "Vídeo Sem Marca d'Água",
         btn_mp4_desc: "Formato MP4 em Alta Resolução",
+        btn_image_title: "Baixar Foto",
+        btn_image_desc: "Imagem em Alta Resolução (JPG)",
         btn_mp3_title: "Áudio MP3",
         btn_mp3_desc: "Faixa de áudio original",
         btn_slide: "Baixar Foto",
         btn_download_all: "Baixar Todas as Fotos",
-        btn_carousel_audio: "Baixar Música de Fundo (MP3)",
+        btn_carousel_audio: "Música de Fundo (MP3)",
+        btn_create_video: "Criar Vídeo com Música (MP4)",
+        select_all: "Marcar Todas",
+        deselect_all: "Desmarcar",
         card1_badge: "Vídeos HD",
         card1_title: "Qualidade Original",
         card1_desc: "Baixe vídeos sem marca d'água no formato MP4 original sem nenhuma compressão adicional.",
@@ -35,6 +40,8 @@ const translations = {
         faq_q3: "Preciso pagar ou instalar algum app?",
         faq_a3: "Não. O TikDownload funciona de forma 100% gratuita diretamente no navegador do celular ou PC.",
         toast_started: "Download iniciado com sucesso!",
+        toast_rendering: "Criando vídeo com as fotos e áudio...",
+        toast_ready: "Vídeo gerado com sucesso!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Ferramenta Gratuita"
     },
     en: {
@@ -50,11 +57,16 @@ const translations = {
         error_desc: "Could not process this link. Please ensure the video is public.",
         btn_mp4_title: "Video Without Watermark",
         btn_mp4_desc: "High Resolution MP4 format",
+        btn_image_title: "Download Photo",
+        btn_image_desc: "High Resolution Image (JPG)",
         btn_mp3_title: "MP3 Audio",
         btn_mp3_desc: "Original audio track",
         btn_slide: "Download Photo",
         btn_download_all: "Download All Photos",
-        btn_carousel_audio: "Download Background Music (MP3)",
+        btn_carousel_audio: "Background Music (MP3)",
+        btn_create_video: "Create Video with Music (MP4)",
+        select_all: "Select All",
+        deselect_all: "Deselect",
         card1_badge: "HD Videos",
         card1_title: "Original Quality",
         card1_desc: "Download TikTok videos without watermark in original MP4 format without compression.",
@@ -72,6 +84,8 @@ const translations = {
         faq_q3: "Do I need to pay or install an app?",
         faq_a3: "No. TikDownload works 100% free directly in your browser on mobile and desktop.",
         toast_started: "Download started successfully!",
+        toast_rendering: "Creating video with photos and audio...",
+        toast_ready: "Video generated successfully!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Free Online Tool"
     },
     es: {
@@ -87,11 +101,16 @@ const translations = {
         error_desc: "No se pudo procesar este enlace. Verifica que el video sea público.",
         btn_mp4_title: "Video Sin Marca de Agua",
         btn_mp4_desc: "Formato MP4 en Alta Definición",
+        btn_image_title: "Descargar Foto",
+        btn_image_desc: "Imagen en Alta Definición (JPG)",
         btn_mp3_title: "Audio MP3",
         btn_mp3_desc: "Pista de audio original",
         btn_slide: "Descargar Foto",
         btn_download_all: "Descargar Todas las Fotos",
-        btn_carousel_audio: "Descargar Música de Fondo (MP3)",
+        btn_carousel_audio: "Música de Fondo (MP3)",
+        btn_create_video: "Crear Video con Música (MP4)",
+        select_all: "Marcar Todas",
+        deselect_all: "Desmarcar",
         card1_badge: "Videos HD",
         card1_title: "Calidad Original",
         card1_desc: "Descarga videos sin marca de agua en formato MP4 original sin compresión adicional.",
@@ -109,344 +128,12 @@ const translations = {
         faq_q3: "¿Necesito pagar o instalar alguna app?",
         faq_a3: "No. TikDownload funciona 100% gratis en cualquier navegador móvil o PC.",
         toast_started: "¡Descarga iniciada con éxito!",
+        toast_rendering: "Creando video con fotos y audio...",
+        toast_ready: "¡Video creado con éxito!",
         footer_rights: "© 2026 <strong>TikDownload</strong> · Herramienta Gratuita"
-    },
-    fr: {
-        name: "Français",
-        hero_title: "Télécharger Vidéos TikTok",
-        hero_subtitle: "Sans filigrane, en haute qualité et directement sur votre appareil.",
-        input_placeholder: "Collez le lien TikTok ici...",
-        btn_paste: "Coller",
-        btn_download: "Télécharger",
-        loading_title: "Traitement en cours",
-        loading_desc: "Recherche du lien sans filigrane...",
-        error_title: "Échec de l'extraction",
-        error_desc: "Impossible de traiter ce lien. Vérifiez que la vidéo est publique.",
-        btn_mp4_title: "Vidéo Sans Filigrane",
-        btn_mp4_desc: "Format MP4 Haute Définition",
-        btn_mp3_title: "Audio MP3",
-        btn_mp3_desc: "Piste audio originale",
-        btn_slide: "Télécharger Photo",
-        btn_download_all: "Télécharger Toutes les Photos",
-        btn_carousel_audio: "Télécharger Musique de Fond (MP3)",
-        card1_badge: "Vidéos HD",
-        card1_title: "Qualité Originale",
-        card1_desc: "Téléchargez des vidéos sans filigrane au format MP4 sans compression.",
-        card2_badge: "Photos",
-        card2_title: "Carrousel Complet",
-        card2_desc: "Enregistrez toutes les images des carrousels en haute résolution.",
-        card3_badge: "Audio",
-        card3_title: "Convertisseur MP3",
-        card3_desc: "Extrayez la piste audio de n'importe quelle vidéo instantanément.",
-        faq_heading: "Foire Aux Questions",
-        faq_q1: "Comment télécharger des vidéos TikTok sans filigrane ?",
-        faq_a1: "Copiez le lien de la vidéo sur TikTok, collez-le ci-dessus et cliquez sur 'Télécharger'.",
-        faq_q2: "Puis-je télécharger les photos d'un carrousel en HD ?",
-        faq_a2: "Oui ! TikDownload permet de télécharger chaque photo du diaporama individuellement en HD.",
-        faq_q3: "Dois-je payer ou installer une application ?",
-        faq_a3: "Non. TikDownload est 100% gratuit et s'utilise directement dans le navigateur.",
-        toast_started: "Téléchargement lancé !",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Outil Gratuit"
-    },
-    de: {
-        name: "Deutsch",
-        hero_title: "TikTok Videos Herunterladen",
-        hero_subtitle: "Ohne Wasserzeichen, in hoher Qualität direkt auf Ihr Gerät.",
-        input_placeholder: "TikTok-Link hier einfügen...",
-        btn_paste: "Einfügen",
-        btn_download: "Herunterladen",
-        loading_title: "Wird verarbeitet",
-        loading_desc: "Direktlink ohne Wasserzeichen wird gesucht...",
-        error_title: "Fehler beim Extrahieren",
-        error_desc: "Link konnte nicht verarbeitet werden. Bitte prüfen Sie, ob das Video öffentlich ist.",
-        btn_mp4_title: "Video Ohne Wasserzeichen",
-        btn_mp4_desc: "MP4-Format in HD",
-        btn_mp3_title: "MP3 Audio",
-        btn_mp3_desc: "Originalton herunterladen",
-        btn_slide: "Foto Speichern",
-        btn_download_all: "Alle Fotos Herunterladen",
-        btn_carousel_audio: "Hintergrundmusik Herunterladen (MP3)",
-        card1_badge: "HD-Videos",
-        card1_title: "Originalqualität",
-        card1_desc: "Laden Sie Videos ohne Wasserzeichen im originalen MP4-Format herunter.",
-        card2_badge: "Fotos",
-        card2_title: "Komplettes Karussell",
-        card2_desc: "Speichern Sie alle Bilder von mehrteiligen Fotoposts in HD.",
-        card3_badge: "Audio",
-        card3_title: "MP3-Konverter",
-        card3_desc: "Extrahieren Sie den Originalton jedes Videos sofort im MP3-Format.",
-        faq_heading: "Häufig gestellte Fragen",
-        faq_q1: "Wie lade ich TikTok-Videos ohne Wasserzeichen herunter?",
-        faq_a1: "Link in der TikTok-App kopieren, oben einfügen und auf 'Herunterladen' klicken.",
-        faq_q2: "Kann ich Karussell-Fotos in HD speichern?",
-        faq_a2: "Ja! TikDownload erkennt Fotobeiträge und ermöglicht den Download jedes einzelnen Bildes.",
-        faq_q3: "Muss ich etwas bezahlen oder installieren?",
-        faq_a3: "Nein. TikDownload ist 100% kostenlos und läuft direkt im Browser.",
-        toast_started: "Download erfolgreich gestartet!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Kostenloses Tool"
-    },
-    it: {
-        name: "Italiano",
-        hero_title: "Scarica Video da TikTok",
-        hero_subtitle: "Senza filigrana, in alta qualidade e direttamente sul tuo dispositivo.",
-        input_placeholder: "Incolla qui il link di TikTok...",
-        btn_paste: "Incolla",
-        btn_download: "Scarica",
-        loading_title: "Elaborazione in corso",
-        loading_desc: "Ricerca del link diretto senza filigrana...",
-        error_title: "Estrazione fallita",
-        error_desc: "Impossibile elaborare il link. Assicurati che il video sia pubblico.",
-        btn_mp4_title: "Video Senza Filigrana",
-        btn_mp4_desc: "Formato MP4 in Alta Risoluzione",
-        btn_mp3_title: "Audio MP3",
-        btn_mp3_desc: "Traccia audio originale",
-        btn_slide: "Scarica Foto",
-        btn_download_all: "Scarica Tutte le Foto",
-        btn_carousel_audio: "Scarica Musica di Sottofondo (MP3)",
-        card1_badge: "Video HD",
-        card1_title: "Qualità Originale",
-        card1_desc: "Scarica video senza watermark in formato MP4 originale senza perdita di qualità.",
-        card2_badge: "Foto",
-        card2_title: "Carosello Completo",
-        card2_desc: "Estrai e salva tutte le immagini dei post carosello in alta risoluzione.",
-        card3_badge: "Audio",
-        card3_title: "Convertitore MP3",
-        card3_desc: "Estrai e salva l'audio virale da qualsiasi video immediatamente in MP3.",
-        faq_heading: "Domande Frequenti",
-        faq_q1: "Come scaricare video TikTok senza filigrana?",
-        faq_a1: "Copia il link da TikTok, incollalo sopra e clicca su 'Scarica'.",
-        faq_q2: "È possibile scaricare le foto carosello in HD?",
-        faq_a2: "Sì! TikDownload mostra pulsanti individuali per salvare ogni singola foto in HD.",
-        faq_q3: "Devo pagare o installare un'app?",
-        faq_a3: "No. TikDownload funziona al 100% online gratis nel browser.",
-        toast_started: "Download avviato con successo!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Strumento Gratuito"
-    },
-    id: {
-        name: "Bahasa Indonesia",
-        hero_title: "Download Video TikTok",
-        hero_subtitle: "Tanpa watermark, kualitas tinggi, langsung ke perangkat Anda.",
-        input_placeholder: "Tempel tautan TikTok di sini...",
-        btn_paste: "Tempel",
-        btn_download: "Download",
-        loading_title: "Memproses postingan",
-        loading_desc: "Mengambil tautan langsung tanpa watermark...",
-        error_title: "Gagal Mengekstrak",
-        error_desc: "Tidak dapat memproses tautan ini. Pastikan video bersifat publik.",
-        btn_mp4_title: "Video Tanpa Watermark",
-        btn_mp4_desc: "Format MP4 Resolusi Tinggi",
-        btn_mp3_title: "Audio MP3",
-        btn_mp3_desc: "Musik audio asli",
-        btn_slide: "Download Foto",
-        btn_download_all: "Download Semua Foto",
-        btn_carousel_audio: "Download Musik Latar (MP3)",
-        card1_badge: "Video HD",
-        card1_title: "Kualitas Asli",
-        card1_desc: "Download video tanpa watermark dalam format MP4 asli tanpa kompresi.",
-        card2_badge: "Foto",
-        card2_title: "Slide Carousel",
-        card2_desc: "Ekstrak dan simpan semua gambar slide foto dalam kualitas HD.",
-        card3_badge: "Audio",
-        card3_title: "Konverter MP3",
-        card3_desc: "Ekstrak musik latar belakang dari video langsung ke format MP3.",
-        faq_heading: "Pertanyaan Umum",
-        faq_q1: "Bagaimana cara download video TikTok tanpa watermark?",
-        faq_a1: "Salin tautan video di aplikasi TikTok, tempel di atas dan klik 'Download'.",
-        faq_q2: "Bisakah download foto carousel dalam HD?",
-        faq_a2: "Ya! TikDownload menyediakan tombol untuk mengunduh setiap slide foto dalam HD.",
-        faq_q3: "Apakah perlu membayar atau instal aplikasi?",
-        faq_a3: "Tidak. TikDownload 100% gratis dan berjalan langsung di browser.",
-        toast_started: "Download berhasil dimulai!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Alat Gratis"
-    },
-    tr: {
-        name: "Türkçe",
-        hero_title: "TikTok Video İndir",
-        hero_subtitle: "Filigransız, yüksek kaliteli ve doğrudan cihazınıza.",
-        input_placeholder: "TikTok bağlantısını buraya yapıştırın...",
-        btn_paste: "Yapıştır",
-        btn_download: "İndir",
-        loading_title: "İşleniyor",
-        loading_desc: "Filigransız doğrudan bağlantı alınıyor...",
-        error_title: "Çıkarma Başarısız",
-        error_desc: "Bu bağlantı işlenemedi. Lütfen videonun herkese açık olduğundan emin olun.",
-        btn_mp4_title: "Filigransız Video",
-        btn_mp4_desc: "Yüksek Çözünürlüklü MP4",
-        btn_mp3_title: "MP3 Ses",
-        btn_mp3_desc: "Orijinal ses parçası",
-        btn_slide: "Fotoğraf İndir",
-        btn_download_all: "Tüm Fotoğrafları İndir",
-        btn_carousel_audio: "Arka Plan Müziğini İndir (MP3)",
-        card1_badge: "HD Videolar",
-        card1_title: "Orijinal Kalite",
-        card1_desc: "Videoları filigransız orijinal MP4 formatında kayıpsız indirin.",
-        card2_badge: "Fotoğraflar",
-        card2_title: "Kaydırmalı Gönderi",
-        card2_desc: "Çoklu fotoğraf gönderilerindeki tüm HD resimleri tek tek indirin.",
-        card3_badge: "Ses",
-        card3_title: "MP3 Dönüştürücü",
-        card3_desc: "Herhangi bir videonun ses parçasını anında MP3 olarak ayıklayın.",
-        faq_heading: "Sıkça Sorulan Sorular",
-        faq_q1: "TikTok videosu filigransız nasıl indirilir?",
-        faq_a1: "TikTok uygulamasında bağlantıyı kopyalayın, yukarıya yapıştırın ve 'İndir'e tıklayın.",
-        faq_q2: "Kaydırmalı fotoğraflar HD olarak indirilebilir mi?",
-        faq_a2: "Evet! TikDownload slayt fotoğraflarını algılar ve her birini tek tek kaydetmenizi sağlar.",
-        faq_q3: "Ücret ödemem veya uygulama yüklemem gerekir mi?",
-        faq_a3: "Hayır. TikDownload tarayıcınızda %100 ücretsiz çalışır.",
-        toast_started: "İndirme başarıyla başlatıldı!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Ücretsiz Araç"
-    },
-    ru: {
-        name: "Русский",
-        hero_title: "Скачать видео с TikTok",
-        hero_subtitle: "Без водяного знака, в высоком качестве прямо на устройство.",
-        input_placeholder: "Вставьте ссылку на TikTok...",
-        btn_paste: "Вставить",
-        btn_download: "Скачать",
-        loading_title: "Обработка публикации",
-        loading_desc: "Поиск прямой ссылки без водяного знака...",
-        error_title: "Ошибка извлечения",
-        error_desc: "Не удалось обработать ссылку. Убедитесь, что видео общедоступно.",
-        btn_mp4_title: "Видео Без Водяного Знака",
-        btn_mp4_desc: "Формат MP4 в высоком разрешении",
-        btn_mp3_title: "Аудио MP3",
-        btn_mp3_desc: "Оригинальная звуковая дорожка",
-        btn_slide: "Скачать фото",
-        btn_download_all: "Скачать все фото",
-        btn_carousel_audio: "Скачать фоновую музыку (MP3)",
-        card1_badge: "HD Видео",
-        card1_title: "Оригинальное качество",
-        card1_desc: "Скачивайте видео без логотипа в оригинальном формате MP4.",
-        card2_badge: "Фото",
-        card2_title: "Карусель фото",
-        card2_desc: "Скачивайте все фото из многостраничных постов в HD качестве.",
-        card3_badge: "Аудио",
-        card3_title: "Конвертер в MP3",
-        card3_desc: "Извлекайте фоновую музыку из любого видео прямо в MP3.",
-        faq_heading: "Частые вопросы",
-        faq_q1: "Как скачать видео с TikTok без водяного знака?",
-        faq_a1: "Скопируйте ссылку в приложении TikTok, вставьте её выше и нажмите 'Скачать'.",
-        faq_q2: "Можно ли скачать фото из карусели в HD?",
-        faq_a2: "Да! TikDownload позволяет скачивать каждую фотографию слайда отдельно в HD.",
-        faq_q3: "Нужно ли платить или устанавливать программы?",
-        faq_a3: "Нет. Сервис работает бесплатно прямо в браузере.",
-        toast_started: "Загрузка началась!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · Бесплатный сервис"
-    },
-    ar: {
-        name: "العربية",
-        hero_title: "تحميل مقاطع تيك توك",
-        hero_subtitle: "بدون علامة مائية وبجودة عالية مباشرة إلى جهازك.",
-        input_placeholder: "الصق رابط تيك توك هنا...",
-        btn_paste: "لصق",
-        btn_download: "تحميل",
-        loading_title: "جارٍ المعالجة",
-        loading_desc: "البحث عن رابط مباشر بدون علامة مائية...",
-        error_title: "فشل الاستخراج",
-        error_desc: "تعذر معالجة هذا الرابط. يرجى التأكد من أن الفيديو عام.",
-        btn_mp4_title: "فيديو بدون علامة مائية",
-        btn_mp4_desc: "صيغة MP4 بجودة عالية",
-        btn_mp3_title: "صوت MP3",
-        btn_mp3_desc: "المقطع الصوتي الأصلي",
-        btn_slide: "تحميل الصورة",
-        btn_download_all: "تحميل جميع الصور",
-        btn_carousel_audio: "تحميل الموسيقى الخلفية (MP3)",
-        card1_badge: "فيديو HD",
-        card1_title: "جودة أصلية",
-        card1_desc: "قم بتنزيل مقاطع الفيديو بدون علامة مائية وبدون ضغط.",
-        card2_badge: "الصور",
-        card2_title: "ألبومات الصور",
-        card2_desc: "احفظ جميع صور المنشورات المتعددة بدقة عالية.",
-        card3_badge: "الصوت",
-        card3_title: "محول MP3",
-        card3_desc: "استخرج المسار الصوتي لأي فيديو مباشرة بصيغة MP3.",
-        faq_heading: "الأسئلة الشائعة",
-        faq_q1: "كيف أقوم بتحميل فيديو تيك توك بدون علامة مائية؟",
-        faq_a1: "انسخ رابط الفيديو من تطبيق TikTok، والصقه في المربع أعلاه واضغط على 'تحميل'.",
-        faq_q2: "هل يمكن تحميل صور الألبوم بجودة عالية؟",
-        faq_a2: "نعم! يتيح لك الموقع حفظ كل صورة من الألبوم بشكل منفصل بدقة أصلية.",
-        faq_q3: "هل يجب علي دفع رسوم أو تثبيت تطبيق؟",
-        faq_a3: "لا. الموقع مجاني تماماً ويعمل مباشرة عبر المتصفح.",
-        toast_started: "بدأ التحميل بنجاح!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · أداة مجانية"
-    },
-    hi: {
-        name: "हिन्दी",
-        hero_title: "टिकटॉक वीडियो डाउनलोड करें",
-        hero_subtitle: "बिना वॉटरमार्क, हाई क्वालिटी में सीधे अपने डिवाइस पर।",
-        input_placeholder: "टिकटॉक लिंक यहाँ पेस्ट करें...",
-        btn_paste: "पेस्ट",
-        btn_download: "डाउनलोड",
-        loading_title: "प्रोसेस हो रहा है",
-        loading_desc: "बिना वॉटरमार्क सीधा लिंक खोजा जा रहा है...",
-        error_title: "डाउनलोड विफल",
-        error_desc: "लिंक प्रोसेस नहीं हो सका। कृपया जांचें कि वीडियो सार्वजनिक है।",
-        btn_mp4_title: "बिना वॉटरमार्क वीडियो",
-        btn_mp4_desc: "HD MP4 फॉर्मेट",
-        btn_mp3_title: "MP3 ऑडियो",
-        btn_mp3_desc: "ओरिजिनल ऑडियो ट्रैक",
-        btn_slide: "फोटो डाउनलोड करें",
-        btn_download_all: "सभी तस्वीरें डाउनलोड करें",
-        btn_carousel_audio: "बैकग्राउंड म्यूजिक डाउनलोड करें (MP3)",
-        card1_badge: "HD वीडियो",
-        card1_title: "मूल गुणवत्ता",
-        card1_desc: "बिना किसी कम्प्रेशन के ओरिजिनल MP4 फॉर्मेट में वीडियो डाउनलोड करें।",
-        card2_badge: "तस्वीरें",
-        card2_title: "फोटो कैरोजल",
-        card2_desc: "मल्टी-फोटो पोस्ट की सभी तस्वीरों को HD में अलग-अलग डाउनलोड करें।",
-        card3_badge: "ऑडियो",
-        card3_title: "MP3 कनवर्टर",
-        card3_desc: "किसी भी वीडियो के साउंडट्रैक को सीधे MP3 में बदलें।",
-        faq_heading: "अक्सर पूछे जाने वाले प्रश्न",
-        faq_q1: "बिना वॉटरमार्क टिकटॉक वीडियो कैसे डाउनलोड करें?",
-        faq_a1: "TikTok ऐप में लिंक कॉपी करें, ऊपर पेस्ट करें और 'डाउनलोड' पर क्लिक करें।",
-        faq_q2: "क्या कैरोजल फोटो HD में डाउनलोड हो सकती हैं?",
-        faq_a2: "हाँ! TikDownload हर फोटो को अलग से HD में डाउनलोड करने का विकल्प देता है।",
-        faq_q3: "क्या मुझे भुगतान या ऐप इंस्टॉल करने की आवश्यकता है?",
-        faq_a3: "नहीं। यह पूरी तरह से मुफ्त है और ब्राउज़र में काम करता है।",
-        toast_started: "डाउनलोड सफलतापूर्वक शुरू हुआ!",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · मुफ़्त टूल"
-    },
-    ja: {
-        name: "日本語",
-        hero_title: "TikTok 動画 保存",
-        hero_subtitle: "透かし（ロゴ）なし、高画質でデバイスに直接ダウンロード。",
-        input_placeholder: "TikTokのリンクを貼り付け...",
-        btn_paste: "貼付",
-        btn_download: "保存",
-        loading_title: "処理中",
-        loading_desc: "透かしなしのリンクを取得しています...",
-        error_title: "取得に失敗しました",
-        error_desc: "リンクを処理できませんでした。動画が公開されているか確認してください。",
-        btn_mp4_title: "透かしなし動画",
-        btn_mp4_desc: "高画質 MP4 フォーマット",
-        btn_mp3_title: "MP3 音声のみ",
-        btn_mp3_desc: "オリジナル音源",
-        btn_slide: "写真を保存",
-        btn_download_all: "すべての写真を保存",
-        btn_carousel_audio: "BGM音声を保存 (MP3)",
-        card1_badge: "HD動画",
-        card1_title: "オリジナル画質",
-        card1_desc: "劣化なしのオリジナルMP4フォーマットで動画を保存できます。",
-        card2_badge: "写真",
-        card2_title: "複数写真対応",
-        card2_desc: "スライドショーの全画像をHD画質で1枚ずつ保存可能。",
-        card3_badge: "音声",
-        card3_title: "MP3変換",
-        card3_desc: "動画の音源やBGMをMP3として直接保存します。",
-        faq_heading: "よくある質問",
-        faq_q1: "ロゴなしでTikTok動画を保存する方法は？",
-        faq_a1: "TikTokアプリでリンクをコピーし、上に貼り付けて「保存」をクリックします。",
-        faq_q2: "複数写真のスライドをHDで保存できますか？",
-        faq_a2: "はい！すべての写真を個別にHD画質で保存できます。",
-        faq_q3: "料金やアプリのインストールは必要ですか？",
-        faq_a3: "いいえ。ブラウザ上ですべて完全無料で動作します。",
-        toast_started: "ダウンロードを開始しました！",
-        footer_rights: "© 2026 <strong>TikDownload</strong> · 無料ツール"
     }
 };
 
-// Detecção e troca de idioma
 function detectLanguage() {
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = urlParams.get('lang');
@@ -492,7 +179,6 @@ function applyLanguage(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(currentLanguage);
 
-    // Menu seletor de idiomas
     const langBtn = document.getElementById('langDropdownBtn');
     const langMenu = document.getElementById('langDropdownMenu');
 
@@ -514,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Elementos da interface
     const downloadForm = document.getElementById('downloadForm');
     const tiktokUrlInput = document.getElementById('tiktokUrl');
     const clearBtn = document.getElementById('clearBtn');
@@ -532,8 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnMp3 = document.getElementById('btnMp3');
     const carouselItems = document.getElementById('carouselItems');
     const toast = document.getElementById('toastNotification');
+    const canvas = document.getElementById('renderCanvas');
+    const ctx = canvas.getContext('2d');
 
-    // Botão de limpar input
     tiktokUrlInput.addEventListener('input', () => {
         clearBtn.classList.toggle('hidden', !tiktokUrlInput.value);
     });
@@ -544,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tiktokUrlInput.focus();
     });
 
-    // Botão de colar área de transferência
     pasteBtn.addEventListener('click', async () => {
         try {
             const text = await navigator.clipboard.readText();
@@ -555,44 +240,263 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function showToast() {
+    function showToast(msgKey = 'toast_started') {
         if (!toast) return;
+        const msg = translations[currentLanguage][msgKey] || translations.pt[msgKey] || msgKey;
+        toast.querySelector('span').textContent = msg;
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 3500);
     }
 
-    // Download direto de arquivos
-    async function executeDownload(url, filename) {
-        showToast();
+    // Download estável via Blob direto no navegador (sem 'Failed - No file')
+    async function executeDownload(url, filename, type = 'video') {
+        showToast('toast_started');
+
+        const fullUrl = url.startsWith('http') ? url : `https://www.tikwm.com${url.startsWith('/') ? '' : '/'}${url}`;
+        let blob = null;
+
+        // 1. Tenta baixar via fetch direto no navegador
         try {
-            const response = await fetch(url);
-            const blob = await response.blob();
-            const blobUrl = window.URL.createObjectURL(blob);
+            const resp = await fetch(fullUrl);
+            if (resp.ok) {
+                const b = await resp.blob();
+                if (b.size > 200) blob = b;
+            }
+        } catch (e) {
+            console.warn('Download direto falhou, tentando proxy...', e);
+        }
+
+        // 2. Se o direto falhar por CORS, tenta a rota proxy
+        if (!blob) {
+            try {
+                const proxyUrl = `/api/file-download?type=${encodeURIComponent(type)}&filename=${encodeURIComponent(filename)}&mediaUrl=${encodeURIComponent(fullUrl)}`;
+                const proxyResp = await fetch(proxyUrl);
+                if (proxyResp.ok) {
+                    const b = await proxyResp.blob();
+                    if (b.size > 200) blob = b;
+                }
+            } catch (err) {
+                console.warn('Proxy também falhou:', err);
+            }
+        }
+
+        // 3. Se obteve o Blob, dispara o salvamento local na mesma tela
+        if (blob) {
+            const blobUrl = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.style.display = 'none';
             a.href = blobUrl;
             a.download = filename;
             document.body.appendChild(a);
             a.click();
-            window.URL.revokeObjectURL(blobUrl);
-            document.body.removeChild(a);
-        } catch (e) {
-            window.open(url, '_blank');
+
+            setTimeout(() => {
+                if (document.body.contains(a)) document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            }, 3000);
+            return;
         }
+
+        // 4. Fallback final: se tudo falhar, abre a mídia original para salvar
+        window.open(fullUrl, '_blank');
     }
 
-    // Download de todas as imagens em sequência
+    // Download de todas as fotos em sequência na mesma tela
     async function downloadAllImages(images) {
-        showToast();
+        showToast('toast_started');
         for (let i = 0; i < images.length; i++) {
-            await executeDownload(images[i], `tikdownload_photo_${i + 1}.jpg`);
+            const imgUrl = typeof images[i] === 'string' ? images[i] : images[i].url;
+            await executeDownload(imgUrl, `tikdownload_photo_${i + 1}.jpg`, 'image');
             if (i < images.length - 1) {
-                await new Promise(resolve => setTimeout(resolve, 400));
+                await new Promise(resolve => setTimeout(resolve, 600));
             }
         }
     }
 
-    // Envio do formulário e consulta à API TikWM
+    // Motor de Vídeo com Sincronização Estrita de Timeline
+    async function generateMergedVideo(selectedImgUrls, musicUrl, progressBar, progressText, progressCard, onDone) {
+        showToast('toast_rendering');
+        progressCard.style.display = 'flex';
+        progressBar.style.width = '0%';
+        progressText.textContent = 'Carregando áudio da publicação...';
+
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            let audioArrayBuffer = null;
+
+            // 1. Download do áudio via proxy ou rota direta
+            const proxyAudioUrl = `/api/file-download?type=mp3&mediaUrl=${encodeURIComponent(musicUrl)}`;
+            try {
+                const audioResp = await fetch(proxyAudioUrl);
+                if (audioResp.ok) {
+                    const audioBlob = await audioResp.blob();
+                    if (audioBlob.size > 1000) {
+                        audioArrayBuffer = await audioBlob.arrayBuffer();
+                    }
+                }
+            } catch (e) {
+                console.warn('Proxy de áudio falhou, tentando rota direta...', e);
+            }
+
+            if (!audioArrayBuffer) {
+                try {
+                    const directResp = await fetch(musicUrl);
+                    if (directResp.ok) {
+                        const directBlob = await directResp.blob();
+                        audioArrayBuffer = await directBlob.arrayBuffer();
+                    }
+                } catch (e2) { }
+            }
+
+            if (!audioArrayBuffer) {
+                throw new Error('Falha ao descarregar áudio da publicação.');
+            }
+
+            const decodedAudio = await audioCtx.decodeAudioData(audioArrayBuffer);
+            const totalDuration = decodedAudio.duration; // Duração exata do áudio
+            const photoCount = selectedImgUrls.length;
+            const timePerPhoto = totalDuration / photoCount; // Tempo exato por foto
+
+            // 2. Carregar imagens como Blobs locais
+            progressText.textContent = `Preparando ${photoCount} fotos...`;
+            const loadedImages = await Promise.all(selectedImgUrls.map(async (url) => {
+                const proxyImgUrl = `/api/file-download?type=image&mediaUrl=${encodeURIComponent(url)}`;
+                let b = null;
+                try {
+                    const r = await fetch(proxyImgUrl);
+                    if (r.ok) b = await r.blob();
+                } catch (err) { }
+
+                if (!b || b.size < 500) {
+                    const r2 = await fetch(url);
+                    b = await r2.blob();
+                }
+
+                const blobObjUrl = URL.createObjectURL(b);
+
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => resolve({ img, blobUrl: blobObjUrl });
+                    img.onerror = reject;
+                    img.src = blobObjUrl;
+                });
+            }));
+
+            // 3. Configuração de streams e FPS garantido
+            const FPS = 25; // Garante fluidez e timeline exata para os players
+            const canvasStream = canvas.captureStream(FPS);
+            const audioDest = audioCtx.createMediaStreamDestination();
+
+            const audioSource = audioCtx.createBufferSource();
+            audioSource.buffer = decodedAudio;
+            audioSource.connect(audioDest);
+
+            const combinedStream = new MediaStream([
+                ...canvasStream.getVideoTracks(),
+                ...audioDest.stream.getAudioTracks()
+            ]);
+
+            const mimeType = MediaRecorder.isTypeSupported('video/mp4;codecs=avc1')
+                ? 'video/mp4;codecs=avc1'
+                : (MediaRecorder.isTypeSupported('video/mp4') ? 'video/mp4' : 'video/webm');
+
+            const recorder = new MediaRecorder(combinedStream, {
+                mimeType,
+                videoBitsPerSecond: 3000000
+            });
+
+            const chunks = [];
+            recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+
+            const finished = new Promise(resolve => {
+                recorder.onstop = () => resolve(new Blob(chunks, { type: mimeType }));
+            });
+
+            recorder.start();
+            audioSource.start(0);
+
+            const startEpoch = performance.now();
+            let frameCounter = 0;
+
+            // Função de desenho de quadro único
+            function renderCurrentFrame(elapsed) {
+                let idx = Math.floor(elapsed / timePerPhoto);
+                if (idx >= loadedImages.length) idx = loadedImages.length - 1;
+                if (idx < 0) idx = 0;
+
+                const item = loadedImages[idx];
+                if (item && item.img && item.img.width) {
+                    // Limpa com fundo preto
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    // Força modificação de 1 pixel imperceptível para o captureStream() não descartar o frame estático
+                    frameCounter = (frameCounter + 1) % 2;
+                    ctx.fillStyle = frameCounter === 0 ? '#000001' : '#000000';
+                    ctx.fillRect(0, 0, 1, 1);
+
+                    const hRatio = canvas.width / item.img.width;
+                    const vRatio = canvas.height / item.img.height;
+                    const ratio = Math.min(hRatio, vRatio);
+                    const x = (canvas.width - item.img.width * ratio) / 2;
+                    const y = (canvas.height - item.img.height * ratio) / 2;
+
+                    ctx.drawImage(item.img, 0, 0, item.img.width, item.img.height, x, y, item.img.width * ratio, item.img.height * ratio);
+                }
+            }
+
+            // Desenha o primeiro quadro imediatamente no tempo 0
+            renderCurrentFrame(0);
+
+            // Timer de alta precisão via setInterval sincronizado com o clock
+            const intervalMs = 1000 / FPS;
+            const timerId = setInterval(() => {
+                const elapsed = (performance.now() - startEpoch) / 1000;
+                const percent = Math.min(100, Math.round((elapsed / totalDuration) * 100));
+
+                progressBar.style.width = `${percent}%`;
+                progressText.textContent = `Gerando vídeo: ${percent}% (${elapsed.toFixed(1)}s / ${totalDuration.toFixed(1)}s · ${timePerPhoto.toFixed(1)}s por foto)`;
+
+                renderCurrentFrame(elapsed);
+
+                if (elapsed >= totalDuration) {
+                    clearInterval(timerId);
+                    recorder.stop();
+                    try { audioSource.stop(); } catch (e) { }
+                    audioCtx.close();
+                }
+            }, intervalMs);
+
+            const videoBlob = await finished;
+            const videoUrl = URL.createObjectURL(videoBlob);
+
+            loadedImages.forEach(i => URL.revokeObjectURL(i.blobUrl));
+
+            // Download automático do MP4 gerado
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = videoUrl;
+            a.download = `tikdownload_slideshow_${Date.now()}.${mimeType.includes('mp4') ? 'mp4' : 'webm'}`;
+            document.body.appendChild(a);
+            a.click();
+
+            setTimeout(() => {
+                if (document.body.contains(a)) document.body.removeChild(a);
+                URL.revokeObjectURL(videoUrl);
+            }, 3000);
+
+            showToast('toast_ready');
+            progressCard.style.display = 'none';
+            if (onDone) onDone();
+
+        } catch (err) {
+            console.error('Erro detalhado:', err);
+            alert('Não foi possível gerar o vídeo: ' + (err.message || 'Erro inesperado.'));
+            progressCard.style.display = 'none';
+            if (onDone) onDone();
+        }
+    }
+    // Formulário Principal
     downloadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const url = tiktokUrlInput.value.trim();
@@ -609,13 +513,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (data.code === 0 && data.data) {
                 const item = data.data;
+                const t = translations[currentLanguage] || translations.pt;
 
                 authorName.textContent = item.author ? `@${item.author.unique_id || item.author.nickname}` : '@tiktok';
-                videoTitle.textContent = item.title || 'TikTok Video';
+                videoTitle.textContent = item.title || 'TikTok Media';
 
                 const musicUrl = item.music || item.music_info?.play;
 
-                // Renderização de carrossel de fotos (oculta capa lateral redundante)
+                // ====================================================
+                // CASO 1: CARROSSEL DE FOTOS COM OPÇÃO DE VÍDEO
+                // ====================================================
                 if (item.images && item.images.length > 0) {
                     resultSection.classList.add('is-carousel');
                     if (videoCoverBox) videoCoverBox.classList.add('hidden');
@@ -623,51 +530,117 @@ document.addEventListener('DOMContentLoaded', () => {
                     btnMp4.parentElement.classList.add('hidden');
                     carouselItems.innerHTML = '';
 
-                    const slideText = translations[currentLanguage].btn_slide || 'Baixar Foto';
-                    const downloadAllText = translations[currentLanguage].btn_download_all || 'Baixar Todas as Fotos';
-                    const carouselAudioText = translations[currentLanguage].btn_carousel_audio || 'Baixar Música de Fundo (MP3)';
+                    const slideText = t.btn_slide || 'Baixar Foto';
+                    const downloadAllText = t.btn_download_all || 'Baixar Todas as Fotos';
+                    const carouselAudioText = t.btn_carousel_audio || 'Música de Fundo (MP3)';
+                    const createVideoText = t.btn_create_video || 'Criar Vídeo com Música (MP4)';
 
-                    // Barra superior com botão Baixar Todas e Música de Fundo
-                    const headerBar = document.createElement('div');
-                    headerBar.className = 'carousel-top-bar';
-                    headerBar.innerHTML = `
+                    // Array de controle de seleção de fotos
+                    const photoState = item.images.map(imgUrl => ({
+                        url: imgUrl,
+                        selected: true
+                    }));
+
+                    // Barra Superior de Ações
+                    const topBar = document.createElement('div');
+                    topBar.className = 'carousel-top-bar';
+
+                    topBar.innerHTML = `
                         <div class="carousel-actions-row">
                             <button type="button" class="btn-download-all" id="btnDownloadAll">
                                 <i class="ph ph-folder-arrow-down"></i>
                                 <span>${downloadAllText} (${item.images.length})</span>
                             </button>
+
                             ${musicUrl ? `
+                            <button type="button" class="btn-create-video" id="btnCreateVideo">
+                                <i class="ph ph-film-strip"></i>
+                                <span>${createVideoText}</span>
+                            </button>
                             <button type="button" class="btn-download-music" id="btnCarouselMusic">
                                 <i class="ph ph-music-notes"></i>
                                 <span>${carouselAudioText}</span>
                             </button>
                             ` : ''}
                         </div>
-                    `;
-                    carouselItems.appendChild(headerBar);
 
-                    headerBar.querySelector('#btnDownloadAll').onclick = () => {
+                        <!-- Barra de Progresso da Criação do Vídeo -->
+                        <div id="renderProgressCard" class="render-progress-card" style="display: none;">
+                            <div class="render-progress-label">
+                                <span id="renderProgressText">Processando vídeo...</span>
+                            </div>
+                            <div class="render-progress-track">
+                                <div id="renderProgressBar" class="render-progress-bar"></div>
+                            </div>
+                        </div>
+
+                        <!-- Barra de Atalho de Seleção -->
+                        <div class="carousel-select-bar">
+                            <span id="selectedPhotosCounter">${photoState.length} de ${photoState.length} selecionadas</span>
+                            <div>
+                                <button type="button" id="btnCheckAll" class="btn-text-action">${t.select_all || 'Marcar Todas'}</button>
+                                <span style="color: var(--border-light); margin: 0 4px;">|</span>
+                                <button type="button" id="btnUncheckAll" class="btn-text-action">${t.deselect_all || 'Desmarcar'}</button>
+                            </div>
+                        </div>
+                    `;
+
+                    carouselItems.appendChild(topBar);
+
+                    const btnCreateVideo = topBar.querySelector('#btnCreateVideo');
+                    const selectedCounter = topBar.querySelector('#selectedPhotosCounter');
+                    const renderCard = topBar.querySelector('#renderProgressCard');
+                    const renderBar = topBar.querySelector('#renderProgressBar');
+                    const renderText = topBar.querySelector('#renderProgressText');
+
+                    function updateSelectionVisuals() {
+                        const selectedCount = photoState.filter(p => p.selected).length;
+                        selectedCounter.textContent = `${selectedCount} de ${photoState.length} selecionadas`;
+
+                        if (btnCreateVideo) {
+                            btnCreateVideo.disabled = selectedCount === 0;
+                            btnCreateVideo.querySelector('span').textContent = selectedCount === 0
+                                ? 'Selecione fotos'
+                                : `${createVideoText} (${selectedCount})`;
+                        }
+                    }
+
+                    // Ação: Baixar todas as fotos soltas
+                    topBar.querySelector('#btnDownloadAll').onclick = () => {
                         downloadAllImages(item.images);
                     };
 
+                    // Ação: Baixar apenas a música MP3
                     if (musicUrl) {
-                        headerBar.querySelector('#btnCarouselMusic').onclick = () => {
-                            executeDownload(musicUrl, `tikdownload_audio_${item.id || 'music'}.mp3`);
+                        topBar.querySelector('#btnCarouselMusic').onclick = () => {
+                            executeDownload(musicUrl, `tikdownload_audio_${item.id || 'music'}.mp3`, 'mp3');
+                        };
+
+                        // Ação: Criar o vídeo mesclado das fotos selecionadas com o áudio
+                        btnCreateVideo.onclick = () => {
+                            const selectedUrls = photoState.filter(p => p.selected).map(p => p.url);
+                            if (!selectedUrls.length) return;
+
+                            btnCreateVideo.disabled = true;
+                            generateMergedVideo(selectedUrls, musicUrl, renderBar, renderText, renderCard, () => {
+                                btnCreateVideo.disabled = false;
+                            });
                         };
                     }
 
-                    // Grid com miniaturas das fotos
+                    // Grid de Cards com Checkbox
                     const gridContainer = document.createElement('div');
                     gridContainer.className = 'carousel-grid';
 
-                    item.images.forEach((imgUrl, index) => {
+                    photoState.forEach((photo, index) => {
                         const card = document.createElement('div');
-                        card.className = 'carousel-card';
+                        card.className = 'carousel-card is-selected';
 
                         card.innerHTML = `
                             <div class="carousel-preview">
-                                <img src="${imgUrl}" alt="Foto ${index + 1}" loading="lazy">
-                                <span class="carousel-badge">${index + 1}/${item.images.length}</span>
+                                <input type="checkbox" class="photo-check" checked>
+                                <img src="${photo.url}" alt="Foto ${index + 1}" loading="lazy">
+                                <span class="carousel-badge">#${index + 1}</span>
                             </div>
                             <button type="button" class="carousel-btn">
                                 <i class="ph ph-download-simple"></i>
@@ -675,18 +648,51 @@ document.addEventListener('DOMContentLoaded', () => {
                             </button>
                         `;
 
-                        const downloadBtn = card.querySelector('.carousel-btn');
-                        downloadBtn.onclick = (ev) => {
+                        const preview = card.querySelector('.carousel-preview');
+                        const check = card.querySelector('.photo-check');
+
+                        // Alternar seleção da foto ao clicar no preview
+                        preview.addEventListener('click', (ev) => {
+                            if (ev.target !== check) {
+                                photo.selected = !photo.selected;
+                                check.checked = photo.selected;
+                            } else {
+                                photo.selected = check.checked;
+                            }
+                            card.classList.toggle('is-selected', photo.selected);
+                            updateSelectionVisuals();
+                        });
+
+                        // Botão individual: baixa apenas a foto clicada
+                        card.querySelector('.carousel-btn').onclick = (ev) => {
                             ev.preventDefault();
-                            executeDownload(imgUrl, `tikdownload_photo_${index + 1}.jpg`);
+                            executeDownload(photo.url, `tikdownload_photo_${index + 1}.jpg`, 'image');
                         };
 
                         gridContainer.appendChild(card);
                     });
 
                     carouselItems.appendChild(gridContainer);
+
+                    // Ações de Marcar / Desmarcar todas
+                    topBar.querySelector('#btnCheckAll').onclick = () => {
+                        photoState.forEach(p => p.selected = true);
+                        gridContainer.querySelectorAll('.carousel-card').forEach(c => c.classList.add('is-selected'));
+                        gridContainer.querySelectorAll('.photo-check').forEach(k => k.checked = true);
+                        updateSelectionVisuals();
+                    };
+
+                    topBar.querySelector('#btnUncheckAll').onclick = () => {
+                        photoState.forEach(p => p.selected = false);
+                        gridContainer.querySelectorAll('.carousel-card').forEach(c => c.classList.remove('is-selected'));
+                        gridContainer.querySelectorAll('.photo-check').forEach(k => k.checked = false);
+                        updateSelectionVisuals();
+                    };
+
                 } else {
-                    // Renderização de vídeo normal e áudio MP3 (mantém capa visível)
+                    // ====================================================
+                    // CASO 2: VÍDEO CONVENCIONAL
+                    // ====================================================
                     resultSection.classList.remove('is-carousel');
                     if (videoCoverBox) {
                         videoCoverBox.classList.remove('hidden');
@@ -700,14 +706,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     btnMp4.onclick = (ev) => {
                         ev.preventDefault();
-                        executeDownload(videoUrl, `tikdownload_${item.id || 'video'}.mp4`);
+                        executeDownload(videoUrl, `tikdownload_${item.id || 'video'}.mp4`, 'video');
                     };
 
                     if (musicUrl) {
                         btnMp3.classList.remove('hidden');
                         btnMp3.onclick = (ev) => {
                             ev.preventDefault();
-                            executeDownload(musicUrl, `tikdownload_audio_${item.id || 'audio'}.mp3`);
+                            executeDownload(musicUrl, `tikdownload_audio_${item.id || 'audio'}.mp3`, 'mp3');
                         };
                     } else {
                         btnMp3.classList.add('hidden');
@@ -716,6 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 resultSection.classList.remove('hidden');
                 resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
             } else {
                 throw new Error(data.msg || 'Erro na API');
             }

@@ -15,7 +15,6 @@ module.exports = async (req, res) => {
     }
 
     try {
-        // Parâmetros obrigatórios no formato form-urlencoded
         const params = new URLSearchParams();
         params.append('url', url.trim());
         params.append('hd', '1');
@@ -31,7 +30,6 @@ module.exports = async (req, res) => {
 
         const resData = response.data;
 
-        // Validação da resposta da API
         if (!resData || resData.code !== 0 || !resData.data) {
             return res.status(400).json({
                 error: resData?.msg || 'Não foi possível extrair a mídia. Verifique se o perfil e o vídeo são públicos.'
@@ -46,7 +44,6 @@ module.exports = async (req, res) => {
 
         let medias = [];
 
-        // Tratamento de Fotos / Carrossel
         if (data.images && Array.isArray(data.images) && data.images.length > 0) {
             medias = data.images.map((imgUrl, i) => ({
                 type: 'image',
@@ -54,7 +51,6 @@ module.exports = async (req, res) => {
                 label: `Foto ${i + 1}`
             }));
         } else {
-            // Tratamento de Vídeo (prioriza HD se disponível)
             const videoUrl = formatUrl(data.hdplay || data.play || data.wmplay);
             if (videoUrl) {
                 medias.push({
