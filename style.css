@@ -792,3 +792,67 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Linha superior de ações do carrossel (Baixar Todas + Baixar Música) */
+.carousel-actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .carousel-actions-row {
+        flex-direction: row;
+    }
+}
+
+.btn-download-music {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-download-music:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-light);
+    color: var(--accent-beige);
+}
+
+.btn-download-music i {
+    font-size: 1.15rem;
+    color: var(--accent-beige);
+}
+
+/* Link estilizado do GitHub no Rodapé */
+.footer-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent-beige);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+    transition: var(--transition);
+    vertical-align: middle;
+}
+
+.footer-github i {
+    font-size: 1.05rem;
+}
+
+.footer-github:hover {
+    color: var(--accent-beige-hover);
+    text-decoration: underline;
+}

@@ -17,6 +17,7 @@ const translations = {
         btn_mp3_desc: "Faixa de áudio original",
         btn_slide: "Baixar Foto",
         btn_download_all: "Baixar Todas as Fotos",
+        btn_carousel_audio: "Baixar Música de Fundo (MP3)",
         card1_badge: "Vídeos HD",
         card1_title: "Qualidade Original",
         card1_desc: "Baixe vídeos sem marca d'água no formato MP4 original sem nenhuma compressão adicional.",
@@ -53,6 +54,7 @@ const translations = {
         btn_mp3_desc: "Original audio track",
         btn_slide: "Download Photo",
         btn_download_all: "Download All Photos",
+        btn_carousel_audio: "Download Background Music (MP3)",
         card1_badge: "HD Videos",
         card1_title: "Original Quality",
         card1_desc: "Download TikTok videos without watermark in original MP4 format without compression.",
@@ -89,6 +91,7 @@ const translations = {
         btn_mp3_desc: "Pista de audio original",
         btn_slide: "Descargar Foto",
         btn_download_all: "Descargar Todas las Fotos",
+        btn_carousel_audio: "Descargar Música de Fondo (MP3)",
         card1_badge: "Videos HD",
         card1_title: "Calidad Original",
         card1_desc: "Descarga videos sin marca de agua en formato MP4 original sin compresión adicional.",
@@ -125,6 +128,7 @@ const translations = {
         btn_mp3_desc: "Piste audio originale",
         btn_slide: "Télécharger Photo",
         btn_download_all: "Télécharger Toutes les Photos",
+        btn_carousel_audio: "Télécharger Musique de Fond (MP3)",
         card1_badge: "Vidéos HD",
         card1_title: "Qualité Originale",
         card1_desc: "Téléchargez des vidéos sans filigrane au format MP4 sans compression.",
@@ -161,6 +165,7 @@ const translations = {
         btn_mp3_desc: "Originalton herunterladen",
         btn_slide: "Foto Speichern",
         btn_download_all: "Alle Fotos Herunterladen",
+        btn_carousel_audio: "Hintergrundmusik Herunterladen (MP3)",
         card1_badge: "HD-Videos",
         card1_title: "Originalqualität",
         card1_desc: "Laden Sie Videos ohne Wasserzeichen im originalen MP4-Format herunter.",
@@ -197,6 +202,7 @@ const translations = {
         btn_mp3_desc: "Traccia audio originale",
         btn_slide: "Scarica Foto",
         btn_download_all: "Scarica Tutte le Foto",
+        btn_carousel_audio: "Scarica Musica di Sottofondo (MP3)",
         card1_badge: "Video HD",
         card1_title: "Qualità Originale",
         card1_desc: "Scarica video senza watermark in formato MP4 originale senza perdita di qualità.",
@@ -233,6 +239,7 @@ const translations = {
         btn_mp3_desc: "Musik audio asli",
         btn_slide: "Download Foto",
         btn_download_all: "Download Semua Foto",
+        btn_carousel_audio: "Download Musik Latar (MP3)",
         card1_badge: "Video HD",
         card1_title: "Kualitas Asli",
         card1_desc: "Download video tanpa watermark dalam format MP4 asli tanpa kompresi.",
@@ -269,6 +276,7 @@ const translations = {
         btn_mp3_desc: "Orijinal ses parçası",
         btn_slide: "Fotoğraf İndir",
         btn_download_all: "Tüm Fotoğrafları İndir",
+        btn_carousel_audio: "Arka Plan Müziğini İndir (MP3)",
         card1_badge: "HD Videolar",
         card1_title: "Orijinal Kalite",
         card1_desc: "Videoları filigransız orijinal MP4 formatında kayıpsız indirin.",
@@ -305,6 +313,7 @@ const translations = {
         btn_mp3_desc: "Оригинальная звуковая дорожка",
         btn_slide: "Скачать фото",
         btn_download_all: "Скачать все фото",
+        btn_carousel_audio: "Скачать фоновую музыку (MP3)",
         card1_badge: "HD Видео",
         card1_title: "Оригинальное качество",
         card1_desc: "Скачивайте видео без логотипа в оригинальном формате MP4.",
@@ -341,6 +350,7 @@ const translations = {
         btn_mp3_desc: "المقطع الصوتي الأصلي",
         btn_slide: "تحميل الصورة",
         btn_download_all: "تحميل جميع الصور",
+        btn_carousel_audio: "تحميل الموسيقى الخلفية (MP3)",
         card1_badge: "فيديو HD",
         card1_title: "جودة أصلية",
         card1_desc: "قم بتنزيل مقاطع الفيديو بدون علامة مائية وبدون ضغط.",
@@ -377,6 +387,7 @@ const translations = {
         btn_mp3_desc: "ओरिजिनल ऑडियो ट्रैक",
         btn_slide: "फोटो डाउनलोड करें",
         btn_download_all: "सभी तस्वीरें डाउनलोड करें",
+        btn_carousel_audio: "बैकग्राउंड म्यूजिक डाउनलोड करें (MP3)",
         card1_badge: "HD वीडियो",
         card1_title: "मूल गुणवत्ता",
         card1_desc: "बिना किसी कम्प्रेशन के ओरिजिनल MP4 फॉर्मेट में वीडियो डाउनलोड करें।",
@@ -413,6 +424,7 @@ const translations = {
         btn_mp3_desc: "オリジナル音源",
         btn_slide: "写真を保存",
         btn_download_all: "すべての写真を保存",
+        btn_carousel_audio: "BGM音声を保存 (MP3)",
         card1_badge: "HD動画",
         card1_title: "オリジナル画質",
         card1_desc: "劣化なしのオリジナルMP4フォーマットで動画を保存できます。",
@@ -601,6 +613,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 authorName.textContent = item.author ? `@${item.author.unique_id || item.author.nickname}` : '@tiktok';
                 videoTitle.textContent = item.title || 'TikTok Video';
 
+                const musicUrl = item.music || item.music_info?.play;
+
                 // Renderização de carrossel de fotos (oculta capa lateral redundante)
                 if (item.images && item.images.length > 0) {
                     resultSection.classList.add('is-carousel');
@@ -611,21 +625,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const slideText = translations[currentLanguage].btn_slide || 'Baixar Foto';
                     const downloadAllText = translations[currentLanguage].btn_download_all || 'Baixar Todas as Fotos';
+                    const carouselAudioText = translations[currentLanguage].btn_carousel_audio || 'Baixar Música de Fundo (MP3)';
 
-                    // Barra superior com botão Baixar Todas
+                    // Barra superior com botão Baixar Todas e Música de Fundo
                     const headerBar = document.createElement('div');
                     headerBar.className = 'carousel-top-bar';
                     headerBar.innerHTML = `
-                        <button type="button" class="btn-download-all" id="btnDownloadAll">
-                            <i class="ph ph-folder-arrow-down"></i>
-                            <span>${downloadAllText} (${item.images.length})</span>
-                        </button>
+                        <div class="carousel-actions-row">
+                            <button type="button" class="btn-download-all" id="btnDownloadAll">
+                                <i class="ph ph-folder-arrow-down"></i>
+                                <span>${downloadAllText} (${item.images.length})</span>
+                            </button>
+                            ${musicUrl ? `
+                            <button type="button" class="btn-download-music" id="btnCarouselMusic">
+                                <i class="ph ph-music-notes"></i>
+                                <span>${carouselAudioText}</span>
+                            </button>
+                            ` : ''}
+                        </div>
                     `;
                     carouselItems.appendChild(headerBar);
 
                     headerBar.querySelector('#btnDownloadAll').onclick = () => {
                         downloadAllImages(item.images);
                     };
+
+                    if (musicUrl) {
+                        headerBar.querySelector('#btnCarouselMusic').onclick = () => {
+                            executeDownload(musicUrl, `tikdownload_audio_${item.id || 'music'}.mp3`);
+                        };
+                    }
 
                     // Grid com miniaturas das fotos
                     const gridContainer = document.createElement('div');
@@ -668,7 +697,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     carouselItems.innerHTML = '';
 
                     const videoUrl = item.play || item.wmplay;
-                    const musicUrl = item.music || item.music_info?.play;
 
                     btnMp4.onclick = (ev) => {
                         ev.preventDefault();
