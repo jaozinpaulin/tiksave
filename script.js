@@ -313,7 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Motor de Vídeo com Sincronização Estrita de Timeline
     async function generateMergedVideo(selectedImgUrls, musicUrl, progressBar, progressText, progressCard, onDone) {
         showToast('toast_rendering');
         progressCard.style.display = 'flex';
@@ -321,10 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
         progressText.textContent = 'Carregando áudio da publicação...';
 
         try {
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            // FORÇA A TAXA DE AMOSTRAGEM PARA 48KHZ (Compatível com WhatsApp)
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            const audioCtx = new AudioContextClass({ sampleRate: 48000 });
             let audioArrayBuffer = null;
 
-            // 1. Download do áudio via proxy ou rota direta
             const proxyAudioUrl = `/api/file-download?type=mp3&mediaUrl=${encodeURIComponent(musicUrl)}`;
             try {
                 const audioResp = await fetch(proxyAudioUrl);
@@ -353,11 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const decodedAudio = await audioCtx.decodeAudioData(audioArrayBuffer);
-            const totalDuration = decodedAudio.duration; // Duração exata do áudio
+            const totalDuration = decodedAudio.duration;
             const photoCount = selectedImgUrls.length;
-            const timePerPhoto = totalDuration / photoCount; // Tempo exato por foto
+            const timePerPhoto = totalDuration / photoCount;
 
-            // 2. Carregar imagens como Blobs locais
             progressText.textContent = `Preparando ${photoCount} fotos...`;
             const loadedImages = await Promise.all(selectedImgUrls.map(async (url) => {
                 const proxyImgUrl = `/api/file-download?type=image&mediaUrl=${encodeURIComponent(url)}`;
@@ -382,8 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }));
 
-            // 3. Configuração de streams e FPS garantido
-            const FPS = 25; // Garante fluidez e timeline exata para os players
+            const FPS = 25;
             const canvasStream = canvas.captureStream(FPS);
             const audioDest = audioCtx.createMediaStreamDestination();
 
@@ -396,13 +394,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 ...audioDest.stream.getAudioTracks()
             ]);
 
-            const mimeType = MediaRecorder.isTypeSupported('video/mp4;codecs=avc1')
-                ? 'video/mp4;codecs=avc1'
+            // CODECS ESTRICTOS PARA EVITAR BUG NO WHATSAPP
+            const mimeType = MediaRecorder.isTypeSupported('video/mp4;codecs=avc1,mp4a.40.2')
+                ? 'video/mp4;codecs=avc1,mp4a.40.2'
                 : (MediaRecorder.isTypeSupported('video/mp4') ? 'video/mp4' : 'video/webm');
 
             const recorder = new MediaRecorder(combinedStream, {
                 mimeType,
-                videoBitsPerSecond: 3000000
+                videoBitsPerSecond: 3000000,
+                audioBitsPerSecond: 192000 // Garante qualidade alta para o AAC/MPEG
             });
 
             const chunks = [];
@@ -418,7 +418,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const startEpoch = performance.now();
             let frameCounter = 0;
 
-            // Função de desenho de quadro único
             function renderCurrentFrame(elapsed) {
                 let idx = Math.floor(elapsed / timePerPhoto);
                 if (idx >= loadedImages.length) idx = loadedImages.length - 1;
@@ -426,11 +425,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const item = loadedImages[idx];
                 if (item && item.img && item.img.width) {
-                    // Limpa com fundo preto
                     ctx.fillStyle = '#000000';
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                    // Força modificação de 1 pixel imperceptível para o captureStream() não descartar o frame estático
                     frameCounter = (frameCounter + 1) % 2;
                     ctx.fillStyle = frameCounter === 0 ? '#000001' : '#000000';
                     ctx.fillRect(0, 0, 1, 1);
@@ -445,17 +442,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Desenha o primeiro quadro imediatamente no tempo 0
             renderCurrentFrame(0);
 
-            // Timer de alta precisão via setInterval sincronizado com o clock
             const intervalMs = 1000 / FPS;
             const timerId = setInterval(() => {
                 const elapsed = (performance.now() - startEpoch) / 1000;
                 const percent = Math.min(100, Math.round((elapsed / totalDuration) * 100));
 
                 progressBar.style.width = `${percent}%`;
-                progressText.textContent = `Gerando vídeo: ${percent}% (${elapsed.toFixed(1)}s / ${totalDuration.toFixed(1)}s · ${timePerPhoto.toFixed(1)}s por foto)`;
+                progressText.textContent = `Gerando vídeo: ${percent}% (${elapsed.toFixed(1)}s / ${totalDuration.toFixed(1)}s)`;
 
                 renderCurrentFrame(elapsed);
 
@@ -472,7 +467,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             loadedImages.forEach(i => URL.revokeObjectURL(i.blobUrl));
 
-            // Download automático do MP4 gerado
             const a = document.createElement('a');
             a.style.display = 'none';
             a.href = videoUrl;
