@@ -130,18 +130,16 @@
         </header>
 
         <main class="content-flow">
-            <!-- Hero Text -->
             <section class="hero-block">
-                <h1 data-i18n="hero_title">Baixar vídeos do TikTok</h1>
+                <h1 data-i18n="hero_title">Baixar vídeos do TikTok e Instagram</h1>
                 <p data-i18n="hero_subtitle">Sem marca d'água, em alta qualidade e direto no seu aparelho.</p>
             </section>
 
-            <!-- Card de Input -->
             <section class="input-card">
                 <form id="downloadForm" class="input-form" autocomplete="off">
                     <div class="field-box">
                         <i class="ph ph-link field-icon"></i>
-                        <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok aqui..."
+                        <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok ou Instagram aqui..."
                             data-i18n-placeholder="input_placeholder" required spellcheck="false" autofocus>
                         <button type="button" class="btn-clear hidden" id="clearBtn" title="Limpar">
                             <i class="ph ph-x"></i>
@@ -158,7 +156,6 @@
                 </form>
             </section>
 
-            <!-- Loading State -->
             <div id="loading" class="status-box hidden">
                 <div class="spinner"></div>
                 <div class="status-text">
@@ -167,20 +164,20 @@
                 </div>
             </div>
 
-            <!-- Error State -->
             <div id="errorMessage" class="status-box error hidden">
                 <i class="ph ph-warning-circle error-icon"></i>
                 <div class="status-text">
                     <strong data-i18n="error_title">Falha ao extrair</strong>
-                    <span data-i18n="error_desc">Não foi possível processar este link. Verifique se o vídeo é
+                    <span data-i18n="error_desc">Não foi possível processar este link. Verifique se o conteúdo é
                         público.</span>
                 </div>
             </div>
 
-            <!-- Resultado -->
             <section id="result" class="result-box hidden">
                 <div class="result-cover-box">
                     <img id="videoCover" src="" alt="Capa da publicação" loading="lazy">
+                    <video id="videoPlayer" class="hidden" controls playsinline
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
                 </div>
                 <div class="result-info">
                     <div class="author-tag">
@@ -189,7 +186,6 @@
                     </div>
                     <h2 id="videoTitle" class="video-desc">Título da Publicação</h2>
 
-                    <!-- Ações para Vídeo Normal ou Foto Única -->
                     <div class="download-actions">
                         <button id="btnMp4" class="dl-button primary">
                             <i class="ph ph-download-simple"></i>
@@ -208,70 +204,7 @@
                         </button>
                     </div>
 
-                    <!-- Lista Interativa se for Carrossel -->
                     <div id="carouselItems" class="carousel-list"></div>
-                </div>
-            </section>
-
-            <!-- Cards Informativos / SEO -->
-            <section class="info-grid">
-                <div class="info-card">
-                    <div class="info-tag" data-i18n="card1_badge">Vídeos HD</div>
-                    <strong data-i18n="card1_title">Qualidade Original</strong>
-                    <p data-i18n="card1_desc">Baixe vídeos sem marca d'água no formato MP4 original sem nenhuma
-                        compressão adicional.</p>
-                </div>
-                <div class="info-card">
-                    <div class="info-tag" data-i18n="card2_badge">Fotos</div>
-                    <strong data-i18n="card2_title">Carrossel Completo</strong>
-                    <p data-i18n="card2_desc">Extraia e salve todas as imagens de posts com múltiplos slides em alta
-                        resolução.</p>
-                </div>
-                <div class="info-card">
-                    <div class="info-tag" data-i18n="card3_badge">Áudio</div>
-                    <strong data-i18n="card3_title">Conversor MP3</strong>
-                    <p data-i18n="card3_desc">Extraia e guarde a música ou áudio viral de qualquer vídeo de forma
-                        imediata.</p>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="faq-container">
-                <div class="faq-header">
-                    <i class="ph ph-question"></i>
-                    <h2 data-i18n="faq_heading">Perguntas Frequentes</h2>
-                </div>
-
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <strong data-i18n="faq_q1">Como baixar vídeos do TikTok sem marca d'água?</strong>
-                        </div>
-                        <div class="faq-answer">
-                            <p data-i18n="faq_a1">Abra o TikTok, clique em 'Compartilhar' no vídeo, selecione 'Copiar
-                                link', cole no campo de pesquisa acima e clique em 'Baixar'.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <strong data-i18n="faq_q2">É possível baixar fotos de carrossel em HD?</strong>
-                        </div>
-                        <div class="faq-answer">
-                            <p data-i18n="faq_a2">Sim! O TikDownload reconhece posts com slides de fotos e disponibiliza
-                                os botões para download de cada imagem em qualidade original.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <strong data-i18n="faq_q3">Preciso pagar ou instalar algum app?</strong>
-                        </div>
-                        <div class="faq-answer">
-                            <p data-i18n="faq_a3">Não. O TikDownload funciona de forma 100% gratuita diretamente no
-                                navegador do celular ou PC.</p>
-                        </div>
-                    </div>
                 </div>
             </section>
         </main>
