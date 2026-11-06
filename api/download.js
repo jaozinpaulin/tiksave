@@ -10,73 +10,57 @@ module.exports = async (req, res) => {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Método não permitido.' });
 
     const { url } = req.body;
-    if (!url || (!url.includes('tiktok.com') && !url.includes('douyin.com'))) {
-        return res.status(400).json({ error: 'Insira uma URL válida do TikTok.' });
+    if (!url || (!url.includes('instagram.com') && !url.includes('instagr.am'))) {
+        return res.status(400).json({ error: 'Insira uma URL válida do Instagram.' });
     }
 
     try {
-        const params = new URLSearchParams();
-        params.append('url', url.trim());
-        params.append('hd', '1');
-
-        const response = await axios.post('https://www.tikwm.com/api/', params, {
-            timeout: 10000,
+        const options = {
+            method: 'GET',
+            url: 'https://instagram-downloader-download-instagram-videos-stories1.p.rapidapi.com/get-info',
+            params: { url: url.trim() },
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-                'Accept': 'application/json, text/javascript, */*; q=0.01'
+                'X-RapidAPI-Key': ' SUA_API_KEY_AQUI ',
+                'X-RapidAPI-Host': 'instagram-downloader-download-instagram-videos-stories1.p.rapidapi.com'
             }
-        });
+        };
 
+        const response = await axios.request(options);
         const resData = response.data;
 
-        if (!resData || resData.code !== 0 || !resData.data) {
-            return res.status(400).json({
-                error: resData?.msg || 'Não foi possível extrair a mídia. Verifique se o perfil e o vídeo são públicos.'
+        if (!resData || !resData.result) {
+            return res.status(400).json({ error: 'Não foi possível extrair a mídia do Instagram. Verifique se o perfil é público.' });
+        }
+
+        const data = resData.result;
+        let medias = [];
+
+        if (Array.isArray(data)) {
+            medias = data.map((item, i) => ({
+                type: item.type === 'video' ? 'video' : 'image',
+                url: item.url,
+                label: item.type === 'video' ? `Vídeo ${i + 1}` : `Foto ${i + 1}`
+            }));
+        } else {
+            medias.push({
+                type: data.type === 'video' ? 'video' : 'image',
+                url: data.url,
+                label: data.type === 'video' ? 'Vídeo do Instagram' : 'Foto do Instagram'
             });
         }
 
-        const data = resData.data;
-        const formatUrl = (u) => {
-            if (!u) return '';
-            return u.startsWith('http') ? u : `https://www.tikwm.com${u}`;
-        };
-
-        let medias = [];
-
-        if (data.images && Array.isArray(data.images) && data.images.length > 0) {
-            medias = data.images.map((imgUrl, i) => ({
-                type: 'image',
-                url: formatUrl(imgUrl),
-                label: `Foto ${i + 1}`
-            }));
-        } else {
-            const videoUrl = formatUrl(data.hdplay || data.play || data.wmplay);
-            if (videoUrl) {
-                medias.push({
-                    type: 'video',
-                    url: videoUrl,
-                    label: 'Vídeo Sem Marca d’Água (HD)'
-                });
-            }
-        }
-
-        if (medias.length === 0) {
-            return res.status(400).json({ error: 'Nenhuma mídia encontrada nesta publicação.' });
-        }
-
         return res.status(200).json({
-            platform: 'tiktok',
+            platform: 'instagram',
             isCarousel: medias.length > 1,
-            title: data.title || 'TikTok Vídeo',
-            cover: formatUrl(data.cover || (medias[0] ? medias[0].url : '')),
-            author: data.author?.nickname || data.author?.unique_id || 'TikTok User',
+            title: data.caption || 'Instagram Mídia',
+            cover: data.thumbnail || medias[0].url,
+            author: data.owner_username || 'Instagram User',
             medias,
-            audio: formatUrl(data.music) || null
+            audio: null
         });
 
     } catch (err) {
-        console.error('Erro na extração TikTok:', err.message);
-        return res.status(500).json({ error: 'Erro ao conectar aos servidores de download. Tente novamente.' });
+        console.error('Erro na extração Instagram:', err.message);
+        return res.status(500).json({ error: 'Erro ao conectar aos servidores de download do Instagram.' });
     }
 };
