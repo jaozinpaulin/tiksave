@@ -4,104 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikDownload · Baixar Vídeos do TikTok Sem Marca d'Água, Fotos e MP3</title>
-
-    <!-- Meta SEO -->
-    <meta name="title" content="TikDownload · Baixar Vídeos do TikTok Sem Marca d'Água, Fotos e MP3">
-    <meta name="description"
-        content="Baixe vídeos do TikTok sem marca d'água em alta qualidade (MP4), salve carrosséis de fotos e extraia áudios em MP3 gratuitamente direto pelo navegador.">
-    <meta name="keywords"
-        content="baixar video tiktok, baixar video tiktok sem marca d'agua, download tiktok mp4 hd, salvar fotos tiktok carrossel, converter tiktok para mp3">
-    <meta name="robots" content="index, follow">
+    <title>TikDownload · Baixar Vídeos do TikTok Sem Marca d'Água e MP3</title>
     <meta name="theme-color" content="#131315">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tikdownload.online/">
-    <meta property="og:title" content="TikDownload · Baixar Vídeos do TikTok Sem Marca d'Água">
-    <meta property="og:description"
-        content="Ferramenta online para baixar vídeos, carrosséis de fotos e áudios em MP3 do TikTok.">
-    <meta property="og:image" content="https://tikdownload.online/logoTD.webp">
-
-    <!-- Favicon & App Icons -->
     <link rel="icon" type="image/webp" href="logoTD.webp">
-    <link rel="shortcut icon" type="image/webp" href="logoTD.webp">
-    <link rel="apple-touch-icon" href="logoTD.webp">
-    <link rel="manifest" href="manifest.json">
-    <link rel="canonical" href="https://tikdownload.online/">
-
-    <!-- Fontes & Ícones Otimizados -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-            rel="stylesheet">
-    </noscript>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
-
     <link rel="stylesheet" href="style.css">
-
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebApplication",
-          "name": "TikDownload",
-          "url": "https://tikdownload.online/",
-          "description": "Baixe vídeos sem marca d'água, carrosséis de fotos e áudios MP3 do TikTok de graça.",
-          "applicationCategory": "MultimediaApplication",
-          "operatingSystem": "All",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Como baixar vídeos do TikTok sem marca d'água?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Abra o TikTok, clique em 'Compartilhar' no vídeo, selecione 'Copiar link', cole no campo de pesquisa do TikDownload e clique em 'Baixar'."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "É possível baixar fotos de carrossel em HD?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sim! O TikDownload reconhece posts com slides de fotos e disponibiliza botões individuais para o download de cada imagem em qualidade original."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Preciso pagar ou instalar algum aplicativo?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Não. O TikDownload funciona de forma 100% gratuita diretamente no navegador do seu celular ou computador, sem necessidade de instalações."
-              }
-            }
-          ]
-        }
-      ]
-    }
-    </script>
 </head>
 
 <body>
     <div class="app-container">
-        <!-- Barra de Navegação Superior -->
         <header class="navbar">
             <a href="/" class="brand">
                 <div class="brand-icon">
-                    <img src="logoTD.webp" alt="TikDownload" class="brand-img" width="38" height="38" loading="eager">
+                    <img src="logoTD.webp" alt="TikDownload" class="brand-img" width="38" height="38">
                 </div>
                 <span class="brand-title">TikDownload</span>
             </a>
@@ -115,23 +32,13 @@
                 <div class="lang-menu hidden" id="langDropdownMenu">
                     <button class="lang-item" data-lang="pt">🇧🇷 Português</button>
                     <button class="lang-item" data-lang="en">🇺🇸 English</button>
-                    <button class="lang-item" data-lang="es">🇪🇸 Español</button>
-                    <button class="lang-item" data-lang="fr">🇫🇷 Français</button>
-                    <button class="lang-item" data-lang="de">🇩🇪 Deutsch</button>
-                    <button class="lang-item" data-lang="it">🇮🇹 Italiano</button>
-                    <button class="lang-item" data-lang="id">🇮🇩 Bahasa Indonesia</button>
-                    <button class="lang-item" data-lang="tr">🇹🇷 Türkçe</button>
-                    <button class="lang-item" data-lang="ru">🇷🇺 Русский</button>
-                    <button class="lang-item" data-lang="ar">🇸🇦 العربية</button>
-                    <button class="lang-item" data-lang="hi">🇮🇳 हिन्दी</button>
-                    <button class="lang-item" data-lang="ja">🇯🇵 日本語</button>
                 </div>
             </div>
         </header>
 
         <main class="content-flow">
             <section class="hero-block">
-                <h1 data-i18n="hero_title">Baixar vídeos do TikTok e Instagram</h1>
+                <h1 data-i18n="hero_title">Baixar vídeos do TikTok</h1>
                 <p data-i18n="hero_subtitle">Sem marca d'água, em alta qualidade e direto no seu aparelho.</p>
             </section>
 
@@ -139,7 +46,7 @@
                 <form id="downloadForm" class="input-form" autocomplete="off">
                     <div class="field-box">
                         <i class="ph ph-link field-icon"></i>
-                        <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok ou Instagram aqui..."
+                        <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok aqui..."
                             data-i18n-placeholder="input_placeholder" required spellcheck="false" autofocus>
                         <button type="button" class="btn-clear hidden" id="clearBtn" title="Limpar">
                             <i class="ph ph-x"></i>
@@ -176,8 +83,7 @@
             <section id="result" class="result-box hidden">
                 <div class="result-cover-box">
                     <img id="videoCover" src="" alt="Capa da publicação" loading="lazy">
-                    <video id="videoPlayer" class="hidden" controls playsinline
-                        style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
+                    <video id="videoPlayer" class="hidden" controls playsinline></video>
                 </div>
                 <div class="result-info">
                     <div class="author-tag">
@@ -209,7 +115,6 @@
             </section>
         </main>
 
-        <!-- Rodapé com Link do GitHub -->
         <footer class="footer-bar">
             <p>
                 © 2026 <strong>TikDownload</strong> ·
@@ -222,10 +127,6 @@
         </footer>
     </div>
 
-    <!-- Canvas Oculto para renderização do vídeo -->
-    <canvas id="renderCanvas" width="540" height="960" style="display:none;"></canvas>
-
-    <!-- Toast Notification -->
     <div id="toastNotification" class="toast-box">
         <i class="ph ph-check-circle"></i>
         <span data-i18n="toast_started">Download iniciado com sucesso!</span>
