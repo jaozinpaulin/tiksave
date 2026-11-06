@@ -1,7 +1,7 @@
 {
     "name": "tiksave",
     "version": "1.0.0",
-    "description": "TikSave — TikTok Video and Audio Downloader",
+    "description": "TikDownload — TikTok Video and Audio Downloader",
     "main": "server.js",
     "scripts": {
         "start": "node server.js"
@@ -12,15 +12,13 @@
         "video",
         "audio"
     ],
-    "author": "",
+    "author": "jaozinpaulin",
     "license": "ISC",
     "type": "commonjs",
     "dependencies": {
         "axios": "^1.21.0",
-        "cheerio": "^1.2.0",
         "cors": "^2.8.5",
         "dotenv": "^18.0.9",
-        "express": "^4.19.2",
-        "puppeteer": "^25.16.0"
+        "express": "^4.19.2"
     }
 }
