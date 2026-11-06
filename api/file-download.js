@@ -1,11 +1,7 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', '*');
-
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     let { mediaUrl, type, filename } = req.query;
@@ -22,17 +18,16 @@ module.exports = async (req, res) => {
             responseType: 'arraybuffer',
             timeout: 30000,
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
-                'Referer': 'https://www.instagram.com/',
-                'Accept': '*/*'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Referer': 'https://www.instagram.com/'
             }
         });
 
         const buffer = Buffer.from(response.data);
-        let ext = type === 'mp3' ? 'mp3' : (type === 'image' || type === 'jpg' || type === 'jpeg' ? 'jpg' : 'mp4');
+        let ext = type === 'mp3' ? 'mp3' : (type === 'image' ? 'jpg' : 'mp4');
         let contentType = type === 'mp3' ? 'audio/mpeg' : (ext === 'jpg' ? 'image/jpeg' : 'video/mp4');
 
-        if (response.headers['content-type'] && !response.headers['content-type'].includes('text/html')) {
+        if (response.headers['content-type'] && !response.headers['content-type'].includes('text')) {
             contentType = response.headers['content-type'];
         }
 
