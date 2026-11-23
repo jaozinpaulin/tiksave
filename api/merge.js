@@ -4,11 +4,8 @@ const os = require('os');
 const axios = require('axios');
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegInstaller = require('@ffmpeg-installer/ffmpeg');
-const ffprobeInstaller = require('@ffprobe-installer/ffprobe');
 
-// Configura os caminhos
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
-ffmpeg.setFfprobePath(ffprobeInstaller.path);
 
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,7 +15,7 @@ module.exports = async (req, res) => {
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).send('Use POST.');
 
-    const { images, audioUrl, filename } = req.body;
+    const { images, audioUrl, filename, timeOption } = req.body;
 
     if (!images || !images.length || !audioUrl) {
         return res.status(400).send('Imagens e áudio são obrigatórios.');
@@ -32,48 +29,50 @@ module.exports = async (req, res) => {
     const downloadedImages = [];
 
     try {
-        // 1. Baixa o Áudio
-        const audRes = await axios({ method: 'GET', url: audioUrl, responseType: 'stream' });
-        const audWriter = fs.createWriteStream(audioPath);
-        audRes.data.pipe(audWriter);
-        await new Promise((resolve, reject) => { audWriter.on('finish', resolve); audWriter.on('error', reject); });
+        const audPromise = axios({ method: 'GET', url: audioUrl, responseType: 'stream' })
+            .then(res => new Promise((resolve, reject) => {
+                const writer = fs.createWriteStream(audioPath);
+                res.data.pipe(writer);
+                writer.on('finish', resolve);
+                writer.on('error', reject);
+            }));
 
-        // 2. Baixa todas as Imagens do Carrossel
-        for (let i = 0; i < images.length; i++) {
-            const imgPath = path.join(tmpDir, `img_${sessionId}_${i}.jpg`);
-            const imgRes = await axios({ method: 'GET', url: images[i], responseType: 'stream' });
-            const imgWriter = fs.createWriteStream(imgPath);
-            imgRes.data.pipe(imgWriter);
-            await new Promise((resolve, reject) => { imgWriter.on('finish', resolve); imgWriter.on('error', reject); });
-            downloadedImages.push(imgPath);
-        }
-
-        // 3. Descobre a duração total do áudio
-        const getAudioDuration = () => new Promise((resolve, reject) => {
-            ffmpeg.ffprobe(audioPath, (err, metadata) => {
-                if (err) reject(err);
-                else resolve(metadata.format.duration);
-            });
+        const imgPromises = images.map((imgUrl, index) => {
+            const imgPath = path.join(tmpDir, `img_${sessionId}_${index}.jpg`);
+            return axios({ method: 'GET', url: imgUrl, responseType: 'stream' })
+                .then(res => new Promise((resolve, reject) => {
+                    const writer = fs.createWriteStream(imgPath);
+                    res.data.pipe(writer);
+                    writer.on('finish', () => {
+                        downloadedImages[index] = imgPath;
+                        resolve();
+                    });
+                    writer.on('error', reject);
+                }));
         });
 
-        let duration = await getAudioDuration();
-        if (!duration || duration <= 0) duration = 15; // fallback caso falhe
+        await Promise.all([audPromise, ...imgPromises]);
 
-        // Divide o tempo igualmente entre as fotos selecionadas (todas do carrossel)
-        const timePerImage = (duration / images.length).toFixed(2);
+        const validImages = downloadedImages.filter(p => p !== undefined);
+        if (validImages.length === 0) throw new Error("Falha ao baixar imagens.");
 
-        // 4. Cria o script para o FFmpeg mesclar as fotos em vídeo
+        let timePerImage = 3;
+        if (timeOption === 'auto') {
+            timePerImage = (30 / validImages.length).toFixed(2);
+            if (timePerImage < 1) timePerImage = 1;
+        } else {
+            timePerImage = parseFloat(timeOption) || 3;
+        }
+
         let listContent = '';
-        for (const img of downloadedImages) {
-            const safePath = img.replace(/\\/g, '/'); // Previne erro no Windows
+        for (const img of validImages) {
+            const safePath = img.replace(/\\/g, '/');
             listContent += `file '${safePath}'\n`;
             listContent += `duration ${timePerImage}\n`;
         }
-        // O FFmpeg exige que a última imagem se repita no txt (sem duração)
-        listContent += `file '${downloadedImages[downloadedImages.length - 1].replace(/\\/g, '/')}'\n`;
+        listContent += `file '${validImages[validImages.length - 1].replace(/\\/g, '/')}'\n`;
         fs.writeFileSync(listPath, listContent);
 
-        // 5. Mescla (Slideshow + Áudio + Formato WhatsApp)
         await new Promise((resolve, reject) => {
             ffmpeg()
                 .input(listPath)
@@ -82,20 +81,21 @@ module.exports = async (req, res) => {
                 .outputOptions([
                     '-c:v libx264',
                     '-preset ultrafast',
-                    '-pix_fmt yuv420p', // Essencial WhatsApp
+                    '-tune stillimage',
+                    '-crf 28',
+                    '-pix_fmt yuv420p',
                     '-c:a aac',
-                    '-b:a 192k',
+                    '-b:a 128k',
                     '-shortest',
-                    '-vf scale=trunc(iw/2)*2:trunc(ih/2)*2' // Evita tela verde no WPP
+                    '-vf scale=trunc(iw/2)*2:trunc(ih/2)*2'
                 ])
                 .save(outputPath)
                 .on('end', resolve)
                 .on('error', reject);
         });
 
-        // 6. Envia o vídeo finalizado para download
-        const safeName = filename ? filename.replace(/[^a-zA-Z0-9._-]/g, '_') : `tiktok_whatsapp_${sessionId}.mp4`;
         const stat = fs.statSync(outputPath);
+        const safeName = filename ? filename.replace(/[^a-zA-Z0-9._-]/g, '_') : `tiktok_slideshow_${sessionId}.mp4`;
 
         res.writeHead(200, {
             'Content-Type': 'video/mp4',
@@ -106,18 +106,19 @@ module.exports = async (req, res) => {
         const readStream = fs.createReadStream(outputPath);
         readStream.pipe(res);
 
-        readStream.on('end', () => {
-            // Limpa o lixo temporário do servidor
-            [audioPath, outputPath, listPath, ...downloadedImages].forEach(file => {
-                if (fs.existsSync(file)) fs.unlinkSync(file);
-            });
+        res.on('finish', () => {
+            cleanup([audioPath, outputPath, listPath, ...validImages]);
         });
 
     } catch (error) {
-        console.error('Erro geral no merge:', error);
-        if (!res.headersSent) res.status(500).send('Erro ao processar arquivos.');
-        [audioPath, outputPath, listPath, ...downloadedImages].forEach(file => {
-            try { if (fs.existsSync(file)) fs.unlinkSync(file); } catch (e) { }
-        });
+        console.error('Erro na Vercel:', error);
+        if (!res.headersSent) res.status(500).send('Erro ao processar ficheiros.');
+        cleanup([audioPath, outputPath, listPath, ...downloadedImages]);
     }
 };
+
+function cleanup(files) {
+    files.forEach(file => {
+        try { if (file && fs.existsSync(file)) fs.unlinkSync(file); } catch (e) { }
+    });
+}
