@@ -48,9 +48,8 @@
                         <i class="ph ph-link field-icon"></i>
                         <input type="url" id="tiktokUrl" placeholder="Cole o link do TikTok aqui..."
                             data-i18n-placeholder="input_placeholder" required spellcheck="false" autofocus>
-                        <button type="button" class="btn-clear hidden" id="clearBtn" title="Limpar">
-                            <i class="ph ph-x"></i>
-                        </button>
+                        <button type="button" class="btn-clear hidden" id="clearBtn" title="Limpar"><i
+                                class="ph ph-x"></i></button>
                         <button type="button" class="btn-paste" id="pasteBtn">
                             <i class="ph ph-clipboard-text"></i>
                             <span data-i18n="btn_paste">Colar</span>
@@ -106,6 +105,32 @@
                             <div class="dl-button-text">
                                 <strong data-i18n="btn_mp3_title">Áudio MP3</strong>
                                 <small data-i18n="btn_mp3_desc">Faixa de áudio original</small>
+                            </div>
+                        </button>
+
+                        <div id="mergeOptions" class="merge-options-box hidden">
+                            <label for="mergeTimeSelect" data-i18n="merge_time_label">Tempo de duração por foto:</label>
+                            <div class="custom-select-wrapper">
+                                <select id="mergeTimeSelect" class="custom-select">
+                                    <option value="auto" data-i18n="merge_time_auto">Sincronizar com o áudio completo
+                                    </option>
+                                    <option value="3">3 segundos</option>
+                                    <option value="5">5 segundos</option>
+                                    <option value="10">10 segundos</option>
+                                    <option value="15">15 segundos</option>
+                                    <option value="20">20 segundos</option>
+                                    <option value="30">30 segundos</option>
+                                </select>
+                                <i class="ph ph-caret-down custom-select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <button id="btnMerge" class="dl-button primary hidden"
+                            style="border-color: rgba(56, 189, 248, 0.3); background-color: rgba(56, 189, 248, 0.08);">
+                            <i class="ph ph-video" style="color: var(--accent-blue);"></i>
+                            <div class="dl-button-text">
+                                <strong id="btnMergeTitle">Gerar Videoclipe</strong>
+                                <small data-i18n="btn_merge_desc">Slideshow sincronizado (MP4)</small>
                             </div>
                         </button>
                     </div>
