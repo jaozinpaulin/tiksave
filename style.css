@@ -321,7 +321,6 @@ body {
     color: #ef4444;
 }
 
-/* Card de Resultado com player centralizado e tamanho excelente */
 .result-box {
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -473,34 +472,9 @@ body {
     width: 100%;
 }
 
-.carousel-card {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.carousel-preview {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    background: #000;
-}
-
-.carousel-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .carousel-badge {
     position: absolute;
-    top: 6px;
+    bottom: 6px;
     right: 6px;
     background: rgba(0, 0, 0, 0.75);
     color: var(--text-main);
@@ -593,4 +567,129 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* ================= NOVO ESTILO: CAIXA DE TEMPO PREMIUM ================= */
+.merge-options-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg-elevated);
+    padding: 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin-top: 8px;
+}
+
+.merge-options-box label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-light);
+    padding: 12px 14px;
+    padding-right: 40px;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.custom-select-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    font-size: 1.1rem;
+}
+
+/* ================= NOVO ESTILO: CHECKMARK NAS FOTOS ================= */
+.carousel-card {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-md);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.carousel-card.is-selected {
+    border-color: var(--accent-blue);
+}
+
+.carousel-preview {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+}
+
+.carousel-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.check-indicator {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1.5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.carousel-card.is-selected .check-indicator {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.check-indicator i {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.carousel-card.is-selected .check-indicator i {
+    opacity: 1;
+}
+
+.carousel-card:not(.is-selected) .carousel-preview img {
+    opacity: 0.5;
 }
